@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="付録B　実験室とPicoのソース。音楽理論の増補改訂版。">
+<title>付録B　実験室とPicoのソース｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>付録・索引</h2><ul><li><a href="./proofs.html">付録A　フーリエ展開の収束を支える二つの証明</a></li><li><a href="./labguide.html" aria-current="page">付録B　実験室とPicoのソース</a></li><li><a href="./answers.html">付録C　演習と解答</a></li><li><a href="./guided-exercises.html">総合問題と解法</a></li><li><a href="./glossary.html">用語索引</a></li><li><a href="./listening.html">聴取索引</a></li><li><a href="./sources.html">参考文献・技術資料</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 付録・索引</div><h1>付録B　実験室とPicoのソース</h1>
+<h2 id="ブラウザの実験室">ブラウザの実験室</h2>
+<p><strong>music-lab.html</strong>
+は音をその場で計算する単独HTMLである。ローカルで開き、画面上のボタンで再生を開始する。ブラウザで再生開始がユーザー操作を必要とする場合に備え、ボタンのイベントから
+AudioContext を起動する。 <a
+href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/resume">MDN
+S15</a>画面にはピアノの8音、うなり、調律、加算、欠落基本音、折返し、位相変調、4小節のスケッチがある。音量は画面と端末の両方で下げられる。耳元の音圧は計測していない。</p>
+<p>波形を自作する最小の考え方は、標本番号
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+に対して
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>n</mi><mi>/</mi><msub><mi>f</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">t=n/f_s</annotation></semantics></math>
+とし、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>π</mi><mi>f</mi><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x[n]=e(t)\sin(2\pi f t)</annotation></semantics></math>
+を表計算や自作コードで計算すること。ここで
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">e(t)</annotation></semantics></math>
+は始めと終わりのフェードである。付属ファイルでは最初と最後を線形で抑え、重ね合わせのピークを制御する。可視化する波形の短い時間窓と、音の長さは別である。図の「振幅」はブラウザ内部の規格化振幅である。</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">予測してから比較するもの</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">うなりで差を 2→7 Hz</td>
+<td style="text-align: left;">山の回数が増える</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">純正長三度／平均律の長三度</td>
+<td
+style="text-align: left;">部分音の強い条件で、長三度の響きの差が出る</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">奇数次を1→15次</td>
+<td style="text-align: left;">波形の角が立ち、音色が変わる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2・3・4次→2・4次</td>
+<td
+style="text-align: left;">波形の最小周期が半分になる可能性を先に計算する</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8 kHz標本、5 kHzと3 kHzの余弦</td>
+<td
+style="text-align: left;">同じ標本なので、同じ再生処理なら同じ音になる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">位相変調の指数を0→1.2</td>
+<td style="text-align: left;">搬送波に加えて側帯波が現れる</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4小節を再生／WAV保存</td>
+<td
+style="text-align: left;">C–F–G7–C、B–C、合成した音色を別々に追う</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="picoに保存するコード">Picoに保存するコード</h2>
+<p>付属の実験室から同じコードを <strong>main.py</strong>
+として保存できる。次のコードを手で入力しても再現できる。ピン名と配線は第39章に対応する。</p>
+<pre class="python"><code>from machine import ADC, PWM, Pin
+from time import sleep_ms
+
+NOTES = (60, 62, 64, 65, 67, 69, 71, 72)
+FREQUENCIES = tuple(round(440 * 2 ** ((n - 69) / 12))
+                    for n in NOTES)
+STEP = 8192
+MARGIN = 320
+
+knob = ADC(Pin(26))
+button = Pin(14, Pin.IN, Pin.PULL_UP)
+speaker = PWM(Pin(15), freq=FREQUENCIES[0], duty_u16=0)
+
+index = knob.read_u16() // STEP
+previous = None
+try:
+    while True:
+        value = knob.read_u16()
+        while index &lt; 7 and value &gt;= (index + 1) * STEP + MARGIN:
+            index += 1
+        while index &gt; 0 and value &lt; index * STEP - MARGIN:
+            index -= 1
+
+        target = index if button.value() == 0 else None
+        if target != previous:
+            speaker.duty_u16(0)
+            if target is not None:
+                speaker.freq(FREQUENCIES[target])
+                speaker.duty_u16(32768)
+            previous = target
+        sleep_ms(8)
+finally:
+    speaker.duty_u16(0)
+    speaker.deinit()</code></pre>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./proofs.html">← 付録A　フーリエ展開の収束を支える二つの証明</a></span><span><a href="./answers.html">付録C　演習と解答 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

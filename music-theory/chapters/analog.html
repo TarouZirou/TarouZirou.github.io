@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第38章　アナログ電子楽器を組む。音楽理論の増補改訂版。">
+<title>第38章　アナログ電子楽器を組む｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>電子楽器と総合制作</h2><ul><li><a href="./analog.html" aria-current="page">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html">第42章　一曲を三つの完成形にする</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 電子楽器と総合制作</div><h1>第38章　アナログ電子楽器を組む</h1>
+<h2 id="製作1-tlc555-の連続可変ピエゾ発振器">製作1　TLC555
+の連続可変ピエゾ発振器</h2>
+<p>つまみで発振周波数を連続的に変える単音楽器を作る。電源は単3乾電池3本の電池ボックス（公称4.5
+V）。配線中は電池ボックスを外す。発音体には<strong>受動の圧電サウンダ</strong>を使う。発振回路を内蔵したアクティブブザーは、外部から与える周期をそのまま音高へ移す部品としては適さない。圧電素子は共振域から離れると弱く鳴る。直接駆動する低インピーダンスのスピーカーやイヤホンはこの配線の負荷として想定していない。</p>
+<p><strong>部品。</strong>
+TLC555CP（DIP-8）、ブレッドボード、単3電池3本とボックス、受動圧電サウンダ、B100kの線形可変抵抗、10
+kΩ抵抗2本、2.2 kΩ抵抗1本、100 nF コンデンサ2個、10 nF コンデンサ1個、10
+µF コンデンサ1個、配線材。100
+nFのタイミング用と電源用を区別して配置する。ICパッケージを上から見て、切欠きを上にした場合、左上が1番で、反時計回りに数える。
+<a href="https://www.ti.com/lit/ds/symlink/tlc555.pdf">TI S20</a></p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">端子・部品</th>
+<th style="text-align: left;">接続</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1 GND</td>
+<td style="text-align: left;">電池−（GND）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8 VDD、4 RESET</td>
+<td style="text-align: left;">電池＋（VDD）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2 TRIG、6 THRES</td>
+<td style="text-align: left;">一緒にしてタイミング節点 X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7 DISCH</td>
+<td style="text-align: left;">節点 Y</td>
+</tr>
+<tr class="odd">
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">Ω</mi></mrow></mrow><annotation encoding="application/x-tex">R_A=10\ \mathrm{k\Omega}</annotation></semantics></math></td>
+<td style="text-align: left;">VDD–Y</td>
+</tr>
+<tr class="even">
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>B</mi></msub><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">Ω</mi></mrow><mo>+</mo><msub><mi>R</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">R_B=10\ \mathrm{k\Omega}+R_{\mathrm{pot}}</annotation></semantics></math></td>
+<td
+style="text-align: left;">Y–X。可変抵抗の摺動端子を隣の外端子の一方と結び、この組と反対側の外端子を使う</td>
+</tr>
+<tr class="odd">
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>100</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">F</mi></mrow></mrow><annotation encoding="application/x-tex">C=100\ \mathrm{nF}</annotation></semantics></math></td>
+<td style="text-align: left;">X–GND</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5 CONT</td>
+<td style="text-align: left;">10 nF を介して GND</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3 OUT</td>
+<td style="text-align: left;">2.2 kΩ → 受動圧電サウンダ → GND</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">バイパス</td>
+<td style="text-align: left;">VDD–GND 間に 100 nF と 10 µF
+を並列。極性付き10 µFは＋をVDD、−をGNDに。100 nFはIC近傍に置く</td>
+</tr>
+</tbody>
+</table></div>
+<figure>
+<img src="../assets/timer.webp"
+alt="TLC555 の非安定マルチバイブレータ。部品記号と節点 X・Y は表と共通。" />
+<figcaption aria-hidden="true">TLC555
+の非安定マルチバイブレータ。部品記号と節点 X・Y
+は表と共通。</figcaption>
+</figure>
+<h2 id="音の高さはどの式で決まるか">音の高さはどの式で決まるか</h2>
+<p>コンデンサの電圧
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+は、抵抗
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+越しに一定の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>∞</mi></msub><annotation encoding="application/x-tex">V_\infty</annotation></semantics></math>
+へ向かうなら
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>v</mi><mi>/</mi><mi>d</mi><mi>t</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>V</mi><mi>∞</mi></msub><mo>−</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">C\,dv/dt=(V_\infty-v)/R</annotation></semantics></math>
+に従う。初期条件
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>v</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">v(0)=v_0</annotation></semantics></math>
+に対する解は
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>V</mi><mi>∞</mi></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>0</mn></msub><mo>−</mo><msub><mi>V</mi><mi>∞</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">v(t)=V_\infty+(v_0-V_\infty)e^{-t/(RC)}.</annotation></semantics></math>
+証明は差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mi>v</mi><mo>−</mo><msub><mi>V</mi><mi>∞</mi></msub></mrow><annotation encoding="application/x-tex">u=v-V_\infty</annotation></semantics></math>
+を取って
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><mi>u</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>′</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(e^{t/(RC)}u)&#39;=0</annotation></semantics></math>
+とし、初期値を入れればよい。抵抗1 kΩと容量1 µFの積は1
+ms。コンデンサ電圧は瞬時には反転せず、一定の速さで直線的に変化するわけでもない。</p>
+<p>TLC555の典型的な閾値を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">D</mi></mrow></msub><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">V_{\mathrm{DD}}/3</annotation></semantics></math>
+と
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>V</mi><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">D</mi></mrow></msub><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">2V_{\mathrm{DD}}/3</annotation></semantics></math>
+とし、放電スイッチのオン抵抗を無視する。充電時は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>+</mo><msub><mi>R</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">R_A+R_B</annotation></semantics></math>
+越しに VDD へ向かい、電圧差が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>V</mi><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">D</mi></mrow></msub><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">2V_{\mathrm{DD}}/3</annotation></semantics></math>
+から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">D</mi></mrow></msub><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">V_{\mathrm{DD}}/3</annotation></semantics></math>
+へ半減する。放電時は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>B</mi></msub><annotation encoding="application/x-tex">R_B</annotation></semantics></math>
+越しに0へ向かい、電圧自体が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>V</mi><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">D</mi></mrow></msub><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">2V_{\mathrm{DD}}/3</annotation></semantics></math>
+から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">D</mi></mrow></msub><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">V_{\mathrm{DD}}/3</annotation></semantics></math>
+へ半減する。両方で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">e^{-t/(RC)}=1/2</annotation></semantics></math>
+だから</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">h</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>A</mi></msub><mo>+</mo><msub><mi>R</mi><mi>B</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>C</mi><mo>ln</mo><mn>2</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>t</mi><mrow><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi></mrow></msub><mo>=</mo><msub><mi>R</mi><mi>B</mi></msub><mi>C</mi><mo>ln</mo><mn>2</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">t_{\mathrm{high}}=(R_A+R_B)C\ln 2,\qquad t_{\mathrm{low}}=R_BC\ln 2,</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>R</mi><mi>A</mi></msub><mo>+</mo><mn>2</mn><msub><mi>R</mi><mi>B</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>C</mi><mo>ln</mo><mn>2</mn></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>D</mi><mo>=</mo><mfrac><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>+</mo><msub><mi>R</mi><mi>B</mi></msub></mrow><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>+</mo><mn>2</mn><msub><mi>R</mi><mi>B</mi></msub></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">f=\frac1{(R_A+2R_B)C\ln2},\qquad
+D=\frac{R_A+R_B}{R_A+2R_B}.</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+は出力の高レベル時間の割合（デューティ比）。公称部品で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>B</mi></msub><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">R_B=10</annotation></semantics></math>〜110
+kΩ、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">C=100</annotation></semantics></math>
+nF なら約480〜63 Hz。中点
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>B</mi></msub><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">R_B=60</annotation></semantics></math>
+kΩ で約111
+Hz。可変抵抗の線形な回転位置と音高の関係は、逆数と対数の合成ゆえ均等な半音目盛にならない。圧電サウンダには音量のばらつきがあり、この範囲の下端が聴こえにくい場合もある。</p>
+<p><strong>組立と確認。</strong>
+①電源を外してICを中央の溝にまたがせる。②GND と VDD を先に配線し、ついで
+X と Y を接続する。③抵抗レンジで X–Y
+間の抵抗を確認するなら、電源を外し、並列経路が影響する場合は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>B</mi></msub><annotation encoding="application/x-tex">R_B</annotation></semantics></math>
+の片端を外して測る。④電池の極性と電源レールの分断箇所を確かめて通電。⑤無音なら
+4 RESET
+が電源＋、2と6が同じ節点、サウンダが受動型かを確認し、つまみを高音側から試す。周波数計かオシロスコープがあれば
+3 OUT を GND
+基準で測る。部品の公差や圧電素子の共振により理論値と音量は変化する。使用する電源を本実習の乾電池に限定し、商用電源の回路へつながない。</p>
+<p><strong>実作。</strong>
+つまみで高音から低音へ滑らせ、同じ方向に4回弾く。停止、速度、反転点を変えてリズムを作る。キャロリーナ・アイクによるドビュッシー《月の光》のテルミン編曲では、離散鍵盤を介さずに接近する音高と、発音の輪郭を聴く。聴取対象の連続的制御に共通点があり、テルミンの容量検出と本作の抵抗制御では回路原理が異なる。
+<a
+href="https://www.metmuseum.org/art/collection/search/739621">Metropolitan
+Museum S21</a> · <a
+href="https://www.youtube.com/watch?v=cdIPRAHJLQ0">録音 L22</a></p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./lab-practice.html">← 第37章　パソコンで再現できる分析の手順</a></span><span><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

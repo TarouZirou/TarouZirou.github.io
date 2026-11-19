@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第32章　合成から一曲を作る。音楽理論の増補改訂版。">
+<title>第32章　合成から一曲を作る｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html" aria-current="page">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ デジタル音響と制作</div><h1>第32章　合成から一曲を作る</h1>
+<h2 id="四つの合成法を同じ音高で聴く">四つの合成法を同じ音高で聴く</h2>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">操作</th>
+<th style="text-align: left;">変数を一つ変えると</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">加算合成</td>
+<td style="text-align: left;">正弦波・部分音を加える</td>
+<td style="text-align: left;">高次の振幅を上げると明るさが変わる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">減算合成</td>
+<td style="text-align: left;">倍音の多い波や雑音をフィルタに通す</td>
+<td
+style="text-align: left;">低域通過のカットオフを下げると高域が減る</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">位相／周波数変調</td>
+<td
+style="text-align: left;">搬送波の位相、または瞬間周波数を変調する</td>
+<td style="text-align: left;">指数を増やすと側帯波の分布が変わる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">サンプラー</td>
+<td
+style="text-align: left;">録音した波形を切出し、反復、速度変更する</td>
+<td
+style="text-align: left;">単純な速度倍化では高さが1オクターヴ上がり尺が半分になる</td>
+</tr>
+</tbody>
+</table></div>
+<p>包絡は音量や明るさの時間関数である。ADSRは
+Attack（立ち上がり時間）、Decay（初期ピークからの減衰時間）、Sustain（鍵を押し続けたときの水準）、Release（鍵を離した後の減衰時間）。Sustainだけは通常時間でなくレベルを指す。標本列を突然切ると波形に段差ができ、短いクリックを生じやすい。数ミリ秒以上のフェードを試し、打楽器的な立上がりとの兼ね合いを聴く。</p>
+<h2 id="変調の側帯波を近似する">変調の側帯波を近似する</h2>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>cos</mo><mo stretchy="false" form="prefix">{</mo><msub><mi>ω</mi><mi>c</mi></msub><mi>t</mi><mo>+</mo><mi>β</mi><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mi>m</mi></msub><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">x(t)=\cos\{\omega_ct+\beta\sin(\omega_mt)\}.</annotation></semantics></math></p>
+<p>位相を時間微分すると瞬間角周波数は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>c</mi></msub><mo>+</mo><mi>β</mi><msub><mi>ω</mi><mi>m</mi></msub><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mi>m</mi></msub><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega_c+\beta\omega_m\cos(\omega_m t)</annotation></semantics></math>。従ってこの位相変調式は、正弦状の周波数偏移の式でもある。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>β</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>≪</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\beta|\ll1</annotation></semantics></math>
+のとき、余弦のテイラー展開と積和公式により</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mi>c</mi></msub><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mi>β</mi><mn>2</mn></mfrac><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mi>c</mi></msub><mo>−</mo><msub><mi>ω</mi><mi>m</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mi>β</mi><mn>2</mn></mfrac><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mi>c</mi></msub><mo>+</mo><msub><mi>ω</mi><mi>m</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>O</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>β</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">x(t)=\cos(\omega_ct)-\frac{\beta}{2}\cos((\omega_c-\omega_m)t)
++\frac{\beta}{2}\cos((\omega_c+\omega_m)t)+O(\beta^2).</annotation></semantics></math></p>
+<p>余弦の二階微分の絶対値が1以下なので、展開の点ごとの剰余は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>β</mi><mn>2</mn></msup><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\beta^2/2</annotation></semantics></math>
+以下。側帯波の符号は位相差を表す。一般の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+では高次の側帯波が生じ、上式を二本だけに切り詰めたモデルは使えなくなる。第10章のうなりは二つの既存成分の足し算による包絡、第32章の変調は元の搬送波に側帯波を作る処理である。実験室では同じ搬送周波数のまま変調指数を変える。チョウニング《Stria》では、変化していく合成音の密度と、部分音の配列による独特の空間感を聴く。作品の周波数設計を長三和音の整数比へ置き換えると別の素材になる。
+<a href="https://medias.ircam.fr/en/work/stria">IRCAM L15</a> · <a
+href="https://digital.library.unt.edu/ark:/67531/metadc1062246/">UNT
+音源 L15a</a></p>
+<h2 id="スタジオの三つの系譜を聴く">スタジオの三つの系譜を聴く</h2>
+<ul>
+<li><strong>具体音の編集。</strong> シェフェール《Étude aux chemins de
+fer》（1948）で、汽笛や走行音が素材として聞こえる場面と、反復のリズムとして聞こえる場面を区別する。当時の録音編集は、現代の
+DAW でサンプルを切って並べる実習につながる。 <a
+href="https://pierreschaeffer.bandcamp.com/track/tude-aux-chemins-de-fer">録音
+L12</a></li>
+<li><strong>発振で音を組み立てる。</strong> シュトックハウゼン《Studie
+II》（1954）は正弦波の組合せを材料にした電子作品。短い群の包絡と、異なる高さの層の切替を追う。古典和声の分散和音と同様に時間上の配列を聴けるが、積み重ねる材料の周波数関係は作品固有である。
+<a href="https://www.youtube.com/watch?v=Yc_FfWnttGw">録音 L13</a> · <a
+href="https://www.research.ed.ac.uk/files/22950785/Williams_JRMA_Studie_II.pdf">制作・演奏資料
+S19</a></li>
+<li><strong>録音編集と合成の組合せ。</strong>
+ロン・グレイナー作曲、デリア・ダービーシャーによるBBCの1963年版《Doctor
+Who》では、跳ねる低音、滑る旋律、雑音の層を聴き分ける。BBCの1965年映像で制作方法も比較できる。Aphex
+Twin《Xtal》では、反復するビートと持続する音の層、声の断片の出入りを分けて聴く。
+<a href="https://www.youtube.com/watch?v=sjDFvoRNpOM">BBC L14</a> · <a
+href="https://www.youtube.com/watch?v=qsRuhCflRyg">制作映像 L14a</a> ·
+<a href="https://www.youtube.com/watch?v=sWcLccMuCA8">録音 L16</a></li>
+</ul>
+<p>ウェンディ・カーロスの《Switched-On
+Bach》（1968）は、既存の楽曲をシンセサイザーの音色と多重録音で編曲した事例である。作曲された音高やリズムを保ちながら、どの声部にどんな発音と音色を与えるかという設計が前景化する。
+<a href="https://wendycarlos.com/%2Bsob.html">制作資料 S27</a></p>
+<h2 id="小節から音源を完成させる">4小節から音源を完成させる</h2>
+<ol type="1">
+<li>テンポを100 BPM、4/4とする。一拍0.6秒、1小節2.4秒、4小節9.6秒。</li>
+<li>低音に C3–F2–G2–C3 を一小節ずつ置く。上は C・F・G7・C とする。</li>
+<li>C4–D4–E4–G4 の動機を、第2小節で A4 に向けて変形する。第3小節の最後で
+B4、第4小節の最初で C5 に置き、解決を可聴化する。</li>
+<li>低音を正弦波寄り、上声を加算した倍音で作る。音を分けて聴いてから合成し、最高ピークを確認する。サンプルのノイズを短い打楽器に使う場合は小節頭の前後で位置を比較する。</li>
+<li>WAVに書き出し、端末の別のプレーヤーで再生する。低音が消えている場合は音量を上げ続ける前に、端末の低域再生能力と上声との関係を調べる。</li>
+</ol>
+<p><strong>ミックスとフィルタの模型。</strong>
+ピークがフルスケールを越えると整数PCMではクリップしうる。個々が範囲内でも和が越えるため、合成した出力を確認する。音の明るさを下げる一次IIRの一例は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>+</mo><mi>a</mi><mi>y</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">y[n]=(1-a)x[n]+ay[n-1]</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>a</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;a&lt;1</annotation></semantics></math>。単位インパルスに対して
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>a</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">h[n]=(1-a)a^n</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n\ge0</annotation></semantics></math>）を漸化式から得る。各係数の和は1。DCを保つ理由である。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">x[n]=e^{i\omega n}</annotation></semantics></math>
+を代入すれば周波数応答
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>a</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">H(e^{i\omega})=(1-a)/(1-ae^{-i\omega})</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\omega=\pi</annotation></semantics></math>
+では大きさが
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(1-a)/(1+a)</annotation></semantics></math>
+となり、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+を増やすと高域が小さくなる。</p>
+<p><strong>録音と音源の使い分け。</strong>
+MIDIは主に発音・停止・ベロシティなどのイベントの記述、WAVは実際の標本列を格納できる容器である。音色やミックスを保存したいときは音声を書き出す。自分で鳴らした録音や利用許可のある素材を使えば、他者の商用録音を配布せずにサンプリング技法を試せる。</p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./dsp.html">← 第31章　畳込み、フィルタ、時間周波数解析</a></span><span><a href="./synthesis-workshop.html">第33章　音色の時間設計 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

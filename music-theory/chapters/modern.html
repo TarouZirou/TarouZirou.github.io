@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第28章　音高類、配列、過程。音楽理論の増補改訂版。">
+<title>第28章　音高類、配列、過程｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>和声・旋律・作品分析</h2><ul><li><a href="./scales.html">第16章　音程・音階・旋法</a></li><li><a href="./melody.html">第17章　旋律の形、動機、フレーズ</a></li><li><a href="./harmony.html">第18章　和音、終止、声部連結</a></li><li><a href="./partwriting.html">第19章　声部進行を局所と大域で考える</a></li><li><a href="./harmonic-models.html">第20章　和音を構造で覚える</a></li><li><a href="./chromatic.html">第21章　半音階と遠い調</a></li><li><a href="./form.html">第22章　対位法・旋律・形式</a></li><li><a href="./contrapuntal.html">第23章　種対位法からフーガへ</a></li><li><a href="./orchestration.html">第24章　編成、音域、テクスチュア</a></li><li><a href="./form-analysis.html">第25章　形式を小節と聴覚の両方で読む</a></li><li><a href="./beyond.html">第26章　ジャズ・グルーヴ・音列への入口</a></li><li><a href="./jazz-pop.html">第27章　ジャズとポピュラー音楽の和声を弾く</a></li><li><a href="./modern.html" aria-current="page">第28章　音高類、配列、過程</a></li><li><a href="./analytical-dossier.html">第29章　六つの録音の精読</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 和声・旋律・作品分析</div><h1>第28章　音高類、配列、過程</h1>
+<h2
+id="単なる音集合から何を計算できるか">単なる音集合から何を計算できるか</h2>
+<p>音高類集合
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊂</mo><mi>ℤ</mi><mi>/</mi><mn>12</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">A\subset\mathbb Z/12\mathbb Z</annotation></semantics></math>
+の構成を調べたいとする。音楽の時間順を捨てるなら、対になった音の距離に注目できる。順序をもたない一対
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{x,y\}</annotation></semantics></math>
+の区間類を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>min</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo>,</mo><mn>12</mn><mo>−</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">d(x,y)=\min(r,12-r)</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>12</mn></mrow></mrow><annotation encoding="application/x-tex">r=(x-y)\bmod12</annotation></semantics></math>
+とする。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≠</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\ne y</annotation></semantics></math>
+では
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>6</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">d\in\{1,2,3,4,5,6\}</annotation></semantics></math>。六個の成分に出現数を数えると音程類ベクトルになる。移調では差を保ち、反転では差の符号だけ反転するので、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+はどちらでも保存される。この不変量は分析に使えるが、逆向きの推論には反例がある。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">集合</th>
+<th style="text-align: left;">六対の距離の一例（順序不同）</th>
+<th style="text-align: left;">ベクトル</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>6</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{0,1,4,6\}</annotation></semantics></math></td>
+<td style="text-align: left;">1, 4, 6, 3, 5, 2</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1,1,1,1,1)</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>7</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{0,1,3,7\}</annotation></semantics></math></td>
+<td style="text-align: left;">1, 3, 5, 2, 6, 4</td>
+<td
+style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1,1,1,1,1)</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table></div>
+<p>二集合の周回間隔を昇順の音高類と、その最後から12を足した最初までで数えると、前者は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>6</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,3,2,6)</annotation></semantics></math>、後者は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,2,4,5)</annotation></semantics></math>。移調はこの列を巡回置換し、反転は向きも変えるが、いずれも間隔の多重集合を保存する。多重集合が違うので、同じベクトルをもつ二集合は互いの移調・反転ではない。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">同じベクトル</mtext><mo>⇒</mo><mtext mathvariant="normal">同じ移調・反転類</mtext></mrow><annotation encoding="application/x-tex">\text{同じベクトル}\Rightarrow\text{同じ移調・反転類}</annotation></semantics></math>
+の反例である。</p>
+<p>十二音列なら順序も情報であり、集合が12音すべてを含むことだけでは列を識別できない。12音列の原形を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">P_0=0</annotation></semantics></math>
+に正規化し、行
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+の開始を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>P</mi><mi>j</mi></msub><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>12</mn></mrow></mrow><annotation encoding="application/x-tex">-P_j\bmod12</annotation></semantics></math>、列
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+の補正を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>P</mi><mi>k</mi></msub><annotation encoding="application/x-tex">P_k</annotation></semantics></math>
+とすれば、行列
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><mo>=</mo><msub><mi>P</mi><mi>k</mi></msub><mo>−</mo><msub><mi>P</mi><mi>j</mi></msub><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>12</mn></mrow></mrow><annotation encoding="application/x-tex">M_{jk}=P_k-P_j\bmod12</annotation></semantics></math>
+になる。各行は移調した原形、各列は反転形の移調を構成する。右から読めば逆行、下から読めば逆行反転となる。行列は変形の参照表であり、作曲が必ずその表の全行を一度ずつ使うという意味ではない。
+<a href="https://viva.pressbooks.pub/openmusictheory/">Open Music Theory
+S07</a></p>
+<h2 id="手続きを作品として聴く">手続きを作品として聴く</h2>
+<p>テリー・ライリー《In
+C》では、複数の奏者が順に短い音型を進み、各音型を繰り返す回数に自由がある。聞こえる縦の和音は、奏者が同じ時間にどの音型を選んでいるかに依存する。ライヒの位相過程では、同一音型が少しずつ位相をずらす時間が前景化する。両作とも反復の材料を含む一方、何を奏者が制御し、何が過程から現れるかが異なる。
+<a href="https://www.youtube.com/watch?v=R_vYeyO7rOE">L40</a> · <a
+href="https://www.youtube.com/watch?v=6MArl7T-_As">L11</a> · <a
+href="https://lcweb2.loc.gov/static/programs/national-recording-preservation-board/documents/In-C_Carl.pdf">《In
+C》資料 S43</a></p>
+<p>メレディス・モンク《Dolmen
+Music》では、声そのものの音色変化、持続音、異なる高さや音節で発音される反復が聞こえる。音高の分類を施すだけでは、息・発声のアタック・母音の変化を落とす。旋律の音高表と「同じ音高でも音色が変わった場所」のタイムラインを並べる。ここで<a
+href="./ear.html">第14章</a>の音源分離や音色と、作曲上の素材設計がつながる。
+<a href="https://www.youtube.com/watch?v=DVrsuMWX7-Y">L41</a></p>
+<p><strong>制作。</strong>
+4音の断片Aを6拍、断片Bを8拍で回し、最初と再会の位置を計算する。和音の当たり外れが偶然に聞こえる場合、毎回刻みを増減して干渉を濃くする案と、低音の持続で重心を作る案を別々に試す。手続きの記述と耳で追える結果を一対一に対応させる。</p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./jazz-pop.html">← 第27章　ジャズとポピュラー音楽の和声を弾く</a></span><span><a href="./analytical-dossier.html">第29章　六つの録音の精読 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第41章　マイコン楽器を計測し、制御を設計する。音楽理論の増補改訂版。">
+<title>第41章　マイコン楽器を計測し、制御を設計する｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>電子楽器と総合制作</h2><ul><li><a href="./analog.html">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html" aria-current="page">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html">第42章　一曲を三つの完成形にする</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 電子楽器と総合制作</div><h1>第41章　マイコン楽器を計測し、制御を設計する</h1>
+<h2 id="何を測れば故障箇所を絞れるか">何を測れば故障箇所を絞れるか</h2>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">症状</th>
+<th style="text-align: left;">分離する変数</th>
+<th style="text-align: left;">観測点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">起動するが無音</td>
+<td
+style="text-align: left;">ボタンを押した論理値、GP15の波形、発音体</td>
+<td style="text-align: left;">REPLの値、テスト端子、ピエゾ両端</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">回しても音程が変わらない</td>
+<td style="text-align: left;">ADC電圧、区間番号、選んだ設定周波数</td>
+<td style="text-align: left;">ADC生値、プログラムの区間、PWM</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">境界で揺れる</td>
+<td style="text-align: left;">読取りノイズ、機械接触、ヒステリシス</td>
+<td style="text-align: left;">前後数百カウントの推移</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">特定の音だけ弱い</td>
+<td style="text-align: left;">PWM周波数と発音体の共振</td>
+<td
+style="text-align: left;">回路波形の振幅、マイク、出力を変えた対照</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">中心がずれる</td>
+<td
+style="text-align: left;">周波数設定の丸め、クロック、解析分解能</td>
+<td style="text-align: left;">十分長い観測、既知の参照信号</td>
+</tr>
+</tbody>
+</table></div>
+<p>PWMのデューティ比は周期
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+のうち HIGH にいる割合
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>。0と<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+を往復する単極性PWMを周期平均した値は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">DV</annotation></semantics></math>。PWMをそのまま受動圧電素子で聴くと、周期は音高そのもの、デューティ比は部分音の強さにも影響する。高いキャリア周波数でPWMを動かして低域通過へ入れる方式では、聞かせたい音高の変化は
+<strong>平均電圧の時間変化</strong>に対応する。フィルタ、キャリア周波数、負荷、量子化の選択まで必要になる。</p>
+<h2
+id="midiの発音指示とオーディオ出力">MIDIの発音指示とオーディオ出力</h2>
+<p>MIDI 1.0の典型的なNote
+Onには、チャンネル、ノート番号、ベロシティがある。ベロシティは発音の速さや強さに対応する制御情報で、実際の音圧は音源実装に依存する。Note
+Offは別の事象。USB
+MIDIや5ピン端子の電気的・プロトコル上の仕様は同一ではない。機器へ接続する場合は、端子をGPIOへ直結する発想ではなく、使用する伝送方式に対応したインターフェースと仕様書を用いる。
+<a href="https://midi.org/summary-of-midi-1-0-messages">MIDI Association
+S48</a></p>
+<p>ベロシティが無い一つのボタンでも、ノートの開始と終了、発音中の音程変化、押す前のつまみ位置を定義できる。前の8音鍵盤では、押しながらつまみを動かすと音程が切り替わる。対照として、最初の押下時に音程を保持し、離すまで変えない版を作れる。設計後に、同じ手指の操作がどんな演奏上の意図に向くかを聴き比べる。</p>
+<p><strong>計測の練習。</strong>
+1秒の観測でA4の周期を連続したゼロ交差から調べる。片方向の交差の間隔を利用すれば、両方向を混ぜて周波数を2倍と誤認するのを避けられる。マイク録音ではノイズのために追加の交差が生まれる。まず矩形波を電気側で読み、音響側ではスペクトルのピークと包絡を測って、異なる測定法が合意するか確かめる。A4の測定値が437
+Hzなら、差は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1200</mn><msub><mo>log</mo><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>437</mn><mi>/</mi><mn>440</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>≃</mo><mi>−</mi><mn>11.8</mn></mrow><annotation encoding="application/x-tex">1200\log_2(437/440)\simeq-11.8</annotation></semantics></math>
+セント。現物の回路からどの方法で得た値か、温度、分析窓、分解能を記録する。</p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./circuits.html">← 第40章　RCとライン出力を計算する</a></span><span><a href="./practical-projects.html">第42章　一曲を三つの完成形にする →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第13章　調律を設計する。音楽理論の増補改訂版。">
+<title>第13章　調律を設計する｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>振動・調律・聴覚</h2><ul><li><a href="./acoustics.html">第10章　音波と楽器の物理</a></li><li><a href="./resonators.html">第11章　振動・共鳴・部屋</a></li><li><a href="./math.html">第12章　周波数比・調律・フーリエ級数</a></li><li><a href="./tuning-lab.html" aria-current="page">第13章　調律を設計する</a></li><li><a href="./ear.html">第14章　耳と脳は何を取り出すか</a></li><li><a href="./perception-lab.html">第15章　聴覚の測定と実験計画</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 振動・調律・聴覚</div><h1>第13章　調律を設計する</h1>
+<h2
+id="何を純正に保ち何を共有するか">何を純正に保ち、何を共有するか</h2>
+<p>弦の実験だけからすべての調の全音を決定しようとすると矛盾が現れる。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math>
+の五度を純正に保つことと、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">5/4</annotation></semantics></math>
+の長三度を各所で保つことには、それぞれ利点がある。問題は、固定鍵盤で多くの調に転じるとき、同じ鍵盤を二通りの比で要求する場合があることである。ここでは比を対数へ写す。長三度を作る四つの五度の合計幅からオクターヴ二つを引けるから、調律条件を加法的な連立式として扱える。</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">調律の設計</th>
+<th style="text-align: left;">五度について固定すること</th>
+<th style="text-align: left;">実用上の比較</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ピタゴラス系</td>
+<td style="text-align: left;">主要な五度を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math>
+付近に置く</td>
+<td style="text-align: left;">長三度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>81</mn><mi>/</mi><mn>64</mn></mrow><annotation encoding="application/x-tex">81/64</annotation></semantics></math>
+は純正
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">5/4</annotation></semantics></math>
+より広い</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">五限界純正律の一関係</td>
+<td style="text-align: left;">素因数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2,3,5</annotation></semantics></math>
+の比で和音を選ぶ</td>
+<td
+style="text-align: left;">同じ音名でも機能に応じ異なる比を要求しうる</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">四分の一コンマ中全音律</td>
+<td style="text-align: left;">五度一つからシントニック・コンマの
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>
+を引く</td>
+<td
+style="text-align: left;">四五度による長三度が純正。特定の異名を同じ鍵に押し込めると不均等な間隔が現れる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ウェル・テンペラメントの諸例</td>
+<td
+style="text-align: left;">五度の誤差配分を均等とせず、閉じた12音の体系を作る</td>
+<td style="text-align: left;">調ごとに長三度などの幅が異なりうる</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12平均律</td>
+<td style="text-align: left;">すべての五度を700セントにする</td>
+<td style="text-align: left;">比のパターンを移調して保存できる</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>具体例。</strong> Cを1とし、五限界のハ長調を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>9</mn><mi>/</mi><mn>8</mn><mo>,</mo><mn>5</mn><mi>/</mi><mn>4</mn><mo>,</mo><mn>4</mn><mi>/</mi><mn>3</mn><mo>,</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>5</mn><mi>/</mi><mn>3</mn><mo>,</mo><mn>15</mn><mi>/</mi><mn>8</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1,9/8,5/4,4/3,3/2,5/3,15/8,2</annotation></semantics></math>
+と置く。C–E–Gは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>:</mo><mn>5</mn><mo>:</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">4:5:6</annotation></semantics></math>。G–B–Dを上行順で根音Gから並べると
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>2</mn><mo>,</mo><mn>15</mn><mi>/</mi><mn>8</mn><mo>,</mo><mn>9</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">3/2,15/8,9/4</annotation></semantics></math>
+で、Gを1とした比も
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>5</mn><mi>/</mi><mn>4</mn><mo>,</mo><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1,5/4,3/2</annotation></semantics></math>。一方D–F–Aは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mi>/</mi><mn>8</mn><mo>,</mo><mn>4</mn><mi>/</mi><mn>3</mn><mo>,</mo><mn>5</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">9/8,4/3,5/3</annotation></semantics></math>。DからAは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><mi>/</mi><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>9</mn><mi>/</mi><mn>8</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>40</mn><mi>/</mi><mn>27</mn></mrow><annotation encoding="application/x-tex">(5/3)/(9/8)=40/27</annotation></semantics></math>、純正五度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math>
+に対して
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>80</mn><mi>/</mi><mn>81</mn></mrow><annotation encoding="application/x-tex">80/81</annotation></semantics></math>
+である。一つの鍵盤配列で、CとGに純正長三和音を与えたうえで、このDの五度をどこまでずらすかが実際の設計問題になる。</p>
+<h2
+id="一般化して最も近い音階を作る">一般化して「最も近い音階」を作る</h2>
+<p>オクターヴを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+個に等分したとき、比
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+に最も近い階段番号
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+をセント誤差で探す。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+の座標は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">N\log_2r</annotation></semantics></math>。候補の誤差は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">|</mo><mn>1200</mn><mi>k</mi><mi>/</mi><mi>N</mi><mo>−</mo><mn>1200</mn><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi><mo stretchy="true" form="postfix">|</mo></mrow><annotation encoding="application/x-tex">|1200k/N-1200\log_2 r|</annotation></semantics></math>。従って
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">N\log_2 r</annotation></semantics></math>
+に最も近い整数を取ればよく、同距離なら二候補がある。たとえば31平均律で五度は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">k=18</annotation></semantics></math>、約696.77セント。長三度は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">k=10</annotation></semantics></math>、約387.10セント。12平均律の五度700は純正五度約701.96に近く、31平均律の長三度387.10は純正長三度386.31に近い。両者の選択は、どの関係をどの程度重視するか、演奏装置の操作性を含む最適化になる。</p>
+<p><strong>練習。</strong> A4 を440 Hz とし、C♯5
+を12平均律・純正長三度・31平均律近似で計算せよ。順に約554.365 Hz、550
+Hz、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>440</mn><mo>⋅</mo><msup><mn>2</mn><mrow><mn>10</mn><mi>/</mi><mn>31</mn></mrow></msup><mo>≃</mo><mn>550.25</mn></mrow><annotation encoding="application/x-tex">440\cdot 2^{10/31}\simeq550.25</annotation></semantics></math>
+Hz。第1と第2の違いは単純な正弦波同士のうなりを用いても検出できる。和音として評価する際はA4も鳴らし、両者の部分音の重なりを変えて聴く。</p>
+<h2 id="楽器では比だけで決まらない">楽器では比だけで決まらない</h2>
+<p>実際のピアノ弦には剛性があり、部分音周波数が理想弦の整数倍からずれうる。たとえば正の非調和係数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+を用い、基音の周波数を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mn>1</mn></msub><annotation encoding="application/x-tex">f_1</annotation></semantics></math>
+とする近似で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>n</mi></msub><mo>=</mo><mi>n</mi><msub><mi>f</mi><mn>1</mn></msub><msqrt><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>B</mi><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msqrt></mrow><annotation encoding="application/x-tex">f_n=n f_1\sqrt{(1+Bn^2)/(1+B)}</annotation></semantics></math>
+と記すと、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>
+は確かに
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mn>1</mn></msub><annotation encoding="application/x-tex">f_1</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n&gt;1</annotation></semantics></math>
+の部分音は整数倍より上に出る。調律では対比する部分音のうなりを聴き、オクターヴを理想の2倍より広くするストレッチが行われることがある。どの程度かは楽器・音域・調律方法に依存する。弦の境界条件の証明が正しくても、理想化した仮定が現物で近似にとどまる理由である。
+<a
+href="https://newt.phys.unsw.edu.au/music/people/publications/Fletcher2000c.pdf">楽器音響
+S37</a></p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./math.html">← 第12章　周波数比・調律・フーリエ級数</a></span><span><a href="./ear.html">第14章　耳と脳は何を取り出すか →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

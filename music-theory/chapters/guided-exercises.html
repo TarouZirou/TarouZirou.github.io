@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="総合問題と解法。音楽理論の増補改訂版。">
+<title>総合問題と解法｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>付録・索引</h2><ul><li><a href="./proofs.html">付録A　フーリエ展開の収束を支える二つの証明</a></li><li><a href="./labguide.html">付録B　実験室とPicoのソース</a></li><li><a href="./answers.html">付録C　演習と解答</a></li><li><a href="./guided-exercises.html" aria-current="page">総合問題と解法</a></li><li><a href="./glossary.html">用語索引</a></li><li><a href="./listening.html">聴取索引</a></li><li><a href="./sources.html">参考文献・技術資料</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 付録・索引</div><h1>総合問題と解法</h1>
+<h2
+id="絶対的な出力と音程を分離する">1　絶対的な出力と音程を分離する</h2>
+<p><strong>問題。</strong> 220 Hzの正弦波と、440
+Hzを基本周波数にもつ短い矩形波近似を、同じデジタルピークで交互に聴く。どちらが高く、どちらが大きく、どの成分が上に多いか。三問に測定値だけで答えられるか。</p>
+<p><strong>解法。</strong> 前者の周波数は220 Hz。後者の合成に440
+Hzが入り、整数倍のみでその成分が非零なら、数学上の最小周期は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>440</mn></mrow><annotation encoding="application/x-tex">1/440</annotation></semantics></math>
+秒。知覚音高がその基本音に対応する条件では後者が1オクターヴ高い。矩形波近似には奇数次があり、後者のスペクトルは広い。ピークを等しくしただけではRMSも、周波数帯に応じたラウドネスも確定しない。耳で比較するならまず再生装置、窓、音量条件を固定して聞く。</p>
+<h2 id="拍と3拍の重なりを設計する">2　2拍と3拍の重なりを設計する</h2>
+<p><strong>問題。</strong> 8分音符を単位として、一方が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>4</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">t\equiv1\pmod4</annotation></semantics></math>、他方が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≡</mo><mn>3</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>6</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">t\equiv3\pmod6</annotation></semantics></math>
+で打つ。初めて同時になる非負整数時刻はいつか。後者を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≡</mo><mn>2</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>6</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">t\equiv2\pmod6</annotation></semantics></math>
+に変更するとどうなるか。</p>
+<p><strong>解法。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn><mo>+</mo><mn>4</mn><mi>u</mi></mrow><annotation encoding="application/x-tex">t=1+4u</annotation></semantics></math>
+とすると
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>u</mi><mo>≡</mo><mn>2</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>6</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">4u\equiv2\pmod6</annotation></semantics></math>。2で割り
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>u</mi><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">2u\equiv1\pmod3</annotation></semantics></math>、従って
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>≡</mo><mn>2</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u\equiv2\pmod3</annotation></semantics></math>。最初は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">u=2</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">t=9</annotation></semantics></math>、以後12刻み。後者を2にすると
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>u</mi><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>6</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">4u\equiv1\pmod6</annotation></semantics></math>。偶数対奇数になるため解なし。二者の周期の最小公倍数だけでは初期位相の影響を答えられない。</p>
+<h2
+id="曲中の和音に二重の所属を与える">3　曲中の和音に二重の所属を与える</h2>
+<p><strong>問題。</strong> C–Am–D7–G–Em–Am–D7–G を鳴らす。最初のAmがC
+majorのviであると同時にG
+majorのiiと読める理由を述べ、どの区間がGへの転調を支えるか確かめよ。</p>
+<p><strong>解法。</strong> Amの構成音A–C–Eは両方の長音階に属する。D7は
+F♯→G と C→B
+の解決をGで作る。Gへ一度到達するだけなら一時的主音化でも説明できるが、後半も
+Em–Am–D7–G と Gのvi–ii–V7–Iで新しい中心を反復する。最後に G7–C
+を付ければ、後段がCへ戻る新しい分節として解釈できる。和音を一個ずつ調へ割り当てるより、転調の前後数小節を比較する。</p>
+<h2 id="二つの順序で調律誤差を見る">4　二つの順序で調律誤差を見る</h2>
+<p><strong>問題。</strong>
+19平均律で長三度と完全五度に近い段数を計算し、12平均律の対応する幅と比較せよ。</p>
+<p><strong>解法。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>19</mn><msub><mo>log</mo><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><mi>/</mi><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>≃</mo><mn>6.12</mn></mrow><annotation encoding="application/x-tex">19\log_2(5/4)\simeq6.12</annotation></semantics></math>
+だから長三度は6段、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1200</mn><mo>⋅</mo><mn>6</mn><mi>/</mi><mn>19</mn><mo>≃</mo><mn>378.95</mn></mrow><annotation encoding="application/x-tex">1200\cdot6/19\simeq378.95</annotation></semantics></math>
+セント。純正386.31からの絶対誤差は約7.36セント、12平均律400の誤差は約13.69。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>19</mn><msub><mo>log</mo><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>≃</mo><mn>11.11</mn></mrow><annotation encoding="application/x-tex">19\log_2(3/2)\simeq11.11</annotation></semantics></math>
+より五度は11段、約694.74セントで、純正701.96から約7.22セント。12平均律700は五度だけなら近い。評価したい間隔の種類を決めず「どちらが正確」と比較することはできない。</p>
+<h2
+id="符号を捨てた形が異なる旋律をまとめてしまう">5　符号を捨てた形が異なる旋律をまとめてしまう</h2>
+<p><strong>問題。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>7</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">P=(0,2,4,7)</annotation></semantics></math>
+と
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Q=(0,2,0,3)</annotation></semantics></math>
+の隣接する音程の絶対値を比較せよ。両者は一方を全体的に移調または反転して得られるか。</p>
+<p><strong>解法。</strong> いずれも絶対値列は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,2,3)</annotation></semantics></math>。向き付き差分は前者
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,2,3)</annotation></semantics></math>、後者
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>,</mo><mi>−</mi><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,-2,3)</annotation></semantics></math>。移調は全差分を保存し、反転はすべての符号を同時に反転する。後者はどちらにも該当しない。上行・下降の情報を捨てた分析によって何が失われるかを検査できる。</p>
+<h2
+id="非調和性と無限解像度を混同しない">6　非調和性と無限解像度を混同しない</h2>
+<p><strong>問題。</strong> 基音440 Hzに対し、上の部分音を880.9
+Hzと推定した。0.05秒の録音でFFTの最大ビンを読んだだけなら、0.9
+Hzずれたと断定できるか。どう設計し直すか。</p>
+<p><strong>解法。</strong> 0.05秒のDFTビン間隔は20
+Hz。十分なS/Nと信号モデルがあればビン間隔より細かいパラメータ推定も可能だが、単一の最大ビンだけは0.9
+Hzを立証しない。長めの持続を使う、基本波と倍音の両方を複数区間で推定する、既知周波数で分析系を校正する、近傍のピークの分離と時間変動を確認する。非調和性の仮説と、測定方法の不確かさを別々に報告する。</p>
+<h2
+id="違いを聞き分けたことと理由を知ることは別の主張">7　違いを聞き分けたことと、理由を知ることは別の主張</h2>
+<p><strong>問題。</strong>
+ABX試験で12回中10回正答した。ゲインの微差があったか不明のまま、「大きな音色差が原因」と結論できるか。</p>
+<p><strong>解法。</strong>
+偶然二択モデルでは上側確率は約0.0193。独立な無作為化、事前に固定した試験回数という仮定に依存する。二つの刺激にレベル差があれば、それだけで区別された可能性がある。音色についての因果主張には、レベルを統制した実験と、レベル差だけを作った対照を追加する。正答率の一つの値から好みや差の大きさも導けない。</p>
+<h2
+id="エコーをフィルタの周波数応答に読む">8　エコーをフィルタの周波数応答に読む</h2>
+<p><strong>問題。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>+</mo><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo>−</mo><mn>24</mn><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">y[n]=x[n]+x[n-24]</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo><mn>48000</mn></mrow><annotation encoding="application/x-tex">f_s=48000</annotation></semantics></math>
+Hz。最初の正のノッチと、ノッチ間隔はいくらか。</p>
+<p><strong>解法。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mn>24</mn><mi>ω</mi></mrow></msup></mrow><annotation encoding="application/x-tex">H(e^{i\omega})=1+e^{-i24\omega}</annotation></semantics></math>
+が0になるのは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn><mi>ω</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>m</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">24\omega=(2m+1)\pi</annotation></semantics></math>。最初は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>⋅</mo><mn>24</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">f_s/(2\cdot24)=1000</annotation></semantics></math>
+Hz、以後
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mi>/</mi><mn>24</mn><mo>=</mo><mn>2000</mn></mrow><annotation encoding="application/x-tex">f_s/24=2000</annotation></semantics></math>
+Hz間隔。時間差は0.5
+msなので二つの音として聞こえない場合でも、音色に変化を残す。極性を逆にして
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>−</mo><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo>−</mo><mn>24</mn><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">y[n]=x[n]-x[n-24]</annotation></semantics></math>
+とすればDCがノッチになる。</p>
+<h2
+id="切った断片を同じ素材と呼べる条件">9　切った断片を同じ素材と呼べる条件</h2>
+<p><strong>問題。</strong>
+フェードをかけた断片を複製して重ね、等電力クロスフェードを適用した。中点でピークが増えたのはなぜか。</p>
+<p><strong>解法。</strong>
+等電力の二乗和1が一定の出力を与えるのは、等分散で無相関という仮定のとき。同じ位相の同一断片なら、中央の二係数がともに
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">1/\sqrt2</annotation></semantics></math>。同じ標本の係数の和は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mn>2</mn></msqrt><annotation encoding="application/x-tex">\sqrt2</annotation></semantics></math>、増加は約3.01
+dB。線形クロスフェードの係数和は1。同じ素材でも位置がずれて相関が変わると、どちらが自然かは聴取と出力レベルで確かめる。</p>
+<h2
+id="マイコンの状態を二値だけで書かない">10　マイコンの状態を二値だけで書かない</h2>
+<p><strong>問題。</strong>
+8音鍵盤の区間境界を8192とする。最初の区間番号が0で、ADC生値が8150、8200、8512、8300、7871と順に来る。余裕を320とした本書の実装で区間を求めよ。</p>
+<p><strong>解法。</strong> 上向き切替は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8192</mn><mo>+</mo><mn>320</mn><mo>=</mo><mn>8512</mn></mrow><annotation encoding="application/x-tex">8192+320=8512</annotation></semantics></math>
+以上。0、0、1まで進む。下向き切替は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8192</mn><mo>−</mo><mn>320</mn><mo>=</mo><mn>7872</mn></mrow><annotation encoding="application/x-tex">8192-320=7872</annotation></semantics></math>
+未満なので8300では1、7871で0。結果は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0,1,1,0)</annotation></semantics></math>。同一のADC生値でも前段の状態によって出力が異なりうる。履歴のある写像である。</p>
+<h2 id="仕様と実測を対応させる">11　仕様と実測を対応させる</h2>
+<p><strong>問題。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">R=10</annotation></semantics></math>
+kΩ、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>22</mn></mrow><annotation encoding="application/x-tex">C=22</annotation></semantics></math>
+nF の低域通過で、入力周波数を約723
+Hzにする。測定器をつなぐと遮断が予想からずれた。考えられる違いを三つ列挙せよ。</p>
+<p><strong>解法。</strong>
+①抵抗・容量の実測値と公差。②測定器の入力抵抗がR/C回路を負荷し、低域ゲインと実効時定数を変える。③入力源自身の出力抵抗が直列に加わる。基準にした通過域の振幅を測り、そこから
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">1/\sqrt2</annotation></semantics></math>
+の位置を探す。絶対0 dBと通過域の基準を混同しない。</p>
+<h2 id="理論を聴取の設計に戻す">12　理論を聴取の設計に戻す</h2>
+<p><strong>問題。</strong>
+ある曲が「落ち着いた」と感じた。終止が明確、テンポが遅い、音量が小さい、音域が狭い、の四候補のうち何が効いたかを作品として調べたい。比較実験を組め。</p>
+<p><strong>解法の一例。</strong>
+元の素材を四つ複製し、各版で一変数だけ変える。終止は G7→C を G7→Am
+へ、テンポは音域を保って変え、音量は他の処理を使わずゲインだけ、音域は旋律の上下を制限する。和声変更に伴う旋律音との衝突のように、必ず一変数だけにできないものもある。その場合、残った差を明記する。比較の順番を入れ替えて短い評価語を付ける。特定の作品のモデルを検査した結果であり、全音楽の情動法則を証明したわけではない。</p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./answers.html">← 付録C　演習と解答</a></span><span><a href="./glossary.html">用語索引 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

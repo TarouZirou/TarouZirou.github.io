@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第42章　一曲を三つの完成形にする。音楽理論の増補改訂版。">
+<title>第42章　一曲を三つの完成形にする｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>電子楽器と総合制作</h2><ul><li><a href="./analog.html">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html" aria-current="page">第42章　一曲を三つの完成形にする</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 電子楽器と総合制作</div><h1>第42章　一曲を三つの完成形にする</h1>
+<div class="primer"><a href="../resources.html">模範譜例と音の実験室</a></div><h2
+id="作品課題a-ピアノまたは声で演奏可能なスコア">作品課題A　ピアノまたは声で演奏可能なスコア</h2>
+<p>出発点は《窓辺》8小節。前半の半終止・後半の正格的な帰着を含め、基本の四分パルスを保つ。次の版では第9小節から新しい区間
+B
+を足す。たとえばAの音域を一段上げる発想から離れて、Bの最初に休止を置き、低音をAに長く保つ。旋律が暗くなるかを問うなら、同じリズムのままC
+majorの先の音集合とA
+minorの音集合を対応させる。Aを戻すときは何を回帰の手がかりにするか決める。先に主旋律を歌い、次に低音を入れ、その後に和音を足す。</p>
+<p><strong>納品条件。</strong>
+調・拍子・テンポ、旋律の音域、弱起があるか、反復記号、実音を確認できる五線譜。8小節の練習では各小節の四分換算が4であることを自分で検算する。拡張版では演奏者が一回の通読で区切りを把握できるよう、段の改行・大きな区間の標識を整える。サイトでは本書の8小節の譜例をMusicXMLとして取り出せる。</p>
+<h2
+id="作品課題b-録音とコンピューターで別の音色にする">作品課題B　録音とコンピューターで別の音色にする</h2>
+<p>録音または合成を三トラックに分ける。低音の発音は少し長く、旋律の音色は高次倍音が早く減衰し、打音は立ち上がりが速い。全トラックを同じ音色・同じ発音にした比較版も作る。波形のピーク、モノラル、水準を近づけた二つの版を比較する。良さを「好き」とだけ書かず、たとえば「拍の手がかりが明確になり、8小節目のCに向かうBを音量を上げずに識別できる」と記述する。</p>
+<p><strong>納品条件。</strong>
+音声ファイル、元の制作ファイル、再現に必要な主要設定と素材の出所。作品の長さを秒と小節で書く。四分＝84の8小節、各4拍なら
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32</mn><mo>⋅</mo><mn>60</mn><mi>/</mi><mn>84</mn><mo>=</mo><mn>160</mn><mi>/</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">32\cdot60/84=160/7</annotation></semantics></math>
+秒、約22.86秒。基準にした最終出力がこれより長い場合、残響の尾を含むか確認する。最終のWAVはもとのプロジェクトを上書きせず別に保存する。</p>
+<h2
+id="作品課題c-回路を演奏へ組み込む">作品課題C　回路を演奏へ組み込む</h2>
+<p>Picoの8音だけでテーマの骨格を弾き、TLC555の連続発振器を滑音の合いの手にする。両方を単独で録音し、重ねて聴く。絶えず発音すると互いの役割が識別しにくいので、一方が持続する箇所で他方の発音回数を減らす。Pico版とブラウザのサイン波版では音高の設計を維持しつつ音色・発音が異なる。この差を分類すると、音楽理論上同じ対象と、音響・工学上の別の対象があることが実感できる。</p>
+<p><strong>納品条件。</strong>
+回路図、部品値、給電方式、入力出力の定格、コード、実測値または評価方法。電子工作の作例はデータシートと照合した。実機での組立・計測は作業者の実習で行う。机上計算と実測結果が一致しなければ差を隠さず、何が仮定されていたか確かめる。</p>
+<h2 id="一曲の分析と改善を結ぶ">一曲の分析と改善を結ぶ</h2>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">検査軸</th>
+<th style="text-align: left;">観察例</th>
+<th style="text-align: left;">改善後に確認すること</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">読譜</td>
+<td
+style="text-align: left;">つなげるタイなのか別の句のスラーなのか曖昧</td>
+<td style="text-align: left;">演奏者が同じ箇所で再発音を判断する</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">拍節</td>
+<td style="text-align: left;">小節頭へ戻る目印が弱い</td>
+<td
+style="text-align: left;">低音・打点・休止のいずれか一つで境界が伝わる</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">和声</td>
+<td style="text-align: left;">G7で内声Bを聞き取れない</td>
+<td style="text-align: left;">B→C が発音と音域で識別できる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">音響</td>
+<td style="text-align: left;">連続音の始まりにクリック</td>
+<td
+style="text-align: left;">フェードと鋭い意図的な発音を聞き分けられる</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">実装</td>
+<td style="text-align: left;">ADC境界で音程が行き来する</td>
+<td
+style="text-align: left;">ノイズの範囲を測り、ヒステリシスで改善した</td>
+</tr>
+</tbody>
+</table></div>
+<p>ここでの評価は、様式として正しく作ったかだけではなく、設計上想定した変化が別の人の聴取でも観察できるかである。各作例の録音を二つずつ残し、変更前後の差を短い言葉で付けると、後から自分の耳と判断の変化を追える。</p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./instrument-testing.html">← 第41章　マイコン楽器を計測し、制御を設計する</a></span><span><a href="./proofs.html">付録A　フーリエ展開の収束を支える二つの証明 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

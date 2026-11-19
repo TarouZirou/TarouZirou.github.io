@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="付録C　演習と解答。音楽理論の増補改訂版。">
+<title>付録C　演習と解答｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>付録・索引</h2><ul><li><a href="./proofs.html">付録A　フーリエ展開の収束を支える二つの証明</a></li><li><a href="./labguide.html">付録B　実験室とPicoのソース</a></li><li><a href="./answers.html" aria-current="page">付録C　演習と解答</a></li><li><a href="./guided-exercises.html">総合問題と解法</a></li><li><a href="./glossary.html">用語索引</a></li><li><a href="./listening.html">聴取索引</a></li><li><a href="./sources.html">参考文献・技術資料</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 付録・索引</div><h1>付録C　演習と解答</h1>
+<h2 id="演習">演習</h2>
+<ol type="1">
+<li>四分音符を一拍とする96
+BPMで、4/4の8小節は何秒か。6/8で付点四分音符を一拍とする96
+BPMなら何秒か。</li>
+<li>弦の張力を4倍、発音長を半分にする。他の条件が同じなら基音は何倍になるか。C4
+に対する平均律の完全五度の周波数比はいくらか。</li>
+<li>440 Hz、660 Hz、880 Hz を合成したとき、最小周期を求める。440 Hzと880
+Hzだけならどうなるか。各成分の係数は非零とする。</li>
+<li>C major の E7→Am
+をローマ数字で分析し、導音に相当する声部を書け。元の C major
+にいることを確かめるには、後続の何を聴くか。</li>
+<li>44.1 kHzで標本化しているとき、25 kHz
+の余弦は何kHzに折り返すか。観測時間0.1秒ならDFTのビンの間隔はいくらか。</li>
+<li>低音 D3 G2 C3
+に、第18章の右手の声部を重ねる。右手三声のうち各和音で何を保ち、何を半音動かしたか。Cmaj7の最上声をC5へ変えると終着がどう変わるか。</li>
+<li>TLC555の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">R_A=10</annotation></semantics></math>
+kΩ、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>B</mi></msub><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">R_B=10</annotation></semantics></math>
+kΩ、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">C=100</annotation></semantics></math>
+nF
+で、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mrow><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">h</mi></mrow></msub><annotation encoding="application/x-tex">t_\mathrm{high}</annotation></semantics></math>
+と
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mrow><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi></mrow></msub><annotation encoding="application/x-tex">t_\mathrm{low}</annotation></semantics></math>、デューティ比を求める。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+を2倍にすると何が変わるか。</li>
+<li>完成課題。4小節を前半とし、低音・拍節・音色の一項目だけを変えた4小節を加える。変更が聴取で同定できるか、違う順番で二回比較する。自分で作った一音を録音して短い打楽器素材へ切り、反復する箇所を一つ作る。</li>
+</ol>
+<h2 id="解答と検算方法">解答と検算方法</h2>
+<ol type="1">
+<li>4/4は32拍で20秒。6/8は16拍で10秒。後者の拍単位は八分音符3個である。</li>
+<li>張力から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>4</mn></msqrt><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sqrt4=2</annotation></semantics></math>
+倍、長さから2倍で積は4倍。完全五度は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mn>7</mn><mi>/</mi><mn>12</mn></mrow></msup><mo>≃</mo><mn>1.4983</mn></mrow><annotation encoding="application/x-tex">2^{7/12}\simeq1.4983</annotation></semantics></math>。</li>
+<li>220 Hz の2・3・4次だから最小周期は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>220</mn></mrow><annotation encoding="application/x-tex">1/220</annotation></semantics></math>
+秒。2・4次なら最大公約数2なので
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>440</mn></mrow><annotation encoding="application/x-tex">1/440</annotation></semantics></math>
+秒。</li>
+<li>V7/vi→vi。E7の G♯ が A へ向かう。その後に Dm7–G7–C などで C
+が再確立する場合、一時的主音化として説明できる。Aへの終止が長く維持され、調が変わる場合は転調分析も検討する。</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mn>25</mn><mo>−</mo><mn>44.1</mn><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mn>19.1</mn></mrow><annotation encoding="application/x-tex">|25-44.1|=19.1</annotation></semantics></math>
+kHz。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>4410</mn></mrow><annotation encoding="application/x-tex">N=4410</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mi>/</mi><mi>N</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">f_s/N=10</annotation></semantics></math>
+Hz。</li>
+<li>Dm7→G7で F、G7→Cmaj7で G と B を保持。C→B、F→E は半音、A→G
+は全音。G7から終着の C に向かう別案では B→C の半音解決が起こる。</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">h</mi></mrow></msub><mo>=</mo><mn>2</mn><mo>ln</mo><mn>2</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mrow><mo>≃</mo><mn>1.386</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">t_\mathrm{high}=2\ln2\ \mathrm{ms}\simeq1.386\ \mathrm{ms}</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi mathvariant="normal">l</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">w</mi></mrow></msub><mo>=</mo><mo>ln</mo><mn>2</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mrow><mo>≃</mo><mn>0.693</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">t_\mathrm{low}=\ln2\ \mathrm{ms}\simeq0.693\ \mathrm{ms}</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mn>2</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">D=2/3</annotation></semantics></math>。同じ抵抗で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math>
+を倍にすると両時間が倍、周波数は半分、デューティ比は同じ。</li>
+<li>検算は、変更前後を並べて、手拍子、低音の口唱、音色の書き分けのいずれか一つで差を説明できるか。フェードの有無を比較し、編集点で意図しないクリックがあれば数msのフェードを入れる。</li>
+</ol>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./labguide.html">← 付録B　実験室とPicoのソース</a></span><span><a href="./guided-exercises.html">総合問題と解法 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

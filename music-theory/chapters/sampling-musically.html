@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第34章　サンプリングとグリッドの設計。音楽理論の増補改訂版。">
+<title>第34章　サンプリングとグリッドの設計｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html" aria-current="page">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ デジタル音響と制作</div><h1>第34章　サンプリングとグリッドの設計</h1>
+<h2
+id="発音の開始点とファイルの切断点">発音の開始点とファイルの切断点</h2>
+<p>打音や短い声を録るとき、意図した発音の直前に短い余裕を残す。波形の立ち上がりから少し前の位置を切り出し、クリックが聞こえるなら数
+ms
+のフェードをつける。音の途中をループにする場合、端の振幅だけを一致させても傾きや音色の変化が不連続に聞こえる場合がある。前後を短く重ねるクロスフェードで、振幅の切替を連続に近づける。繰返しの周期が素材の基音と違えば、繰返しそのものに周期的な成分が生じる。</p>
+<p><strong>二つのクロスフェード。</strong> 位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">u\in[0,1]</annotation></semantics></math>
+に対し、線形なら
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>A</mi></msub><mo>=</mo><mn>1</mn><mo>−</mo><mi>u</mi><mo>,</mo><msub><mi>g</mi><mi>B</mi></msub><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">g_A=1-u,g_B=u</annotation></semantics></math>
+で和が1。完全同相で同じ二音には水準が保たれる。二信号が無相関で同じ分散なら、平均二乗水準の比は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>u</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>u</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(1-u)^2+u^2</annotation></semantics></math>、中央で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>。等電力形は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>A</mi></msub><mo>=</mo><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>π</mi><mi>u</mi><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><msub><mi>g</mi><mi>B</mi></msub><mo>=</mo><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>π</mi><mi>u</mi><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">g_A=\cos(\pi u/2),g_B=\sin(\pi u/2)</annotation></semantics></math>。二乗和は常に1だから無相関の仮定では水準が保たれる。完全同相なら中央で和が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mn>2</mn></msqrt><annotation encoding="application/x-tex">\sqrt2</annotation></semantics></math>
+となる。どちらの方式が合うかは、重なる素材の相関と好みを聞き比べて決める。</p>
+<h2 id="テンポとグルーヴは異なる変数">テンポとグルーヴは異なる変数</h2>
+<p>BPMを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>、四分1拍とし、拍位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+の理想時刻を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>60</mn><mi>b</mi><mi>/</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">t=60b/B</annotation></semantics></math>
+秒とする。演奏を、この理想値と偏差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>
+の和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">t+\varepsilon</annotation></semantics></math>
+と分ける。偏差は楽器ごとに一定方向、セクションに依存、見かけは無相関、のどれでもありうる。指定の小節頭だけ固定し、スネアだけを10
+ms遅らせる版、すべての打点へ無作為に10
+ms程度揺らぎを加える版を作る。同じ「ずれ」でも結果の時間相関は違う。100
+BPMの十六分音符は150 msなので、10 msはその
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>15</mn></mrow><annotation encoding="application/x-tex">1/15</annotation></semantics></math>。この量を聞き取れるかはトランジェント、伴奏、聴き手に依存する。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">工程</th>
+<th style="text-align: left;">確認すること</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">録る</td>
+<td
+style="text-align: left;">元の無加工テイク、仕様、録音機器を記録する</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">切る</td>
+<td
+style="text-align: left;">立ち上がりを保持し、切断点のクリックを聴く</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">並べる</td>
+<td
+style="text-align: left;">頭拍、裏拍、先行・遅れを一変数ずつ変える</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">変調する</td>
+<td
+style="text-align: left;">ピッチと尺を一緒に変更する処理かを明記</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">保存する</td>
+<td
+style="text-align: left;">元素材、加工した短片、構成を区別して保つ</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>録音の検査。</strong>
+《Rockit》や《Workinonit》で、ある打音がグリッドを確立し、別の音がその上を横切るように聞こえる位置を探す。波形で時間を測る場合は、ファイルのタイムコード、正確な発音の定義、テンポの推定方法を記録する。波形の頂点の時刻は知覚上の発音時刻と一致するとは限らない。
+<a href="https://www.youtube.com/watch?v=VuEDRe3tF7s">L31</a> · <a
+href="https://www.youtube.com/watch?v=ogwouE_Msd4">L21</a></p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./synthesis-workshop.html">← 第33章　音色の時間設計</a></span><span><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

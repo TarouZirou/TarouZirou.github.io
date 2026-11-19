@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第39章　Picoでデジタル電子楽器を作る。音楽理論の増補改訂版。">
+<title>第39章　Picoでデジタル電子楽器を作る｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>電子楽器と総合制作</h2><ul><li><a href="./analog.html">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html" aria-current="page">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html">第42章　一曲を三つの完成形にする</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 電子楽器と総合制作</div><h1>第39章　Picoでデジタル電子楽器を作る</h1>
+<div class="primer"><a href="../resources.html">Picoのコードをダウンロード</a></div><h2
+id="製作2-押しボタン付き8音のつまみ鍵盤">製作2　押しボタン付き8音のつまみ鍵盤</h2>
+<p>Raspberry Pi Pico初代（RP2040版）の ADC
+でつまみの電圧を読み、8段階に量子化して、ボタンを押している間だけ発音する。Pico本体（ヘッダー実装済みが便利）、データ通信対応USBケーブル、ブレッドボード、B10k線形可変抵抗、モーメンタリー押しボタン、2.2
+kΩ抵抗、受動圧電サウンダが必要。電源はPicoのUSBのみ。端子番号は初代Picoの基板の物理ピン番号であり、コードには
+GP 番号を書く。 <a
+href="https://pip-assets.raspberrypi.com/categories/610-raspberry-pi-pico/documents/RP-008309-DS-1-Pico-R3-A4-Pinout.pdf?disposition=inline">Picoピン配置
+S22</a> · <a
+href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html">Raspberry
+Pi S23</a> · <a
+href="https://docs.micropython.org/en/v1.26.0/rp2/quickref.html">MicroPython
+S24</a></p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">機能</th>
+<th style="text-align: left;">基板上の端子</th>
+<th style="text-align: left;">接続</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">つまみの高い側</td>
+<td style="text-align: left;">36番 3V3(OUT)</td>
+<td style="text-align: left;">可変抵抗の一方の外端子</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">つまみの低い側</td>
+<td style="text-align: left;">33番 AGND</td>
+<td style="text-align: left;">可変抵抗のもう一方の外端子</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">つまみの読み取り</td>
+<td style="text-align: left;">31番 GP26 / ADC0</td>
+<td style="text-align: left;">可変抵抗の中央の摺動端子</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ボタン</td>
+<td style="text-align: left;">19番 GP14、18番 GND</td>
+<td style="text-align: left;">ボタンを閉じると GP14 と GND
+がつながる。内蔵プルアップを使用</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">発音</td>
+<td style="text-align: left;">20番 GP15、18番 GND</td>
+<td style="text-align: left;">GP15 → 2.2 kΩ → 受動圧電サウンダ →
+GND</td>
+</tr>
+</tbody>
+</table></div>
+<figure>
+<img src="../assets/pico.webp"
+alt="初代Picoの配線。36・33・31は可変抵抗、19はボタン、20は圧電サウンダへ向かう。" />
+<figcaption
+aria-hidden="true">初代Picoの配線。36・33・31は可変抵抗、19はボタン、20は圧電サウンダへ向かう。</figcaption>
+</figure>
+<p><strong>導入。</strong> Pico用の公式MicroPython
+UF2を入手し、BOOTSELを押しながらUSB接続して表示されるドライブへUF2をコピーする。次にエディターのMicroPython（Raspberry
+Pi
+Pico）接続を選び、付録Bのコードをまず実行する。電源投入時に自動演奏待ちにしたければ、Pico側に
+<strong>main.py</strong>
+として保存する。USBを外してから配線し、その後に通電。つまみを中央にして押しボタンを押し、音が出たらつまみを端から端まで回す。3V3(OUT)
+と USB由来の5 V系端子は別である。つまみの給電先を36番にすると GP26
+にかかる電圧がPicoのADCの範囲内になる。 <a
+href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html">公式手順
+S23</a></p>
+<h2 id="量子化しきい値pwm">量子化、しきい値、PWM</h2>
+<p>ADCの読みを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>65535</mn><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">v\in[0,65535]</annotation></semantics></math>
+として
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mo stretchy="false" form="prefix">⌊</mo><mi>v</mi><mi>/</mi><mn>8192</mn><mo stretchy="false" form="postfix">⌋</mo></mrow><annotation encoding="application/x-tex">j=\lfloor v/8192\rfloor</annotation></semantics></math>
+とすれば、その場で0〜7へ分けられる。しかし境界付近の測定値が数カウント動くだけで隣接音が行き来する。前の区間を保持し、上の境界を320カウント超えた場合、または下の境界を320カウント下回った場合にだけ切り替える。この<strong>ヒステリシス</strong>は、上昇時と下降時の閾値を離すことで雑音による往復を抑える。全範囲を一気に回しても区間を追えるようにループ内で複数段の移動を許す。</p>
+<p>プログラムは MIDIノート 60, 62, 64, 65, 67, 69, 71,
+72（C4〜C5）を選び、第12章の式を1 Hz単位に丸めた値で PWM
+周波数を設定する。実際のPWM周波数はハードウェアの分周にも依存する。押したときデューティ比約50%、離したとき0%。本機の
+PWM は音程そのものの周波数でピエゾを駆動する。超音波域の PWM
+を低域通過で平均化してアナログ音声を取り出す設計は別の応用である。GP15は低インピーダンス負荷用の電力出力ではない。直列抵抗と受動圧電素子の指定を守る。
+<a
+href="https://docs.micropython.org/en/v1.26.0/rp2/quickref.html">MicroPython
+S24</a></p>
+<h2
+id="ソフトウェアとハードウェアで同じ旋律を鳴らす">ソフトウェアとハードウェアで同じ旋律を鳴らす</h2>
+<p>初期旋律 C4–D4–E4–G4
+を、付属実験室の鍵盤とPicoの両方で鳴らす。低域から高域へ続けて回し、Picoでは8つの段があり、TLC555では連続的に変わることを聴き比べる。同じ音名でも音色が異なる理由として、PWM
+の矩形波に由来する部分音、圧電素子の周波数応答、スピーカーの違いを挙げられる。測定時はマイクを近づけすぎて入力を歪ませない。</p>
+<p><strong>診断。</strong>
+①押しても無音なら、USB電源、受動圧電サウンダ、20番、ボタンが押したとき同じ電気接点につながる向きかを調べる。②一定音だけなら
+GP26 と抵抗中央の接続を調べ、REPLで
+ADC値が回転に応じて変化するか確認する。③反対方向へ高くなるなら、USBを外してから可変抵抗の外側2端子を入れ替える。④近接でしか聞こえない場合は、耳に押しつけずにサウンダの共振域または音響効率を点検する。</p>
+<p><strong>改造課題。</strong> 付録Bの NOTES の半音配列を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>60</mn><mo>,</mo><mn>62</mn><mo>,</mo><mn>63</mn><mo>,</mo><mn>65</mn><mo>,</mo><mn>67</mn><mo>,</mo><mn>69</mn><mo>,</mo><mn>70</mn><mo>,</mo><mn>72</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(60,62,63,65,67,69,70,72)</annotation></semantics></math>
+に変えると C Dorian
+になる。二つの配列で同じつまみの操作を録音し、第3音と第7音の変化を聴く。つまみ操作を同じにして比較することで、旋法以外の変数を減らす。</p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./analog.html">← 第38章　アナログ電子楽器を組む</a></span><span><a href="./circuits.html">第40章　RCとライン出力を計算する →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>

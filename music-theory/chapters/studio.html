@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第35章　録音、ミックス、書き出しを検算する。音楽理論の増補改訂版。">
+<title>第35章　録音、ミックス、書き出しを検算する｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html" aria-current="page">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ デジタル音響と制作</div><h1>第35章　録音、ミックス、書き出しを検算する</h1>
+<h2
+id="ゲインとラウドネスを混同しない">ゲインとラウドネスを混同しない</h2>
+<p>マイクからデジタルファイルまでには、マイク位置、マイクプリアンプ、ADC、各トラックの処理、バスの和、最終の符号化がある。各段のメーターを見て、どこで上限に当たったかを区別する。マイク入力で歪んだ波形を後で小さくしても消した情報は戻らない。デジタルレベル
+dBFS はフルスケール基準、音圧 dB SPL
+は空気の圧力基準。ピークは瞬間の最大値、RMSは平均二乗、LUFS
+は規格化された重み付け等を伴うプログラムラウドネスの単位であり、音圧の単位ではない。
+<a href="https://www.itu.int/rec/R-REC-BS.1770-5-202311-I">ITU S45</a> ·
+<a href="https://tech.ebu.ch/publications/r128">EBU S46</a></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+本の同相・同振幅の波形を加えると振幅は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+倍で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><msub><mo>log</mo><mn>10</mn></msub><mi>K</mi></mrow><annotation encoding="application/x-tex">20\log_{10}K</annotation></semantics></math>
+dB 増える。無相関・同RMSで平均が0なら平均二乗は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+倍で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><msub><mo>log</mo><mn>10</mn></msub><mi>K</mi></mrow><annotation encoding="application/x-tex">10\log_{10}K</annotation></semantics></math>
+dB
+増える。後者の期待値は「どの瞬間にも絶対に上限を超えない」保証ではない。従って各トラックのピークが低ければ最終ミックスが必ず安全と判断できず、バスの余裕も調べる。</p>
+<h2 id="eqコンプレッサー空間処理">EQ、コンプレッサー、空間処理</h2>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">処理</th>
+<th style="text-align: left;">入出力の関係</th>
+<th style="text-align: left;">判断のための比較</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">EQ</td>
+<td style="text-align: left;">帯域によって振幅・位相を変える</td>
+<td
+style="text-align: left;">レベルをそろえて通過、カット、ブーストを比較</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">コンプレッサー</td>
+<td
+style="text-align: left;">検出したレベルでゲインを時間変化させる</td>
+<td
+style="text-align: left;">アタックの減少、リリースで戻る位置を聞く</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">パン</td>
+<td style="text-align: left;">左右チャンネルのゲインを割り当てる</td>
+<td style="text-align: left;">モノラルにした時の要素の残り方</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">リバーブ</td>
+<td style="text-align: left;">時間に拡散した反射成分を加える</td>
+<td style="text-align: left;">直接音で発音を識別できるか</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">リミッター</td>
+<td style="text-align: left;">上限近くのピークを抑える</td>
+<td style="text-align: left;">ピーク値とアタックの質の両方を確認</td>
+</tr>
+</tbody>
+</table></div>
+<p>理想の静的コンプレッション曲線の一例は、入力レベル
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>、しきい値
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>、比率
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R&gt;1</annotation></semantics></math>
+のとき
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y=x</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≤</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">x\le T</annotation></semantics></math>）、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>T</mi><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">y=T+(x-T)/R</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">x&gt;T</annotation></semantics></math>）。すべてdB単位とする。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mi>−</mi><mn>18</mn></mrow><annotation encoding="application/x-tex">T=-18</annotation></semantics></math>
+dB、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>−</mi><mn>6</mn></mrow><annotation encoding="application/x-tex">x=-6</annotation></semantics></math>
+dB、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">R=4</annotation></semantics></math>
+なら
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>−</mi><mn>15</mn></mrow><annotation encoding="application/x-tex">y=-15</annotation></semantics></math>
+dB、ゲイン低下は9
+dB。実機では検出の時定数とゲインの平滑化があり、短い打音は静的曲線どおりに抑えられない場合がある。まずパラメータを一つ変えてから、バイパスした音と聞こえの大きさをそろえる。</p>
+<p><strong>ステレオの注意。</strong> 二つのチャンネルがそれぞれ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">x[n]</annotation></semantics></math>
+と
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>x</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>n</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">-x[n]</annotation></semantics></math>
+のとき、和を取るモノラルではゼロになる。実際の録音でモノラル時だけある音が痩せるなら、左右の相対位相や遅延を調べる。位相差を意図した空間設計も可能だが、公開先での再生モードを想定して評価する。</p>
+<h2 id="納品前の再現性">納品前の再現性</h2>
+<p>制作物のバージョンには、テンポ、曲の長さ、トラック数、最終サンプリング周波数、ビット深度、素材の出所を書く。編集作業は浮動小数点で持ち、異なるビット深度へ書き出す時にディザの有無を決める。高いピークを抑えて標本値がフルスケール内でも、再構成された連続時間のピークが標本間で大きくなる場合がある。真のピークの推定が必要な配信仕様では、ITU文書で定義される測定法を参照する。R128
+は放送の一規格であり、その目標値をすべての配信・曲に適用するものではない。
+<a href="https://www.itu.int/rec/R-REC-BS.1770-5-202311-I">ITU S45</a> ·
+<a href="https://tech.ebu.ch/publications/r128">EBU S46</a></p>
+<p><strong>音源の完成試験。</strong>
+自分の8小節をヘッドホンと小さなスピーカーで聴く。音量を変えても主旋律の入口が分かること、モノラルで主要要素が消えないこと、曲頭と終わりに意図しないクリックがないことを確認する。その後、最初のミックスへ戻って何を改善したか一文で書く。</p>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./sampling-musically.html">← 第34章　サンプリングとグリッドの設計</a></span><span><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+
+</body></html>
