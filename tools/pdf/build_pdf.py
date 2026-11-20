@@ -181,6 +181,8 @@ table{font-size:8pt}
 pre{white-space:pre-wrap;font-size:7.6pt}
 .audio-note{font-size:8pt;font-family:"IPAexGothic",sans-serif}
 .primer{background:none;border-left:2pt solid #7caa8b;padding:1mm 3mm}
+.routes{display:block;columns:2;column-gap:4mm}
+.route{break-inside:avoid;margin:0 0 4mm;display:block}
 .colophon{break-before:page;font-family:"IPAexGothic",sans-serif;font-size:8.5pt;color:#476050;padding-top:150mm}
 """ % {"title": TITLE}
 
