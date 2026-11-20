@@ -1,62 +1,63 @@
 <!doctype html>
 <html lang="ja">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="第12章　周波数比・調律・フーリエ級数。音楽理論の増補改訂版。">
-<title>第12章　周波数比・調律・フーリエ級数｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<meta name="description" content="第26章　周波数比・調律・フーリエ級数。周波数比・セント・平均律、そしてフーリエ級数の入口。">
+<title>第26章　周波数比・調律・フーリエ級数｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
-<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>振動・調律・聴覚</h2><ul><li><a href="./acoustics.html">第10章　音波と楽器の物理</a></li><li><a href="./resonators.html">第11章　振動・共鳴・部屋</a></li><li><a href="./math.html" aria-current="page">第12章　周波数比・調律・フーリエ級数</a></li><li><a href="./tuning-lab.html">第13章　調律を設計する</a></li><li><a href="./ear.html">第14章　耳と脳は何を取り出すか</a></li><li><a href="./perception-lab.html">第15章　聴覚の測定と実験計画</a></li></ul></nav></aside>
-<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 振動・調律・聴覚</div><h1>第12章　周波数比・調律・フーリエ級数</h1>
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VI部　音の物理と聴覚</h2><ul><li><a href="./acoustics.html">第24章　音波と楽器の物理</a></li><li><a href="./resonators.html">第25章　振動・共鳴・部屋</a></li><li><a href="./math.html" aria-current="page">第26章　周波数比・調律・フーリエ級数</a></li><li><a href="./tuning-lab.html">第27章　調律を設計する</a></li><li><a href="./ear.html">第28章　耳と脳は何を取り出すか</a></li><li><a href="./perception-lab.html">第29章　聴覚の測定と実験計画</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VI部　音の物理と聴覚</div><h1>第26章　周波数比・調律・フーリエ級数</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">周波数比・セント・平均律、そしてフーリエ級数の入口。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>周波数比をセント（対数）に直して足し算する</li><li>純正律と平均律のずれを、数値で比べる</li><li>矩形波が奇数次倍音の和であることを確かめる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#倍率を足し算で表す">倍率を足し算で表す</a></li><li><a href="#周期波を直交基底で分析する">周期波を直交基底で分析する</a></li><li><a href="#矩形波の係数を積分する">矩形波の係数を積分する</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
 <h2 id="倍率を足し算で表す">倍率を足し算で表す</h2>
 <p>220→330 Hz と 440→660 Hz の差は 110 Hz と 220 Hz
 だが、周波数比はいずれも
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math>。積になる連続した周波数比を足し算で記録したいので、比
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&gt;0</annotation></semantics></math>
 に対し
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1200</mn><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">C(r)=1200\log_2 r</annotation></semantics></math>
-セントとする。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>C</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>C</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">C(rs)=C(r)+C(s)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>r</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1200</mn><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">C(r)=1200\log_2 r</annotation></semantics></math>
+セントとする。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>r</mi><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>C</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>r</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>C</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">C(rs)=C(r)+C(s)</annotation></semantics></math>
 で、オクターヴ
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r=2</annotation></semantics></math>
 は1200セント。</p>
-<p><strong>定理 12.1（連続な加法的音程尺度）。</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">g:(0,\infty)\to\mathbb R</annotation></semantics></math>
+<div class="theorem"><p><strong>定理 26.1（連続な加法的音程尺度）。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">g:(0,\infty)\to\mathbb R</annotation></semantics></math>
 が連続で
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">g(rs)=g(r)+g(s)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>r</mi><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>g</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>r</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>g</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">g(rs)=g(r)+g(s)</annotation></semantics></math>
 と
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1200</mn></mrow><annotation encoding="application/x-tex">g(2)=1200</annotation></semantics></math>
-を満たせば、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1200</mn><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">g(r)=1200\log_2 r</annotation></semantics></math>。</p>
-<p><strong>証明。</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mn>2</mn><mi>x</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">h(x)=g(2^x)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1200</mn></mrow><annotation encoding="application/x-tex">g(2)=1200</annotation></semantics></math>
+を満たせば、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>r</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1200</mn><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">g(r)=1200\log_2 r</annotation></semantics></math>。</p></div>
+<details class="proof"><summary>証明を読む（読まなくても先へ進めます）</summary><p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>g</mi><mrow><mo form="prefix" stretchy="true">(</mo><msup><mn>2</mn><mi>x</mi></msup><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">h(x)=g(2^x)</annotation></semantics></math>
 とおけば
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">h(x+y)=h(x)+h(y)</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h(0)=0</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">h(-x)=-h(x)</annotation></semantics></math>。整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">h(x+y)=h(x)+h(y)</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h(0)=0</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>−</mi><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>−</mi><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">h(-x)=-h(x)</annotation></semantics></math>。整数
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
 では
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1200</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">h(m)=1200m</annotation></semantics></math>、正整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1200</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">h(m)=1200m</annotation></semantics></math>、正整数
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 に対し
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>m</mi><mi>/</mi><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">nh(m/n)=h(m)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mi>/</mi><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">nh(m/n)=h(m)</annotation></semantics></math>
 だから有理数では
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>q</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1200</mn><mi>q</mi></mrow><annotation encoding="application/x-tex">h(q)=1200q</annotation></semantics></math>。任意の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>q</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1200</mn><mi>q</mi></mrow><annotation encoding="application/x-tex">h(q)=1200q</annotation></semantics></math>。任意の
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">x\in\mathbb R</annotation></semantics></math>
 へ収束する有理数列と連続性を使えば
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1200</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">h(x)=1200x</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">x=\log_2 r</annotation></semantics></math>
-を代入する。∎</p>
-<p><strong>定理 12.2（12平均律の一意性）。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1200</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">h(x)=1200x</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">x=\log_2 r</annotation></semantics></math>
+を代入する。∎</p></details>
+<div class="theorem"><p><strong>定理 26.2（12平均律の一意性）。</strong>
 1オクターヴの上昇を正の同一周波数比
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
 の12回の積で得るとき、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><msup><mn>2</mn><mrow><mn>1</mn><mi>/</mi><mn>12</mn></mrow></msup></mrow><annotation encoding="application/x-tex">r=2^{1/12}</annotation></semantics></math>
 が唯一の解。MIDIノート番号
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>（A4
 を69とする）には
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>440</mn><mo>⋅</mo><msup><mn>2</mn><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>m</mi><mo>−</mo><mn>69</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mn>12</mn></mrow></msup></mrow><annotation encoding="application/x-tex">f(m)=440\cdot 2^{(m-69)/12}</annotation></semantics></math>
-Hz が対応する。</p>
-<p><strong>証明。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>440</mn><mo>⋅</mo><msup><mn>2</mn><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mo>−</mo><mn>69</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mn>12</mn></mrow></msup></mrow><annotation encoding="application/x-tex">f(m)=440\cdot 2^{(m-69)/12}</annotation></semantics></math>
+Hz が対応する。</p></div>
+<details class="proof"><summary>証明を読む（読まなくても先へ進めます）</summary><p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>r</mi><mn>12</mn></msup><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">r^{12}=2</annotation></semantics></math>。正の実数上で
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>↦</mo><msup><mi>r</mi><mn>12</mn></msup></mrow><annotation encoding="application/x-tex">r\mapsto r^{12}</annotation></semantics></math>
 は狭義単調増加で、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mn>1</mn><mi>/</mi><mn>12</mn></mrow></msup><annotation encoding="application/x-tex">2^{1/12}</annotation></semantics></math>
 は式を満たす。A4からの
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>−</mo><mn>69</mn></mrow><annotation encoding="application/x-tex">m-69</annotation></semantics></math>
-回の乗算、負の回数なら逆数の乗算により後半が従う。∎</p>
+回の乗算、負の回数なら逆数の乗算により後半が従う。∎</p></details>
 <div class="table-wrap"><table>
 <thead>
 <tr class="header">
@@ -69,44 +70,39 @@ Hz が対応する。</p>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">オクターヴ</td>
-<td
-style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>:</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2:1</annotation></semantics></math></td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>:</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2:1</annotation></semantics></math></td>
 <td style="text-align: right;">1200.00</td>
 <td style="text-align: right;">1200</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">完全五度</td>
-<td
-style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>:</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3:2</annotation></semantics></math></td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>:</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3:2</annotation></semantics></math></td>
 <td style="text-align: right;">701.96</td>
 <td style="text-align: right;">700</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">完全四度</td>
-<td
-style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>:</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">4:3</annotation></semantics></math></td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>:</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">4:3</annotation></semantics></math></td>
 <td style="text-align: right;">498.04</td>
 <td style="text-align: right;">500</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">長三度</td>
-<td
-style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>:</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">5:4</annotation></semantics></math></td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>:</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">5:4</annotation></semantics></math></td>
 <td style="text-align: right;">386.31</td>
 <td style="text-align: right;">400</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">短三度</td>
-<td
-style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>:</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">6:5</annotation></semantics></math></td>
+<td style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>:</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">6:5</annotation></semantics></math></td>
 <td style="text-align: right;">315.64</td>
 <td style="text-align: right;">300</td>
 </tr>
 </tbody>
 </table></div>
 <p>五度を12回積み7オクターヴ下げると
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>12</mn></msup><mi>/</mi><msup><mn>2</mn><mn>7</mn></msup><mo>=</mo><mn>531441</mn><mi>/</mi><mn>524288</mn></mrow><annotation encoding="application/x-tex">(3/2)^{12}/2^7=531441/524288</annotation></semantics></math>、約23.46セントのピタゴラス・コンマが残る。一般に
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>p</mi></msup><mo>=</mo><msup><mn>2</mn><mi>q</mi></msup><mspace width="0.222em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo>&gt;</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(3/2)^p=2^q\ (p,q&gt;0)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>12</mn></msup><mi>/</mi><msup><mn>2</mn><mn>7</mn></msup><mo>=</mo><mn>531441</mn><mi>/</mi><mn>524288</mn></mrow><annotation encoding="application/x-tex">(3/2)^{12}/2^7=531441/524288</annotation></semantics></math>、約23.46セントのピタゴラス・コンマが残る。一般に
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>p</mi></msup><mo>=</mo><msup><mn>2</mn><mi>q</mi></msup><mspace width="0.222em"></mspace><mrow><mo form="prefix" stretchy="true">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo>&gt;</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">(3/2)^p=2^q\ (p,q&gt;0)</annotation></semantics></math>
 なら
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mi>p</mi></msup><mo>=</mo><msup><mn>2</mn><mrow><mi>p</mi><mo>+</mo><mi>q</mi></mrow></msup></mrow><annotation encoding="application/x-tex">3^p=2^{p+q}</annotation></semantics></math>
 になり素因数分解の一意性に反する。したがって純正な五度を何回重ねても整数オクターヴには一致しない。ピタゴラス律の長三度
@@ -115,48 +111,48 @@ style="text-align: right;"><math display="inline" xmlns="http://www.w3.org/1998/
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">5/4</annotation></semantics></math>
 の商は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>81</mn><mi>/</mi><mn>80</mn></mrow><annotation encoding="application/x-tex">81/80</annotation></semantics></math>（シントニック・コンマ、約21.51セント）。中全音律の一種である四分の一コンマ中全音律では、各五度からこのコンマの1/4を引くと、四つの五度から二オクターヴを引いた長三度が純正になる。循環する全調で同等の条件を得たいときの解の一つが12平均律である。</p>
-<p><strong>実験。</strong> A4 と、その上の長三度を 550
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>実験。</strong> A4 と、その上の長三度を 550
 Hz（純正）または約554.365
 Hz（平均律）で鳴らす。正弦波だけの比較と、整数倍の部分音を加えた比較を行う。純正では下音の第5部分音
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>⋅</mo><mn>440</mn></mrow><annotation encoding="application/x-tex">5\cdot440</annotation></semantics></math>
 と上音の第4部分音
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>⋅</mo><mn>550</mn></mrow><annotation encoding="application/x-tex">4\cdot550</annotation></semantics></math>
 がともに2200 Hz。平均律では約17.46
-Hzずれ、これらの部分音の振幅が十分なら差が聴き取りやすくなる。</p>
+Hzずれ、これらの部分音の振幅が十分なら差が聴き取りやすくなる。</p></div>
 <h2 id="周期波を直交基底で分析する">周期波を直交基底で分析する</h2>
 <p>周期
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
 の信号の基本周波数を
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn><mi>/</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">f_0=1/T</annotation></semantics></math>
-とし、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>k</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mn>2</mn><mi>π</mi><mi>k</mi><mi>t</mi><mi>/</mi><mi>T</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e_k(t)=e^{i2\pi kt/T}</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb Z</annotation></semantics></math>
+とし、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>k</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mn>2</mn><mi>π</mi><mi>k</mi><mi>t</mi><mi>/</mi><mi>T</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e_k(t)=e^{i2\pi kt/T}</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb Z</annotation></semantics></math>
 とおく。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><mo>=</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mi>i</mi><mo>sin</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">e^{i\theta}=\cos\theta+i\sin\theta</annotation></semantics></math>
 であり、負の
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
 は複素平面内で逆向きに回転する。</p>
-<p><strong>定理 12.3（直交性と係数の一意性）。</strong> 内積
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><msup><mi>T</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mover><mrow><mi>v</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mo accent="true">¯</mo></mover><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\langle u,v\rangle=T^{-1}\int_0^T u(t)\overline{v(t)}\,dt</annotation></semantics></math>
+<div class="theorem"><p><strong>定理 26.3（直交性と係数の一意性）。</strong> 内積
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><msup><mi>T</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><mi>u</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mover><mrow><mi>v</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mo accent="true">¯</mo></mover><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\langle u,v\rangle=T^{-1}\int_0^T u(t)\overline{v(t)}\,dt</annotation></semantics></math>
 に関し
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><msub><mi>e</mi><mi>k</mi></msub><mo>,</mo><msub><mi>e</mi><mo>ℓ</mo></msub><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><msub><mi>δ</mi><mrow><mi>k</mi><mo>ℓ</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\langle e_k,e_\ell\rangle=\delta_{k\ell}</annotation></semantics></math>。よって有限和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><msub><mi>e</mi><mi>k</mi></msub><mo>,</mo><msub><mi>e</mi><mo>ℓ</mo></msub><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><msub><mi>δ</mi><mrow><mi>k</mi><mo>ℓ</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\langle e_k,e_\ell\rangle=\delta_{k\ell}</annotation></semantics></math>。よって有限和
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo>∑</mo><msub><mi>a</mi><mi>k</mi></msub><msub><mi>e</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x=\sum a_k e_k</annotation></semantics></math>
 の係数は
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>=</mo><msup><mi>T</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><mi>x</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mn>2</mn><mi>π</mi><mi>k</mi><mi>t</mi><mi>/</mi><mi>T</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">a_k=T^{-1}\int_0^T x(t)e^{-i2\pi kt/T}\,dt</annotation></semantics></math>
-で一意に定まる。</p>
-<p><strong>証明。</strong> 被積分関数は
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mn>2</mn><mi>π</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>−</mo><mo>ℓ</mo><mo stretchy="true" form="postfix">)</mo></mrow><mi>t</mi><mi>/</mi><mi>T</mi></mrow></msup><annotation encoding="application/x-tex">e^{i2\pi(k-\ell)t/T}</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mo>ℓ</mo></mrow><annotation encoding="application/x-tex">k=\ell</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>=</mo><msup><mi>T</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mn>2</mn><mi>π</mi><mi>k</mi><mi>t</mi><mi>/</mi><mi>T</mi></mrow></msup><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">a_k=T^{-1}\int_0^T x(t)e^{-i2\pi kt/T}\,dt</annotation></semantics></math>
+で一意に定まる。</p></div>
+<details class="proof"><summary>証明を読む（読まなくても先へ進めます）</summary><p> 被積分関数は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mn>2</mn><mi>π</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>k</mi><mo>−</mo><mo>ℓ</mo><mo form="postfix" stretchy="true">)</mo></mrow><mi>t</mi><mi>/</mi><mi>T</mi></mrow></msup><annotation encoding="application/x-tex">e^{i2\pi(k-\ell)t/T}</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mo>ℓ</mo></mrow><annotation encoding="application/x-tex">k=\ell</annotation></semantics></math>
 では1。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>k</mi><mo>−</mo><mo>ℓ</mo><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m=k-\ell\ne0</annotation></semantics></math>
 では積分を指数関数で評価すると分子が
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mn>2</mn><mi>π</mi><mi>m</mi></mrow></msup><mo>−</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">e^{i2\pi m}-1=0</annotation></semantics></math>。係数式は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
 の有限和と
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>k</mi></msub><annotation encoding="application/x-tex">e_k</annotation></semantics></math>
-の内積をとれば、直交性により一項だけ残る。∎</p>
+の内積をとれば、直交性により一項だけ残る。∎</p></details>
 <p>この直交性の証明自体は有限和の係数を確定する。無限和を点ごとに再構成するには収束条件が必要である。たとえば周期信号が区分的に
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
 なら通常の対称部分和は各点の左右極限の平均へ収束する（証明は付録A）。信号が実数値なら
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mrow><mi>−</mi><mi>k</mi></mrow></msub><mo>=</mo><mover><msub><mi>a</mi><mi>k</mi></msub><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">a_{-k}=\overline{a_k}</annotation></semantics></math>。これらの対を組み合わせると、振幅と位相をもつ実数の正弦波・余弦波になる。</p>
 <h2 id="矩形波の係数を積分する">矩形波の係数を積分する</h2>
 <p>角変数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>∈</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mi>π</mi><mo>,</mo><mi>π</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\theta\in(-\pi,\pi)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>∈</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>−</mi><mi>π</mi><mo>,</mo><mi>π</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\theta\in(-\pi,\pi)</annotation></semantics></math>
 で
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>+</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">x=+1</annotation></semantics></math>
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>θ</mi><mo>&lt;</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">0&lt;\theta&lt;\pi</annotation></semantics></math>)、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">x=-1</annotation></semantics></math>
@@ -164,22 +160,23 @@ Hzずれ、これらの部分音の振幅が十分なら差が聴き取りやす
 の
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>
 周期波形を考える。奇関数なので DC と余弦係数はゼロ。実正弦係数は</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>2</mn><mi>π</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>π</mi></msubsup><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>d</mi><mi>θ</mi><mo>=</mo><mfrac><mn>2</mn><mrow><mi>π</mi><mi>n</mi></mrow></mfrac><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>n</mi></msup><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">b_n=\frac{2}{\pi}\int_0^\pi\sin(n\theta)\,d\theta
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>2</mn><mi>π</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>π</mi></msubsup><mo>sin</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mspace width="0.167em"></mspace><mi>d</mi><mi>θ</mi><mo>=</mo><mfrac><mn>2</mn><mrow><mi>π</mi><mi>n</mi></mrow></mfrac><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>n</mi></msup><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">b_n=\frac{2}{\pi}\int_0^\pi\sin(n\theta)\,d\theta
 =\frac{2}{\pi n}\{1-(-1)^n\}.</annotation></semantics></math></p>
 <p>従って奇数番だけが
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>π</mi><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">4/(\pi n)</annotation></semantics></math>、偶数番はゼロ。理想矩形波は奇数次倍音の無限和であり、有限和は近似になる。段差点の極限値は0。段差近傍には高調波を増やしても高さが消えずに領域の幅が縮む
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>π</mi><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">4/(\pi n)</annotation></semantics></math>、偶数番はゼロ。理想矩形波は奇数次倍音の無限和であり、有限和は近似になる。段差点の極限値は0。段差近傍には高調波を増やしても高さが消えずに領域の幅が縮む
 Gibbs 現象がある。実験室で
 1・3・7・15次まで増やし、角の近くと音色の差を比較する。初期位相を変えると波形が変わる例も作れる。
 <a href="https://msp.ucsd.edu/techniques/v0.09/book-html/">Puckette
 S10</a></p>
 <figure>
-<img src="../assets/fourier.webp"
-alt="左は奇数次を足して矩形波を近似した波形。右はその正弦成分の振幅。" />
-<figcaption
-aria-hidden="true">左は奇数次を足して矩形波を近似した波形。右はその正弦成分の振幅。</figcaption>
+<img alt="左は奇数次を足して矩形波を近似した波形。右はその正弦成分の振幅。" src="../assets/fourier.webp"/>
+<figcaption aria-hidden="true">左は奇数次を足して矩形波を近似した波形。右はその正弦成分の振幅。</figcaption>
 </figure>
-<nav class="chapter-end" aria-label="前後の章"><span><a href="./resonators.html">← 第11章　振動・共鳴・部屋</a></span><span><a href="./tuning-lab.html">第13章　調律を設計する →</a></span></nav>
-</article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>1オクターヴ＝1200セント。12平均律の五度は700セント、純正は約702セント。</li><li>純正な五度をいくつ重ねても、オクターヴには戻らない（ピタゴラス・コンマ）。</li><li>周期的な音は、正弦波の和に分解できる。</li></ul></section>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./tuning-lab.html">第27章　調律を設計する</a></p><p class="next-lead">何を純正に保ち、何を妥協するか。調律を設計問題として考える。</p></div>
 
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./resonators.html">← 第25章　振動・共鳴・部屋</a></span><span><a href="./tuning-lab.html">第27章　調律を設計する →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
 </body></html>

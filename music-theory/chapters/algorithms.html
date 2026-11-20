@@ -1,66 +1,68 @@
 <!doctype html>
 <html lang="ja">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="第36章　アルゴリズムで旋律を作る。音楽理論の増補改訂版。">
+<meta name="description" content="第36章　アルゴリズムで旋律を作る。作曲のルールを「費用」として書き、プログラムに旋律を選ばせる。">
 <title>第36章　アルゴリズムで旋律を作る｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
-<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html" aria-current="page">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul></nav></aside>
-<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ デジタル音響と制作</div><h1>第36章　アルゴリズムで旋律を作る</h1>
-<h2
-id="作曲規則の実行とその聞こえ方">作曲規則の実行と、その聞こえ方</h2>
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html" aria-current="page">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第36章　アルゴリズムで旋律を作る</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">作曲のルールを「費用」として書き、プログラムに旋律を選ばせる。</p><div class="chips"><span class="chip">本文 約4分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>旋律の生成を、最小費用の問題として定式化する</li><li>動的計画法の小さな例を手で解く</li><li>乱数を使った生成の記録と比較の仕方を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#作曲規則の実行とその聞こえ方">作曲規則の実行と、その聞こえ方</a></li><li><a href="#小さい例を手で解く">小さい例を手で解く</a></li><li><a href="#乱数と反復を管理する">乱数と反復を管理する</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<h2 id="作曲規則の実行とその聞こえ方">作曲規則の実行と、その聞こえ方</h2>
 <p>自動作曲で「良い音を次へ置く」とだけ定義しても、計算できる問題にならない。拍位置
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
 に許す音の集合
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>t</mi></msub><annotation encoding="application/x-tex">A_t</annotation></semantics></math>、前音からの遷移費用
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">c_t(u,v)</annotation></semantics></math>、最終音の制約を決める。費用に、声域外は無限大、強拍で和音外音を使う負担、同音反復の連続、好ましい跳躍の大きさを含められる。ただし「最小費用＝最もよい曲」は別の仮説である。目的関数は作曲規則の一部だけを表現する。</p>
-<p><strong>定理（隣接音だけに依存する旋律費用）。</strong> 時刻
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">c_t(u,v)</annotation></semantics></math>、最終音の制約を決める。費用に、声域外は無限大、強拍で和音外音を使う負担、同音反復の連続、好ましい跳躍の大きさを含められる。ただし「最小費用＝最もよい曲」は別の仮説である。目的関数は作曲規則の一部だけを表現する。</p>
+<div class="theorem"><p><strong>定理（隣接音だけに依存する旋律費用）。</strong> 時刻
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">1,\ldots,T</annotation></semantics></math>
 の旋律
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>p</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">p_1,\ldots,p_T</annotation></semantics></math>
 に、初期費用
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>p</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">e_1(p_1)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>1</mn></msub><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>p</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">e_1(p_1)</annotation></semantics></math>
 と隣接項
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><mi>T</mi></msubsup><msub><mi>c</mi><mi>t</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>p</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>p</mi><mi>t</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\sum_{t=2}^T c_t(p_{t-1},p_t)</annotation></semantics></math>
-を与える。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>t</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">D_t(v)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><mi>T</mi></msubsup><msub><mi>c</mi><mi>t</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>p</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>p</mi><mi>t</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\sum_{t=2}^T c_t(p_{t-1},p_t)</annotation></semantics></math>
+を与える。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>t</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>v</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">D_t(v)</annotation></semantics></math>
 を
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>t</mi></msub><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">p_t=v</annotation></semantics></math>
 の条件下で達成可能な最小費用とすると、
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>e</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>D</mi><mi>t</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>min</mo><mrow><mi>u</mi><mo>∈</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></munder><mo stretchy="false" form="prefix">{</mo><msub><mi>D</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>c</mi><mi>t</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">D_1(v)=e_1(v),\qquad D_t(v)=\min_{u\in A_{t-1}}\{D_{t-1}(u)+c_t(u,v)\}.</annotation></semantics></math></p>
-<p><strong>証明。</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>1</mn></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>v</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msub><mi>e</mi><mn>1</mn></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>v</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>D</mi><mi>t</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>v</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><munder><mo>min</mo><mrow><mi>u</mi><mo>∈</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></munder><mo form="prefix" stretchy="false">{</mo><msub><mi>D</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><msub><mi>c</mi><mi>t</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="false">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">D_1(v)=e_1(v),\qquad D_t(v)=\min_{u\in A_{t-1}}\{D_{t-1}(u)+c_t(u,v)\}.</annotation></semantics></math></p></div>
+<details class="proof"><summary>証明を読む（読まなくても先へ進めます）</summary><p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>t</mi></msub><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">p_t=v</annotation></semantics></math>
 の任意の列は直前音
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
 を一意に持つ。その前半の費用は
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">D_{t-1}(u)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">D_{t-1}(u)</annotation></semantics></math>
 以上だから左辺は右辺以上。逆に有限集合上で右辺の極小を与える
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
 を取り、その最適前半に
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
-を接続すれば同じ値を達成する。∎</p>
+を接続すれば同じ値を達成する。∎</p></details>
 <p>音が各時点に高々
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
 個なら、遷移を全候補比較して
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><msup><mi>K</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">O(TK^2)</annotation></semantics></math>。各
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>t</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">D_t(v)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>T</mi><msup><mi>K</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">O(TK^2)</annotation></semantics></math>。各
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>t</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>v</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">D_t(v)</annotation></semantics></math>
 に極小の親音を記録すれば、最終音から逆にたどって列を復元できる。上行・下降のパターンが3音必要と分かれば、状態を前2音の組へ拡張する。この変更で目的関数の記憶量と計算量が増える。調性、拍節、伸縮を一つの「音選びの乱数」だけで表そうとしたときに失われる情報である。</p>
 <h2 id="小さい例を手で解く">小さい例を手で解く</h2>
 <p>共通の実音を半音位置 C4=0
-とし、第1音を0、第2音候補を2・4、第3音候補を4・7、第4音を0に固定する。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>u</mi><mo>−</mo><mi>v</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">c_t(u,v)=|u-v|</annotation></semantics></math>
+とし、第1音を0、第2音候補を2・4、第3音候補を4・7、第4音を0に固定する。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>u</mi><mo>−</mo><mi>v</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow><annotation encoding="application/x-tex">c_t(u,v)=|u-v|</annotation></semantics></math>
 なら全ての費用は往復移動量。最小値8の候補には
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,2,4,0)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(0,2,4,0)</annotation></semantics></math>
 と
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,4,4,0)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(0,4,4,0)</annotation></semantics></math>
 がある。同じ費用でも前者は順次と跳躍、後者は同音反復と跳躍。連続同音の罰則を1足せば前者が優先される。さらに第3音7へ特別な報酬を与えると、より広い音域を優先できる。得られた旋律を実際に歌い、最適化が自分の好みに矛盾した箇所を費用表へ戻す。</p>
 <h2 id="乱数と反復を管理する">乱数と反復を管理する</h2>
 <p>生成に確率を使うなら、規則、乱数種、音源、テンポを同時に記録する。結果を比べるとき、一度だけきれいに出た列を「モデル全体の代表」として扱わず、異なる種の複数例で何が維持されるか調べる。ライリーの《In
 C》における選択の自由と、乱数による音列選択は同じ現象ではない。人間の演奏者は、周囲で鳴る音・時間・密度を聞いて判断できる。単純な確率模型では、そうした相互依存を実装しなければ出ない。
-<a href="https://www.youtube.com/watch?v=R_vYeyO7rOE">L40</a> · <a
-href="https://lcweb2.loc.gov/static/programs/national-recording-preservation-board/documents/In-C_Carl.pdf">S43</a></p>
-<p><strong>制作。</strong>
-メトロノームの小節頭だけ安定音を取る、同じ半音上行を3回連続させない、最後の1拍を主音または休符にする、の三条件を別々に適用する。最後の休符を音高の一つとして扱うなら、距離をどう定義するかを明示する。処理の追跡が容易な少数の例を作ってから音数を増やす。</p>
+<a href="https://www.youtube.com/watch?v=R_vYeyO7rOE">L40</a> · <a href="https://lcweb2.loc.gov/static/programs/national-recording-preservation-board/documents/In-C_Carl.pdf">S43</a></p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>制作。</strong>
+メトロノームの小節頭だけ安定音を取る、同じ半音上行を3回連続させない、最後の1拍を主音または休符にする、の三条件を別々に適用する。最後の休符を音高の一つとして扱うなら、距離をどう定義するかを明示する。処理の追跡が容易な少数の例を作ってから音数を増やす。</p></div>
+<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>「最小費用＝最良の曲」ではない。目的関数はルールの一部にすぎない。</li><li>隣の音だけに依存する費用なら、動的計画法で最適解が出る。</li><li>乱数の種を記録し、複数の例で比べる。</li></ul></section>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></p><p class="next-lead">パソコンで、計測と合成を再現できる手順にまとめる。</p></div>
+
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./studio.html">← 第35章　録音、ミックス、書き出しを検算する</a></span><span><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順 →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
-
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
 </body></html>

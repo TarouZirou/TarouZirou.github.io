@@ -1,33 +1,31 @@
 <!doctype html>
 <html lang="ja">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="第11章　振動・共鳴・部屋。音楽理論の増補改訂版。">
-<title>第11章　振動・共鳴・部屋｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<meta name="description" content="第25章　振動・共鳴・部屋。楽器の胴や部屋が、音をどう増幅し、色づけるか。">
+<title>第25章　振動・共鳴・部屋｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
-<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>振動・調律・聴覚</h2><ul><li><a href="./acoustics.html">第10章　音波と楽器の物理</a></li><li><a href="./resonators.html" aria-current="page">第11章　振動・共鳴・部屋</a></li><li><a href="./math.html">第12章　周波数比・調律・フーリエ級数</a></li><li><a href="./tuning-lab.html">第13章　調律を設計する</a></li><li><a href="./ear.html">第14章　耳と脳は何を取り出すか</a></li><li><a href="./perception-lab.html">第15章　聴覚の測定と実験計画</a></li></ul></nav></aside>
-<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 振動・調律・聴覚</div><h1>第11章　振動・共鳴・部屋</h1>
-<h2
-id="楽器を一つの物体として扱うと何が失われるか">楽器を一つの物体として扱うと何が失われるか</h2>
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VI部　音の物理と聴覚</h2><ul><li><a href="./acoustics.html">第24章　音波と楽器の物理</a></li><li><a href="./resonators.html" aria-current="page">第25章　振動・共鳴・部屋</a></li><li><a href="./math.html">第26章　周波数比・調律・フーリエ級数</a></li><li><a href="./tuning-lab.html">第27章　調律を設計する</a></li><li><a href="./ear.html">第28章　耳と脳は何を取り出すか</a></li><li><a href="./perception-lab.html">第29章　聴覚の測定と実験計画</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VI部　音の物理と聴覚</div><h1>第25章　振動・共鳴・部屋</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">楽器の胴や部屋が、音をどう増幅し、色づけるか。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>弦→駒→胴→空気というエネルギーの流れを知る</li><li>減衰振動と共鳴の模型を読む</li><li>距離と部屋の反射が、録音の音色を変える理由を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#楽器を一つの物体として扱うと何が失われるか">楽器を一つの物体として扱うと何が失われるか</a></li><li><a href="#減衰振動と強制振動の模型">減衰振動と強制振動の模型</a></li><li><a href="#壁と距離が音を変える">壁と距離が音を変える</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<h2 id="楽器を一つの物体として扱うと何が失われるか">楽器を一つの物体として扱うと何が失われるか</h2>
 <p>弦を指ではじくと、弦の変位が駒を動かし、駒が胴を駆動し、胴の面が空気へ音を放射する。耳に届く振幅は弦の変位だけからは決まらない。弦と胴と空気の間でエネルギーが伝わり、各段の共振が音色を形づくる。リード楽器では管の共鳴が振動するリードへ戻り、吹奏系は単に「外から指定した周波数を管で増強する」モデルより複雑になる。音源の開始と維持、共鳴、放射を別々に測るだけでも、楽器比較が具体的になる。
-<a
-href="https://openstax.org/books/university-physics-volume-1/pages/16-6-standing-waves-and-resonance">OpenStax
-S08</a> · <a
-href="https://newt.phys.unsw.edu.au/music/people/publications/Fletcher2000c.pdf">UNSW
+<a href="https://openstax.org/books/university-physics-volume-1/pages/16-6-standing-waves-and-resonance">OpenStax
+S08</a> · <a href="https://newt.phys.unsw.edu.au/music/people/publications/Fletcher2000c.pdf">UNSW
 楽器音響 S37</a></p>
 <h2 id="減衰振動と強制振動の模型">減衰振動と強制振動の模型</h2>
 <p>質量
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
 の変位を
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math>、ばね定数を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math>、ばね定数を
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>、粘性抵抗係数を
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>、外力を
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">F(t)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">F(t)</annotation></semantics></math>
 とする。力の向きは運動や変位に逆らうため、運動方程式は
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mover><mi>x</mi><mo accent="true">̈</mo></mover><mo>+</mo><mi>c</mi><mover><mi>x</mi><mo accent="true">̇</mo></mover><mo>+</mo><mi>k</mi><mi>x</mi><mo>=</mo><mi>F</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">m\ddot x+c\dot x+kx=F(t).</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mover><mi>x</mi><mo accent="true">̈</mo></mover><mo>+</mo><mi>c</mi><mover><mi>x</mi><mo accent="true">̇</mo></mover><mo>+</mo><mi>k</mi><mi>x</mi><mo>=</mo><mi>F</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">m\ddot x+c\dot x+kx=F(t).</annotation></semantics></math>
 固有角周波数
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><mi>k</mi><mi>/</mi><mi>m</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">\omega_0=\sqrt{k/m}</annotation></semantics></math>、減衰率
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mi>c</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\gamma=c/(2m)</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">F=0</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mi>c</mi><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\gamma=c/(2m)</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">F=0</annotation></semantics></math>
 で
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mi>e</mi><mrow><mi>r</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">x=e^{rt}</annotation></semantics></math>
 を代入すると、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>γ</mi><mi>r</mi><mo>+</mo><msubsup><mi>ω</mi><mn>0</mn><mn>2</mn></msubsup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r^2+2\gamma r+\omega_0^2=0</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>γ</mi><mo>&lt;</mo><msub><mi>ω</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">0&lt;\gamma&lt;\omega_0</annotation></semantics></math>
@@ -40,14 +38,14 @@ href="https://newt.phys.unsw.edu.au/music/people/publications/Fletcher2000c.pdf"
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mn>1</mn><mi>/</mi><mi>γ</mi></mrow><annotation encoding="application/x-tex">\tau=1/\gamma</annotation></semantics></math>
 の時点では振幅は初期値の
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">1/e</annotation></semantics></math>。楽器の減衰に複数の時間定数が現れる場合、単一のモードの式だけでは近似の限界がある。</p>
-<p><strong>命題（定常強制振動の伝達関数）。</strong> 外力を
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ℜ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>F</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">F(t)=\Re(F_0e^{i\omega t})</annotation></semantics></math>
+<div class="theorem"><p><strong>命題（定常強制振動の伝達関数）。</strong> 外力を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>ℜ</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>F</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">F(t)=\Re(F_0e^{i\omega t})</annotation></semantics></math>
 とすると、粘性抵抗をもつ系の定常変位の複素振幅
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
 は
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>X</mi><msub><mi>F</mi><mn>0</mn></msub></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mi>k</mi><mo>−</mo><mi>m</mi><msup><mi>ω</mi><mn>2</mn></msup><mo>+</mo><mi>i</mi><mi>c</mi><mi>ω</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">\frac{X}{F_0}=\frac1{k-m\omega^2+i c\omega}.</annotation></semantics></math></p>
-<p><strong>証明。</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℜ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>X</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x=\Re(Xe^{i\omega t})</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>X</mi><msub><mi>F</mi><mn>0</mn></msub></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mi>k</mi><mo>−</mo><mi>m</mi><msup><mi>ω</mi><mn>2</mn></msup><mo>+</mo><mi>i</mi><mi>c</mi><mi>ω</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">\frac{X}{F_0}=\frac1{k-m\omega^2+i c\omega}.</annotation></semantics></math></p></div>
+<details class="proof"><summary>証明を読む（読まなくても先へ進めます）</summary><p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>ℜ</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>X</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>t</mi></mrow></msup><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">x=\Re(Xe^{i\omega t})</annotation></semantics></math>
 を代入する。1階微分で
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">i\omega</annotation></semantics></math>、2階微分で
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>ω</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-\omega^2</annotation></semantics></math>
@@ -56,18 +54,15 @@ href="https://newt.phys.unsw.edu.au/music/people/publications/Fletcher2000c.pdf"
 を除き、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
 について解く。自由振動成分は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c&gt;0</annotation></semantics></math>
-で減衰する。従って時間が十分に経ったとき、この周期応答が残る。∎</p>
+で減衰する。従って時間が十分に経ったとき、この周期応答が残る。∎</p></details>
 <p>振幅の最大位置は分母の二乗
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>−</mo><mi>m</mi><msup><mi>ω</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>c</mi><mn>2</mn></msup><msup><mi>ω</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(k-m\omega^2)^2+c^2\omega^2</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>k</mi><mo>−</mo><mi>m</mi><msup><mi>ω</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>c</mi><mn>2</mn></msup><msup><mi>ω</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(k-m\omega^2)^2+c^2\omega^2</annotation></semantics></math>
 の最小位置。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\omega&gt;0</annotation></semantics></math>
 で微分した式をゼロと置くと、内部に最大がある場合は
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mi>r</mi><mn>2</mn></msubsup><mo>=</mo><mi>k</mi><mi>/</mi><mi>m</mi><mo>−</mo><msup><mi>c</mi><mn>2</mn></msup><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><msup><mi>m</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega_r^2=k/m-c^2/(2m^2)</annotation></semantics></math>。変位共鳴の山と自由振動の周波数は、減衰が小さいと近い。共振曲線が鋭いと、少し周波数を外しただけで出力が小さくなる。<a
-href="./circuits.html">第40章</a>のRC低域通過は一次系であり、ここでの鋭いピークは主として二次の運動方程式の性質に由来する。</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>ω</mi><mi>r</mi><mn>2</mn></msubsup><mo>=</mo><mi>k</mi><mi>/</mi><mi>m</mi><mo>−</mo><msup><mi>c</mi><mn>2</mn></msup><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><msup><mi>m</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\omega_r^2=k/m-c^2/(2m^2)</annotation></semantics></math>。変位共鳴の山と自由振動の周波数は、減衰が小さいと近い。共振曲線が鋭いと、少し周波数を外しただけで出力が小さくなる。<a href="./circuits.html">第40章</a>のRC低域通過は一次系であり、ここでの鋭いピークは主として二次の運動方程式の性質に由来する。</p>
 <figure>
-<img src="../assets/resonance.webp"
-alt="機械振動の定常応答。横軸は固有角周波数で規格化した駆動周波数。減衰が小さいほど山が鋭い。" />
-<figcaption
-aria-hidden="true">機械振動の定常応答。横軸は固有角周波数で規格化した駆動周波数。減衰が小さいほど山が鋭い。</figcaption>
+<img alt="機械振動の定常応答。横軸は固有角周波数で規格化した駆動周波数。減衰が小さいほど山が鋭い。" src="../assets/resonance.webp"/>
+<figcaption aria-hidden="true">機械振動の定常応答。横軸は固有角周波数で規格化した駆動周波数。減衰が小さいほど山が鋭い。</figcaption>
 </figure>
 <h2 id="壁と距離が音を変える">壁と距離が音を変える</h2>
 <p>自由空間中の等方点音源で吸収を無視すれば、出力
@@ -77,7 +72,7 @@ aria-hidden="true">機械振動の定常応答。横軸は固有角周波数で�
 の球面
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">4\pi r^2</annotation></semantics></math>
 を通るので
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>P</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">I(r)=P/(4\pi r^2)</annotation></semantics></math>。距離の倍化で強度は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>r</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>P</mi><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">I(r)=P/(4\pi r^2)</annotation></semantics></math>。距離の倍化で強度は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">1/4</annotation></semantics></math>、レベルは約−6
 dB。室内では反射が加わり、この単純な距離則から外れる。直達音と強い初期反射を一つのマイクで合成すると、到着時間差の逆数を間隔とする櫛形の応答が表れうる。話し手とマイクの位置を数十センチ変えるだけで、音色が変わる原因の一つである。</p>
 <p>長さ
@@ -85,14 +80,17 @@ dB。室内では反射が加わり、この単純な距離則から外れる。
 の平行壁間を一次元と近似し、硬い壁で圧力の勾配がゼロとすれば、モードの波長は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>L</mi><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">2L/n</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>4</mn><mspace width="0.222em"></mspace><mi mathvariant="normal">m</mi></mrow><annotation encoding="application/x-tex">L=4\ \mathrm m</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>343</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">c=343\ \mathrm{m/s}</annotation></semantics></math>
 なら最初は約42.9 Hz。三次元の直方体近似では
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mrow><msub><mi>n</mi><mi>x</mi></msub><mo>,</mo><msub><mi>n</mi><mi>y</mi></msub><mo>,</mo><msub><mi>n</mi><mi>z</mi></msub></mrow></msub><mo>=</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><msqrt><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>n</mi><mi>x</mi></msub><mi>/</mi><msub><mi>L</mi><mi>x</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>n</mi><mi>y</mi></msub><mi>/</mi><msub><mi>L</mi><mi>y</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>n</mi><mi>z</mi></msub><mi>/</mi><msub><mi>L</mi><mi>z</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">f_{n_x,n_y,n_z}=\frac{c}{2}\sqrt{(n_x/L_x)^2+(n_y/L_y)^2+(n_z/L_z)^2}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mrow><msub><mi>n</mi><mi>x</mi></msub><mo>,</mo><msub><mi>n</mi><mi>y</mi></msub><mo>,</mo><msub><mi>n</mi><mi>z</mi></msub></mrow></msub><mo>=</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><msqrt><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>n</mi><mi>x</mi></msub><mi>/</mi><msub><mi>L</mi><mi>x</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>n</mi><mi>y</mi></msub><mi>/</mi><msub><mi>L</mi><mi>y</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>n</mi><mi>z</mi></msub><mi>/</mi><msub><mi>L</mi><mi>z</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">f_{n_x,n_y,n_z}=\frac{c}{2}\sqrt{(n_x/L_x)^2+(n_y/L_y)^2+(n_z/L_z)^2}</annotation></semantics></math>
 である。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mi>j</mi></msub><annotation encoding="application/x-tex">L_j</annotation></semantics></math>
 は各方向の長さ、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mi>j</mi></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n_j\ge0</annotation></semantics></math>
 は整数で、すべて0の場合を除く。各方向に余弦の固有関数をとり、ラプラシアンを作用させると空間固有値が三方向の二乗和になることから導ける。壁の吸音、開口、家具がある部屋では、測定値にずれが生じる。</p>
-<p><strong>測定。</strong> 自由に持ち運べる音源で長さ4
-m前後の部屋の低域を調べる。壁際と部屋の中央で録音して比較する場合、再生音量・音源位置・マイクの設定を固定する。スマートフォンの録音には自動利得や帯域制約があるので、装置の仕様が不明なら得られたdB値を校正した音圧として扱わない。</p>
-<nav class="chapter-end" aria-label="前後の章"><span><a href="./acoustics.html">← 第10章　音波と楽器の物理</a></span><span><a href="./math.html">第12章　周波数比・調律・フーリエ級数 →</a></span></nav>
-</article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　増補改訂版 · 2026年11月</div></footer>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>測定。</strong> 自由に持ち運べる音源で長さ4
+m前後の部屋の低域を調べる。壁際と部屋の中央で録音して比較する場合、再生音量・音源位置・マイクの設定を固定する。スマートフォンの録音には自動利得や帯域制約があるので、装置の仕様が不明なら得られたdB値を校正した音圧として扱わない。</p></div>
+<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>減衰が小さいほど、共鳴の山は鋭い。</li><li>自由空間では、距離が2倍で約 −6 dB。</li><li>部屋の寸法から、低音の定在波（モード）の周波数を見積もれる。</li></ul></section>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./math.html">第26章　周波数比・調律・フーリエ級数</a></p><p class="next-lead">周波数比・セント・平均律、そしてフーリエ級数の入口。</p></div>
 
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./acoustics.html">← 第24章　音波と楽器の物理</a></span><span><a href="./math.html">第26章　周波数比・調律・フーリエ級数 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
 </body></html>

@@ -17,7 +17,7 @@ if (search) {
     }
     let count = 0;
     for (const chapter of chapters) {
-      const corpus = normalized([chapter.title, ...chapter.headings].join(' '));
+      const corpus = normalized([chapter.title, chapter.lead || '', ...chapter.headings].join(' '));
       if (!terms.every(term => corpus.includes(term))) continue;
       const item = document.createElement('li');
       const link = document.createElement('a');
@@ -25,11 +25,9 @@ if (search) {
       link.textContent = chapter.title;
       const matches = chapter.headings.filter(heading => terms.some(term => normalized(heading).includes(term)));
       item.append(link);
-      if (matches.length) {
-        const detail = document.createElement('small');
-        detail.textContent = matches.slice(0, 4).join('・');
-        item.append(detail);
-      }
+      const detail = document.createElement('small');
+      detail.textContent = matches.length ? matches.slice(0, 4).join('・') : (chapter.lead || '');
+      if (detail.textContent) item.append(detail);
       output.append(item);
       count++;
     }
