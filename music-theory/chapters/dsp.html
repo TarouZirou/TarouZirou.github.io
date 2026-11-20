@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第31章　畳込み、フィルタ、時間周波数解析。エコー・フィルタ・スペクトログラムを、畳込みという一つの考え方で理解する。">
 <title>第31章　畳込み、フィルタ、時間周波数解析｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html" aria-current="page">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第31章　畳込み、フィルタ、時間周波数解析</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">エコー・フィルタ・スペクトログラムを、畳込みという一つの考え方で理解する。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>線形時不変系とインパルス応答の意味を知る</li><li>短いエコーが櫛形フィルタになる理由を理解する</li><li>スペクトログラムの窓の長さと見え方の関係を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#過去の入力が現在に残る系">過去の入力が現在に残る系</a></li><li><a href="#線形時不変系に正弦波を入れる">線形時不変系に正弦波を入れる</a></li><li><a href="#スペクトログラムを作って読める範囲を決める">スペクトログラムを作って読める範囲を決める</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">エコー・フィルタ・スペクトログラムを、畳込みという一つの考え方で理解する。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>線形時不変系とインパルス応答の意味を知る</li><li>短いエコーが櫛形フィルタになる理由を理解する</li><li>スペクトログラムの窓の長さと見え方の関係を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#過去の入力が現在に残る系">過去の入力が現在に残る系</a></li><li><a href="#線形時不変系に正弦波を入れる">線形時不変系に正弦波を入れる</a></li><li><a href="#スペクトログラムを作って読める範囲を決める">スペクトログラムを作って読める範囲を決める</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
 <h2 id="過去の入力が現在に残る系">過去の入力が現在に残る系</h2>
 <p>同じ音を2回鳴らして間隔を変えたとき、出力の2回分が互いに加わると予想できる系を考える。線形とは入力の和・スカラー倍が出力でも保存されること、時不変とは入力を遅らせれば出力も同じだけ遅れることである。インパルス
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\delta[n]</annotation></semantics></math>
@@ -30,7 +30,7 @@
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
 を項別に適用できる。時不変性から
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>δ</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>⋅</mi><mo>−</mo><mi>k</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><mi>h</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo>−</mo><mi>k</mi><mo form="postfix" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">T(\delta[\cdot-k])[n]=h[n-k]</annotation></semantics></math>。∎</p></details>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>具体例。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>具体例。</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><mi>δ</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>+</mo><mi>a</mi><mi>δ</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo>−</mo><mi>D</mi><mo form="postfix" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">h[n]=\delta[n]+a\delta[n-D]</annotation></semantics></math>
 なら、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><mi>x</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>+</mo><mi>a</mi><mi>x</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo>−</mo><mi>D</mi><mo form="postfix" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">y[n]=x[n]+a x[n-D]</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
 標本後に一定比
@@ -127,11 +127,21 @@ ms。移動が細かくても個々の窓の幅は短くならない。窓を長
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>
 が最初に折り返して
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(0,1,-1)</annotation></semantics></math>。コードの量だけでなく、用いた畳込みの型を検査する。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>インパルス応答が分かれば、どんな入力に対する出力も計算できる。</li><li>ごく短い遅延は、エコーではなく音色の変化として聞こえる。</li><li>長い窓は周波数を、短い窓は時間を細かく見るのに向く。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>インパルス応答が分かれば、どんな入力に対する出力も計算できる。</li><li>ごく短い遅延は、エコーではなく音色の変化として聞こえる。</li><li>長い窓は周波数を、短い窓は時間を細かく見るのに向く。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>インパルス応答から畳込みを組み立てる（Steven W.
+Smith）。</strong>
+一つのインパルスの代わりに二つのインパルスを時間をずらして入れる。二本目の応答も同じだけずれるという仮定を書き、ずれた二応答を足す。最初の入力の応答がまだ残る箇所が重なりの意味を示す。
+<a href="https://www.dspguide.com/ch6/2.htm">資料を開く</a></p></li>
+<li><p><strong>スペクトログラムの設定（Audacity）。</strong>
+打音の直後に持続音を置いた一つのファイルを用い、窓サイズだけを変更する。打音の時刻を読みやすい図と近い二周波数を識別しやすい図を保存し、それぞれの判断に用いた軸を明示する。
+<a href="https://manual.audacityteam.org/man/spectrogram_settings.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./production.html">第32章　合成から一曲を作る</a></p><p class="next-lead">4つの合成方式を聴き比べ、4小節の音源を完成させる。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./sampling.html">← 第30章　コンピューターが音を記録する仕組み</a></span><span><a href="./production.html">第32章　合成から一曲を作る →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

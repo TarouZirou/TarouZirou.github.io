@@ -4,13 +4,13 @@ const search = document.querySelector('#contents-search');
 if (search) {
   const chapters = JSON.parse(document.querySelector('#heading-index').textContent);
   const output = document.querySelector('#search-results');
-  const cards = document.querySelector('.part-grid');
+  const cards = document.querySelectorAll('.part-grid, .grid-heading');
   const empty = document.querySelector('#empty-result');
   const normalized = s => s.normalize('NFKC').toLowerCase();
   search.addEventListener('input', () => {
     const terms = normalized(search.value.trim()).split(/\s+/u).filter(Boolean);
     output.replaceChildren();
-    cards.hidden = terms.length > 0;
+    for (const card of cards) card.hidden = terms.length > 0;
     if (!terms.length) {
       empty.hidden = true;
       return;

@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第36章　アルゴリズムで旋律を作る。作曲のルールを「費用」として書き、プログラムに旋律を選ばせる。">
 <title>第36章　アルゴリズムで旋律を作る｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html" aria-current="page">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第36章　アルゴリズムで旋律を作る</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">作曲のルールを「費用」として書き、プログラムに旋律を選ばせる。</p><div class="chips"><span class="chip">本文 約4分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>旋律の生成を、最小費用の問題として定式化する</li><li>動的計画法の小さな例を手で解く</li><li>乱数を使った生成の記録と比較の仕方を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#作曲規則の実行とその聞こえ方">作曲規則の実行と、その聞こえ方</a></li><li><a href="#小さい例を手で解く">小さい例を手で解く</a></li><li><a href="#乱数と反復を管理する">乱数と反復を管理する</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">作曲のルールを「費用」として書き、プログラムに旋律を選ばせる。</p><div class="chips"><span class="chip">本文 約5分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>旋律の生成を、最小費用の問題として定式化する</li><li>動的計画法の小さな例を手で解く</li><li>乱数を使った生成の記録と比較の仕方を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#作曲規則の実行とその聞こえ方">作曲規則の実行と、その聞こえ方</a></li><li><a href="#小さい例を手で解く">小さい例を手で解く</a></li><li><a href="#乱数と反復を管理する">乱数と反復を管理する</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
 <h2 id="作曲規則の実行とその聞こえ方">作曲規則の実行と、その聞こえ方</h2>
 <p>自動作曲で「良い音を次へ置く」とだけ定義しても、計算できる問題にならない。拍位置
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
@@ -58,11 +58,20 @@ C》における選択の自由と、乱数による音列選択は同じ現象�
 <a href="https://www.youtube.com/watch?v=R_vYeyO7rOE">L40</a> · <a href="https://lcweb2.loc.gov/static/programs/national-recording-preservation-board/documents/In-C_Carl.pdf">S43</a></p>
 <div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>制作。</strong>
 メトロノームの小節頭だけ安定音を取る、同じ半音上行を3回連続させない、最後の1拍を主音または休符にする、の三条件を別々に適用する。最後の休符を音高の一つとして扱うなら、距離をどう定義するかを明示する。処理の追跡が容易な少数の例を作ってから音数を増やす。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>「最小費用＝最良の曲」ではない。目的関数はルールの一部にすぎない。</li><li>隣の音だけに依存する費用なら、動的計画法で最適解が出る。</li><li>乱数の種を記録し、複数の例で比べる。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>「最小費用＝最良の曲」ではない。目的関数はルールの一部にすぎない。</li><li>隣の音だけに依存する費用なら、動的計画法で最適解が出る。</li><li>乱数の種を記録し、複数の例で比べる。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>乱数列を作曲に使う（Sonic Pi）。</strong>
+一つの乱数種で短い旋律を生成し、同じ種で再生成した音高列と比較する。次に途中へ乱数を一回余計に読む行を挿入する。選んだ音階が同じでも後続系列が変わり、種と呼び出し順の両方が再演に要る。
+<a href="https://sonic-pi.net/tutorial-04.html">資料を開く</a></p></li>
+<li><p><strong>反復と同期を演奏する（Sonic Pi）。</strong>
+二つのライブ・ループに異なる長さのパターンを書き、再び同じ頭でそろうまでの拍数を予測する。同期の命令を一方へ加えて結果を比べれば、音階の生成規則と複数パートの時間制御を独立に設計できる。
+<a href="https://sonic-pi.net/tutorial-09.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></p><p class="next-lead">パソコンで、計測と合成を再現できる手順にまとめる。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./studio.html">← 第35章　録音、ミックス、書き出しを検算する</a></span><span><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順 →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

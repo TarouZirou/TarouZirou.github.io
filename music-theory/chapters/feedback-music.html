@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第59章　振り子が描く楽譜。ライヒ《Pendulum Music》を、振り子とフィードバックという二つの時計で計算する。">
+<title>第59章　振り子が描く楽譜｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第XI部　時間を書き、場所を奏でる</h2><ul><li><a href="./notation-media.html">第54章　紙に穴を一つ開けたら、それは一音か</a></li><li><a href="./tracing-time.html">第55章　紙に残った声に時計を返す</a></li><li><a href="./magnetic-tape.html">第56章　テープの長さで時間を書く</a></li><li><a href="./moving-image.html">第57章　フィルムに描いた縞はなぜ和音になるのか</a></li><li><a href="./plucked-loop.html">第58章　乱数の輪が弦に変わる</a></li><li><a href="./feedback-music.html" aria-current="page">第59章　振り子が描く楽譜</a></li><li><a href="./field-sound.html">第60章　夜明けの合唱を、誰の耳で数えたか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第XI部　時間を書き、場所を奏でる</div><h1>第59章　振り子が描く楽譜</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">ライヒ《Pendulum Music》を、振り子とフィードバックという二つの時計で計算する。</p><div class="chips"><span class="chip">本文 約9分</span><span class="chip m2">数式 多め</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=feedback-music">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>減衰する振り子の運動を式で表す</li><li>フィードバックで音が育つ条件（一周の利得が1を超える）を知る</li><li>シミュレーションで、断続音が持続音に変わる過程を確かめる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#動きが止まると音が続く">動きが止まると、音が続く</a></li><li><a href="#振り子は一往復に二つの拍を打つ">振り子は一往復に二つの拍を打つ</a></li><li><a href="#通過する時間と音が育つ時間">通過する時間と、音が育つ時間</a></li><li><a href="#配列の中で演奏する">配列の中で演奏する</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
+<h2 id="動きが止まると音が続く">動きが止まると、音が続く</h2>
+<p>スティーヴ・ライヒ《Pendulum
+Music》（1968）の演奏で、空中に吊られたマイクは床のスピーカーの上を往復する。近づくたびに短い音が出る。複数のマイクが作る拍動が重なり、離れ、やがて運動が収まってくると、断続していた音が持続する。指揮者も演奏者も、一つ一つの音符に合図を出し続ける必要がない。彫刻家リチャード・セラは1969年のホイットニー美術館での上演に参加し、マイクを放した演奏者も観客と一緒にこの過程を見届けた、と回想する。作曲者の編成指定はマイク、増幅器、スピーカー各3台または4台である。</p>
+<p>この作品には少なくとも三種類の時計がある。振り子が戻ってくるまでの秒、電気と空気を音が一周するまでのミリ秒、振幅が育って音がはっきり聞こえるまでの時間である。振り子を長くしたら、拍の間隔と聞こえる音高の両方が同じ割合で下がるだろうか。それぞれの時計を別々に計算してみよう。</p>
+<h2 id="振り子は一往復に二つの拍を打つ">振り子は一往復に二つの拍を打つ</h2>
+<p>支点から質点までの長さを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>、鉛直下向きからの角度を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>、重力加速度を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+とする。糸は軽く伸びず、空気抵抗を角速度に比例する摩擦と近似する。重力の接線方向成分は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>m</mi><mi>g</mi><mo>sin</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">-mg\sin\theta</annotation></semantics></math>、質量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+の接線加速度は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mover><mi>θ</mi><mo accent="true">̈</mo></mover></mrow><annotation encoding="application/x-tex">L\ddot\theta</annotation></semantics></math>。摩擦トルクの強さを減衰率
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\beta&gt;0</annotation></semantics></math>
+で表せば、運動方程式は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>θ</mi><mo accent="true">̈</mo></mover><mo>+</mo><mn>2</mn><mi>β</mi><mover><mi>θ</mi><mo accent="true">̇</mo></mover><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>g</mi><mi>/</mi><mi>L</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>sin</mo><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ddot\theta+2\beta\dot\theta+(g/L)\sin\theta=0</annotation></semantics></math>。小角で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>sin</mo><mi>θ</mi><mo>≃</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">\sin\theta\simeq\theta</annotation></semantics></math>
+とすると、解を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>r</mi><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{rt}</annotation></semantics></math>
+と置いた特性方程式の根は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>−</mi><mi>β</mi><mo>±</mo><mi>i</mi><msqrt><mrow><mi>g</mi><mi>/</mi><mi>L</mi><mo>−</mo><msup><mi>β</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">r=-\beta\pm i\sqrt{g/L-\beta^2}</annotation></semantics></math>
+になる。平方根が正の実数となる弱減衰の場合、この平方根を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+と書く。水平変位は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≃</mo><mi>L</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">x\simeq L\theta</annotation></semantics></math>。初期位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>
+から静かに放す条件
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mspace width="0.222em"></mspace><mover><mi>x</mi><mo accent="true">̇</mo></mover><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x(0)=x_0,\ \dot x(0)=0</annotation></semantics></math>
+を入れて</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>β</mi><mi>t</mi></mrow></msup><mo form="prefix" maxsize="1.2" minsize="1.2" stretchy="false">(</mo><mo>cos</mo><mi>ω</mi><mi>t</mi><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>β</mi><mi>/</mi><mi>ω</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>sin</mo><mi>ω</mi><mi>t</mi><mo form="postfix" maxsize="1.2" minsize="1.2" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">x(t)=x_0e^{-\beta t}\bigl(\cos\omega t+(\beta/\omega)\sin\omega t\bigr).</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>1.00</mn></mrow><annotation encoding="application/x-tex">L=1.00</annotation></semantics></math>
+m、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>=</mo><mn>9.81</mn></mrow><annotation encoding="application/x-tex">g=9.81</annotation></semantics></math>
+m/s²、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>0.14</mn></mrow><annotation encoding="application/x-tex">\beta=0.14</annotation></semantics></math>
+毎秒なら一往復は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi><mi>/</mi><mi>ω</mi><mo>≈</mo><mn>2.01</mn></mrow><annotation encoding="application/x-tex">2\pi/\omega\approx2.01</annotation></semantics></math>
+秒。スピーカーが中心にあれば左右どちらから横切っても近くなる。連続する中心通過の間隔は約1.00秒である。機械の一往復を一拍と数えていては二つの音のうち一つを落とす。振幅は減少するが、線形モデル内で中心通過の間隔は変わらない。後半で音の隙間が埋まる理由は、運動が急に速くなることには求められない。</p>
+<h2 id="通過する時間と音が育つ時間">通過する時間と、音が育つ時間</h2>
+<p>マイクが拾った音が増幅器、スピーカー、空気を通って再びマイクへ届くまでの時間を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+とする。ある一つの周波数成分について、一周で同位相に戻り、マイクの位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+に応じて振幅が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G(x)&gt;0</annotation></semantics></math>
+倍になると仮定する。位置を固定し、外部入力も飽和も除けば、一周ごとの微小振幅は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>G</mi><msub><mi>A</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">A_{k+1}=G A_k</annotation></semantics></math>。帰納法から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>k</mi></msub><mo>=</mo><msup><mi>G</mi><mi>k</mi></msup><msub><mi>A</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">A_k=G^kA_0</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>G</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;G&lt;1</annotation></semantics></math>
+でゼロへ収束し、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">G&gt;1</annotation></semantics></math>
+かつ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>0</mn></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A_0\ne0</annotation></semantics></math>
+なら小信号は指数的に育つ。ちょうどゼロから始めた数学モデルは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">G&gt;1</annotation></semantics></math>
+でも無音のままである。現物では微小な雑音などが音の種になる。</p>
+<p>一周の利得が1.10なら、振幅が10倍になるのに何秒かかるか。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>1.10</mn><mi>k</mi></msup><mo>≥</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">1.10^k\ge10</annotation></semantics></math>
+を満たす最小の整数は25。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\tau=4</annotation></semantics></math>
+msの仮想回路なら約0.10秒かかる。マイクの通過が速くて成長に使える時間が短ければ、中心で一瞬だけ利得が1を超えても長い音にならない。位置が動く場合、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+周後の比は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∏</mo><mrow><mi>j</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mi>G</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>j</mi><mi>τ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\prod_{j=0}^{k-1}G(x(j\tau))</annotation></semantics></math>
+となる。対数を取れば各時点の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">\ln G</annotation></semantics></math>
+の和。現在の位置が同じでも、そこに到達するまでの増幅履歴が異なれば、鳴り方は変わる。</p>
+<p>一方、音高には位相の条件がある。たとえば他の経路に位相変化がなく、時間遅れだけが一周の位相を変える理想系なら、周波数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+が同位相に戻る条件は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi><mi>f</mi><mi>τ</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">2\pi f\tau=2\pi n</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+は整数）。4 msなら250、500、750
+Hzなどが候補に並ぶ。どの候補の音が育つかは、周波数別の利得と音の種に依存する。実際の機材では周波数ごとの位相、指向性、距離、反射も関わる。糸の長さだけを測って原曲の音高を当てることはできない。</p>
+<h2 id="配列の中で演奏する">配列の中で演奏する</h2>
+<p>下の実験はオフラインで、音を取り込む装置を一切使わない。仮想的な幅8.5
+cmの領域を設け、中心から遠ざかると利得が滑らかに下がる例を選ぶ。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>0.80</mn><mo>+</mo><mn>0.38</mn><msup><mi>e</mi><mrow><mi>−</mi><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mi>/</mi><mn>0.085</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msup></mrow><annotation encoding="application/x-tex">G(x)=0.80+0.38e^{-(x/0.085)^2}</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+はメートル）。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">G(x)&gt;1</annotation></semantics></math>
+を解くと
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mi>x</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo>&lt;</mo><mn>0.0681</mn></mrow><annotation encoding="application/x-tex">|x|&lt;0.0681</annotation></semantics></math>
+m。振り幅が大きいうちは一往復のうち短い区間だけがこの領域に入る。振り幅が小さくなると出入りの境界が消え、中心付近でほぼ連続して音が育つ。振幅の発散を避けるため、計算では原点近くでほぼ線形、大きな正値では1に近づく関数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>tanh</mo><annotation encoding="application/x-tex">\tanh</annotation></semantics></math>
+を選んだ。微小な一定値は一つのモードに入る模擬的な種である。</p>
+<pre class="python"><code>import numpy as np
+tau, beta, L = 0.004, 0.14, 1.0
+w = np.sqrt(9.81/L - beta**2)
+t = np.arange(0, 14, tau)
+x = 0.22*np.exp(-beta*t)*(np.cos(w*t) + beta/w*np.sin(w*t))
+gain = 0.80 + 0.38*np.exp(-(x/0.085)**2)
+amp = np.zeros(len(t))
+for k in range(len(t)-1):
+    amp[k+1] = np.tanh(gain[k]*amp[k] + 0.0005)</code></pre>
+<figure>
+<img alt="上から振り子の水平位置、一周の利得と成長の境界1、仮想的な音の包絡。最下段は音圧波形の包絡を示す。" src="../assets/atlas_roomloop.webp"/>
+<figcaption aria-hidden="true">上から振り子の水平位置、一周の利得と成長の境界1、仮想的な音の包絡。最下段は音圧波形の包絡を示す。</figcaption>
+</figure>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>
+ごとに得た配列はゆっくり変化する包絡である。聴ける波形にするには、別の細かい時間軸（たとえば標本化周波数44100
+Hz）へ包絡を線形補間し、小さい一定振幅の250
+Hz正弦波に掛ける。中心に来るたびに音が膨らむモデルが、後半で連続音へ変わる。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">G(x)</annotation></semantics></math>
+の幅だけを半分にすると何が起きるか。短い通過ごとの利得の積が小さくなり、断続音が育ちにくく、動きが十分収まる時点も遅れる。このモデルは一つの周波数の包絡だけを計算しており、実演の声のような鳴き方や倍音の競合そのものは録音から聴く必要がある。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>聴取課題と解答例。</strong>
+ソニック・ユースによる録音を、音を出した回数ではなく「隣り合う音の間を無音として数えられるか」で聴く。次にモデルで二本目の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+を1.21 mとし、両方を同じ側から放す。減衰が小さい近似では通過間隔は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>1.21</mn></msqrt><mo>=</mo><mn>1.10</mn></mrow><annotation encoding="application/x-tex">\sqrt{1.21}=1.10</annotation></semantics></math>
+倍。ほぼ1.00秒と1.10秒の脈が並び、その周波数差から相対位相が一周するまで約11秒と予測できる。両者が位相を一周する前に連続音へ移行すれば、その再一致は聞こえにくい。演奏条件の選択には、この二種類の終わり方のどちらを先に迎えるかという作曲上の判断も含まれる。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>振り子は一往復で2回中心を通る。長さ1 m なら約1秒ごと。</li><li>一周の利得が1を超えると、小さな音が指数的に育つ。</li><li>糸の長さだけでは、鳴る音高は決まらない。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>作曲者の編成指定と作品ノート。音を発する装置が見える彫刻として配置を考えていた経緯を読む。<a href="https://stevereich.com/composition/pendulum-music/">Steve Reich,
+<em>Pendulum Music</em></a></li>
+<li>上演に参加した彫刻家による証言。美術館で誰が動き、誰が過程を見届けたかをたどる。<a href="https://stevereich.com/richard-serra/">Richard Serra, Steve Reich
+公式サイト寄稿</a></li>
+<li>1999年の録音。上演の動きを見ずに、音の間隔から動きを推量する。<a href="https://www.youtube.com/watch?v=5iidNStQRDc">Sonic Youth,
+<em>Pendulum Music</em>, 公式音源</a></li>
+<li>糸の長さ・振幅と周期の関係を、小角近似の外側も含めて確認する。<a href="https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums">OpenStax,
+<em>Pendulums</em></a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./field-sound.html">第60章　夜明けの合唱を、誰の耳で数えたか</a></p><p class="next-lead">環境音を作曲の素材にすることと、生き物の声を調査することの交わり。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./plucked-loop.html">← 第58章　乱数の輪が弦に変わる</a></span><span><a href="./field-sound.html">第60章　夜明けの合唱を、誰の耳で数えたか →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

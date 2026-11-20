@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第44章　太鼓の形は聴き取れるか。すべての固有振動数が分かれば、太鼓の形は分かるのか。">
+<title>第44章　太鼓の形は聴き取れるか｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第IX部　音の形と空間を逆に読む</h2><ul><li><a href="./star-music.html">第43章　太陽の五分を、一音の高さに折りたたむ</a></li><li><a href="./drum-shapes.html" aria-current="page">第44章　太鼓の形は聴き取れるか</a></li><li><a href="./listening-room.html">第45章　部屋に声を返すと、建築が作曲を始める</a></li><li><a href="./voice-tract.html">第46章　母音を歌う機械、歌いながら変形する管</a></li><li><a href="./auditory-scene.html">第47章　同じ空気から二つの旋律を取り出す</a></li><li><a href="./chord-space.html">第48章　ショパンの左手を幾何学の道として読む</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第IX部　音の形と空間を逆に読む</div><h1>第44章　太鼓の形は聴き取れるか</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">すべての固有振動数が分かれば、太鼓の形は分かるのか。</p><div class="chips"><span class="chip">本文 約9分</span><span class="chip m2">数式 多め</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=drum-shapes">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>長方形の膜の固有振動数を導く</li><li>縮退と、打点によって「鳴らない振動」があることを理解する</li><li>形が聴き取れない反例と、面積なら聴き取れるというワイルの法則を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#一打を形の測定にする">一打を、形の測定にする</a></li><li><a href="#正方形の膜にはなぜ同じ高さが二つあるのか">正方形の膜にはなぜ同じ高さが二つあるのか</a></li><li><a href="#すべて測れたとしても残るもの">すべて測れたとしても残るもの</a></li><li><a href="#ティンパニの音高を設計する">ティンパニの音高を設計する</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
+<h2 id="一打を形の測定にする">一打を、形の測定にする</h2>
+<p>壁の向こうで誰かが一枚の膜を打った。完璧な測定器を用意すれば、膜の輪郭を描けるだろうか。音から原因を逆算する手続きを<strong>逆問題</strong>と呼ぶ。まず順方向で何が音に刻まれるか調べたい。楽器の周波数には寸法・張力・材質が共に入り込む。そこで材質と張力を既知とし、輪郭の形だけを変える。さらに打点や録音条件によって一部の周波数が消える不都合を避け、理想的に「すべての固有振動数とその重複度」を教えてもらうことにする。実際の観客より、はるかに有利な条件である。</p>
+<h2 id="正方形の膜にはなぜ同じ高さが二つあるのか">正方形の膜にはなぜ同じ高さが二つあるのか</h2>
+<p>面密度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>、各方向に一様な単位長さあたりの張力
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+の薄膜を考える。横方向の位置を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math>、時刻を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>、平面からの微小な変位を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">u(x,y,t)</annotation></semantics></math>
+とする。一辺が微小な長方形を切り出すと、左右の張力の上下成分の差は、面積あたりで
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mspace width="0.167em"></mspace><msup><mi>∂</mi><mn>2</mn></msup><mi>u</mi><mi>/</mi><mi>∂</mi><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">S\,\partial^2 u/\partial x^2</annotation></semantics></math>。上下の辺からは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mspace width="0.167em"></mspace><msup><mi>∂</mi><mn>2</mn></msup><mi>u</mi><mi>/</mi><mi>∂</mi><msup><mi>y</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">S\,\partial^2u/\partial y^2</annotation></semantics></math>
+が加わる。質量あたりに直せば
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mrow><mi>t</mi><mi>t</mi></mrow></msub><mo>=</mo><msup><mi>c</mi><mn>2</mn></msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>u</mi><mrow><mi>x</mi><mi>x</mi></mrow></msub><mo>+</mo><msub><mi>u</mi><mrow><mi>y</mi><mi>y</mi></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">u_{tt}=c^2(u_{xx}+u_{yy})</annotation></semantics></math>、ただし
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><msqrt><mrow><mi>S</mi><mi>/</mi><mi>σ</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">c=\sqrt{S/\sigma}</annotation></semantics></math>
+が波の速さとなる。小さい添字を重ねた
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mrow><mi>t</mi><mi>t</mi></mrow></msub><mo>,</mo><msub><mi>u</mi><mrow><mi>x</mi><mi>x</mi></mrow></msub><mo>,</mo><msub><mi>u</mi><mrow><mi>y</mi><mi>y</mi></mrow></msub></mrow><annotation encoding="application/x-tex">u_{tt},u_{xx},u_{yy}</annotation></semantics></math>
+は各変数に関する二階偏微分を表す。曲げ剛性、周囲の流体、エネルギーの散逸はこの式に含めていない。</p>
+<p>辺長
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>x</mi></msub><mo>,</mo><msub><mi>L</mi><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">L_x,L_y</annotation></semantics></math>
+の長方形で、周縁を動かないよう固定する。端でちょうどゼロになる関数として、二方向にそれぞれ半波を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m,n</annotation></semantics></math>
+個詰める。次の形に振動させて波動方程式を満たす周波数を探す。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>sin</mo><mfrac><mrow><mi>m</mi><mi>π</mi><mi>x</mi></mrow><msub><mi>L</mi><mi>x</mi></msub></mfrac><mo>sin</mo><mfrac><mrow><mi>n</mi><mi>π</mi><mi>y</mi></mrow><msub><mi>L</mi><mi>y</mi></msub></mfrac><mo>cos</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mi>π</mi><mi>f</mi><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+u(x,y,t)=\sin\frac{m\pi x}{L_x}\sin\frac{n\pi y}{L_y}\cos(2\pi f t).
+</annotation></semantics></math></p>
+<p>二度微分すると、時間側の係数は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mi>π</mi><mi>f</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">-(2\pi f)^2</annotation></semantics></math>、空間側は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msup><mi>c</mi><mn>2</mn></msup><msup><mi>π</mi><mn>2</mn></msup><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>m</mi><mn>2</mn></msup><mi>/</mi><msubsup><mi>L</mi><mi>x</mi><mn>2</mn></msubsup><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mi>/</mi><msubsup><mi>L</mi><mi>y</mi><mn>2</mn></msubsup><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">-c^2\pi^2(m^2/L_x^2+n^2/L_y^2)</annotation></semantics></math>
+である。それらを等しくし、正の平方根を取ると</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><mo>=</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><msqrt><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mi>/</mi><msub><mi>L</mi><mi>x</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mi>/</mi><msub><mi>L</mi><mi>y</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt><mo>,</mo><mspace width="2.0em"></mspace><mi>m</mi><mo>,</mo><mi>n</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">
+f_{mn}=\frac{c}{2}\sqrt{(m/L_x)^2+(n/L_y)^2},\qquad m,n=1,2,\ldots
+</annotation></semantics></math></p>
+<p>を得る。正方形では、縦に二分された振動
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(2,1)</annotation></semantics></math>
+と横に二分された振動
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(1,2)</annotation></semantics></math>
+の周波数が等しい。二つの空間模様が一つの数に合流した。これが固有値の<strong>縮退</strong>である。片方だけに小さな重りを貼るとどうなるだろう。元の二つの振動がその点でどれだけ動くかを調べれば、対称性の破れが二つの線を分け得ることが予想できる。縮退した空間では、重りの位置に合わせた二つの模様の線形結合も考える必要がある。</p>
+<figure>
+<img alt="正方形の膜の四つの振動。赤と青は同一瞬間の上下の変位、黒線は内部の節、十字は中央の打点。倍率は最低振動数を基準にする。" src="../assets/atlas_drum.webp"/>
+<figcaption aria-hidden="true">正方形の膜の四つの振動。赤と青は同一瞬間の上下の変位、黒線は内部の節、十字は中央の打点。倍率は最低振動数を基準にする。</figcaption>
+</figure>
+<p>打点が中心なら、初期の点状の力が各模様に与える重みは、その場所でのモードの値に比例する。中心における二つの正弦の積は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>sin</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mi>π</mi><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>sin</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mi>π</mi><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\sin(m\pi/2)\sin(n\pi/2)</annotation></semantics></math>。したがって
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m,n</annotation></semantics></math>
+の片方でも偶数なら消える。図の四つで残るのは左上だけだ。録音に線がないという観測には「その振動は存在しない」と「その振動を今回の打点が励起しなかった」の少なくとも二通りの説明がある。さらに受音位置と空気中への放射効率も、見える線を選別する。</p>
+<h2 id="すべて測れたとしても残るもの">すべて測れたとしても残るもの</h2>
+<p>形状を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>、固定端の振動に対応する空間作用素を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>Δ</mi></mrow><annotation encoding="application/x-tex">-\Delta</annotation></semantics></math>
+とする。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Δ</mi><annotation encoding="application/x-tex">\Delta</annotation></semantics></math>
+は先ほどの二つの空間二階微分の和である。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>Δ</mi></mrow><annotation encoding="application/x-tex">-\Delta</annotation></semantics></math>
+の固有値
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>λ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\lambda_j</annotation></semantics></math>
+と固有周波数は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>j</mi></msub><mo>=</mo><mi>c</mi><msqrt><msub><mi>λ</mi><mi>j</mi></msub></msqrt><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mi>π</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">f_j=c\sqrt{\lambda_j}/(2\pi)</annotation></semantics></math>
+で対応する。Gordon、Webb、Wolpert（ゴードン、ウェッブ、ウォルパート）は1992年に、合同でない二つの単連結な平面領域で、固定境界に対する固有値列が重複度ごと等しくなる例を与えた。一つの反例が「すべての形で逆算可能」という全称命題を退ける。先ほどの正方形の図は縮退を説明する例であり、この論文の二つの領域については原論文の図1を見てほしい。</p>
+<p>同じ固有値列から得られる量もある。固定端の有界な平面領域で境界が十分規則的なら、値
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>
+以下の固有値の個数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>Λ</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">N(\Lambda)</annotation></semantics></math>
+は、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>
+を大きくすると
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>Λ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mi>Λ</mi><mo>→</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>D</mi><mo form="postfix" stretchy="true">|</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mi>π</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">N(\Lambda)/\Lambda\to |D|/(4\pi)</annotation></semantics></math>
+となる（ワイルの法則）。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">|</mo><mi>D</mi><mo form="postfix" stretchy="true">|</mo></mrow><annotation encoding="application/x-tex">|D|</annotation></semantics></math>
+は面積である。直観を得るため長方形の式に戻ろう。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><mo>≤</mo><mi>Λ</mi></mrow><annotation encoding="application/x-tex">\lambda_{mn}\leq\Lambda</annotation></semantics></math>
+を満たす正整数の対は、半軸
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>x</mi></msub><msqrt><mi>Λ</mi></msqrt><mi>/</mi><mi>π</mi><mo>,</mo><msub><mi>L</mi><mi>y</mi></msub><msqrt><mi>Λ</mi></msqrt><mi>/</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">L_x\sqrt{\Lambda}/\pi,L_y\sqrt{\Lambda}/\pi</annotation></semantics></math>
+の楕円の第一象限にある格子点だ。大きい楕円では格子点に単位正方形を置いた面積と四分の一楕円の面積の差は、境界に沿う一定幅の帯に収まり
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo form="prefix" stretchy="true">(</mo><msqrt><mi>Λ</mi></msqrt><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">O(\sqrt{\Lambda})</annotation></semantics></math>
+である。従って主項は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>x</mi></msub><msub><mi>L</mi><mi>y</mi></msub><mi>Λ</mi><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mi>π</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">L_x L_y\Lambda/(4\pi)</annotation></semantics></math>。これで長方形の場合の極限を示せた。一般領域の証明は別に要る。「面積は聴こえる」と「輪郭が聴こえる」の間に隔たりがあることが、ここで数式になる。</p>
+<h2 id="ティンパニの音高を設計する">ティンパニの音高を設計する</h2>
+<p>バルトーク《弦楽器、打楽器とチェレスタのための音楽》第三楽章のティンパニを聴こう。反復する木琴の打音の輪郭と、低い音高が滑る身振りとを、二本の線で紙に写す。膜の打音にも、追跡できる音の高さがある。実物のティンパニでは円形の膜・胴・空気が結合し、膜の各モードが空気を動かす程度も異なる。打点は相対振幅を変え、ペダルは張力を変える。手元の正方形の数表をティンパニ録音の周波数表として適用する根拠はない。一方、何を固定し何を動かした演奏かを区別する道具としては働く。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>予測と検算。</strong>
+同じ膜の張力だけを4倍にし、寸法と面密度を保てたとする。波速は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>4</mn></msqrt><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\sqrt{4}=2</annotation></semantics></math>
+倍なので各
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">f_{mn}</annotation></semantics></math>
+は2倍となる。次に張力を戻し、一辺が0.50 mの正方形を、波速
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>100</mn><annotation encoding="application/x-tex">100</annotation></semantics></math>
+m/sとして計算しよう。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>11</mn></msub><mo>≃</mo><mn>141.4</mn></mrow><annotation encoding="application/x-tex">f_{11}\simeq141.4</annotation></semantics></math>
+Hz、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mn>21</mn></msub><mo>=</mo><msub><mi>f</mi><mn>12</mn></msub><mo>≃</mo><mn>223.6</mn></mrow><annotation encoding="application/x-tex">f_{21}=f_{12}\simeq223.6</annotation></semantics></math>
+Hzで、その比は約1.581。第二の線は整数倍音の第2倍音と一致しない。この線を中央の点打撃に加えてしまう電子太鼓は、指定した物理モデルから逸脱する。中心を外して打つ別の音色としてプログラムすれば、制作上の根拠が生まれる。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>正方形の膜では (2,1) と (1,2) の振動が同じ高さになる（縮退）。</li><li>録音に線がないのは「存在しない」のか「励起されなかった」のか、二通りの説明がある。</li><li>面積は固有値から分かるが、輪郭までは一意に決まらない。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/math/9207215">Gordon・Webb・Wolpert「One
+cannot hear the shape of a drum」</a> —
+図1で二つの領域を比較し、論文が等しいと証明したデータの種類を確かめる。冒頭に面積についてのワイルの結果にも言及がある。</li>
+<li><a href="https://hyperphysics.phy-astr.gsu.edu/hbase/Music/cirmem.html">Georgia
+State University・円形膜のモード</a> —
+円形膜の節直径と節円を見る。正方形の二つの整数が表すものと比較する。</li>
+<li><a href="https://huskiecommons.lib.niu.edu/allgraduate-thesesdissertations/6350/">R.
+I. Mills・ティンパニの振動測定</a> —
+理想円形膜の予測と実測がずれる要因を、実験で区別する研究。</li>
+<li><a href="https://www.hr-sinfonieorchester.de/media/videos/konzert-videos-19-20/bartok-musik-fuer-saiteninstrumente-schlagzeug-und-celesta%2Cvideo-bartok-musik-fuer-saiteninstrumente-100.html">フランクフルト放送交響楽団・バルトーク全曲の演奏映像</a>
+— 第三楽章 Adagio の木琴とティンパニに焦点を合わせる。</li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./listening-room.html">第45章　部屋に声を返すと、建築が作曲を始める</a></p><p class="next-lead">ルシエ《I Am Sitting in a Room》を、部屋の周波数応答の繰り返しとして計算する。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./star-music.html">← 第43章　太陽の五分を、一音の高さに折りたたむ</a></span><span><a href="./listening-room.html">第45章　部屋に声を返すと、建築が作曲を始める →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

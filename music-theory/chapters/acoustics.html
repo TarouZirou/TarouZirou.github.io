@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第24章　音波と楽器の物理。音波・弦・管の物理と、うなり・デシベルの計算。">
 <title>第24章　音波と楽器の物理｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VI部　音の物理と聴覚</h2><ul><li><a href="./acoustics.html" aria-current="page">第24章　音波と楽器の物理</a></li><li><a href="./resonators.html">第25章　振動・共鳴・部屋</a></li><li><a href="./math.html">第26章　周波数比・調律・フーリエ級数</a></li><li><a href="./tuning-lab.html">第27章　調律を設計する</a></li><li><a href="./ear.html">第28章　耳と脳は何を取り出すか</a></li><li><a href="./perception-lab.html">第29章　聴覚の測定と実験計画</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VI部　音の物理と聴覚</div><h1>第24章　音波と楽器の物理</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">音波・弦・管の物理と、うなり・デシベルの計算。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>周波数・波長・音速の関係（c = fλ）を使う</li><li>弦や管の固有振動が、なぜ整数倍に並ぶかを知る</li><li>うなりの回数とデシベルを計算する</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#一点の記録と空間を進む波">一点の記録と空間を進む波</a></li><li><a href="#弦の固有振動を導く">弦の固有振動を導く</a></li><li><a href="#うなりと音圧レベル">うなりと音圧レベル</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">音波・弦・管の物理と、うなり・デシベルの計算。</p><div class="chips"><span class="chip">本文 約8分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=acoustics">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>周波数・波長・音速の関係（c = fλ）を使う</li><li>弦や管の固有振動が、なぜ整数倍に並ぶかを知る</li><li>うなりの回数とデシベルを計算する</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#一点の記録と空間を進む波">一点の記録と空間を進む波</a></li><li><a href="#弦の固有振動を導く">弦の固有振動を導く</a></li><li><a href="#うなりと音圧レベル">うなりと音圧レベル</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
 <h2 id="一点の記録と空間を進む波">一点の記録と空間を進む波</h2>
 <p>空気中の音は、通常、平衡圧のまわりの小さな圧力変動である。マイクを一点に置いたときに測る
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(t)</annotation></semantics></math>
@@ -112,11 +112,20 @@ dB SPL。強度の比を dB で表す式は
 dB。同じ周波数・同位相の同振幅波の完全加算では振幅が倍、相関のない同 rms
 の信号では平均二乗が加算される。この違いはミキシングで重要になる。 <a href="https://openstax.org/books/college-physics-2e/pages/17-3-sound-intensity-and-sound-level">OpenStax
 S26</a></p>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>440 Hz の波長は約 0.78 m。</li><li>弦の長さを半分にすると、約1オクターヴ上がる。</li><li>振幅が2倍で +6 dB、パワーが2倍で +3 dB。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>440 Hz の波長は約 0.78 m。</li><li>弦の長さを半分にすると、約1オクターヴ上がる。</li><li>振幅が2倍で +6 dB、パワーが2倍で +3 dB。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>弦を伝わる波（コロラド大学 PhET、日本語）。</strong>
+単一のパルスを送り、固定端と自由端で返ってくる山の向きを比べる。同じ点で往路と復路の変位を足してみる。端点が常に動けないという条件が、反射による符号の反転を要求する。
+<a href="https://phet.colorado.edu/ja/simulations/wave-on-a-string">資料を開く</a></p></li>
+<li><p><strong>弦の節と倍音（ニューサウスウェールズ大学）。</strong>
+第2、第3モードの図で動かない点を数える。弦の中央を軽く触れて制限した場合に生き残るモードを先に予測し、節が中央に来る図だけを選んで確かめる。
+<a href="https://phys.unsw.edu.au/jw/strings.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./resonators.html">第25章　振動・共鳴・部屋</a></p><p class="next-lead">楽器の胴や部屋が、音をどう増幅し、色づけるか。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./media.html">← 第23章　録音媒体が作曲対象になる</a></span><span><a href="./resonators.html">第25章　振動・共鳴・部屋 →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

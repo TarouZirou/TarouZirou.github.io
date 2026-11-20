@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第25章　振動・共鳴・部屋。楽器の胴や部屋が、音をどう増幅し、色づけるか。">
 <title>第25章　振動・共鳴・部屋｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VI部　音の物理と聴覚</h2><ul><li><a href="./acoustics.html">第24章　音波と楽器の物理</a></li><li><a href="./resonators.html" aria-current="page">第25章　振動・共鳴・部屋</a></li><li><a href="./math.html">第26章　周波数比・調律・フーリエ級数</a></li><li><a href="./tuning-lab.html">第27章　調律を設計する</a></li><li><a href="./ear.html">第28章　耳と脳は何を取り出すか</a></li><li><a href="./perception-lab.html">第29章　聴覚の測定と実験計画</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VI部　音の物理と聴覚</div><h1>第25章　振動・共鳴・部屋</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">楽器の胴や部屋が、音をどう増幅し、色づけるか。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>弦→駒→胴→空気というエネルギーの流れを知る</li><li>減衰振動と共鳴の模型を読む</li><li>距離と部屋の反射が、録音の音色を変える理由を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#楽器を一つの物体として扱うと何が失われるか">楽器を一つの物体として扱うと何が失われるか</a></li><li><a href="#減衰振動と強制振動の模型">減衰振動と強制振動の模型</a></li><li><a href="#壁と距離が音を変える">壁と距離が音を変える</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">楽器の胴や部屋が、音をどう増幅し、色づけるか。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=resonators">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>弦→駒→胴→空気というエネルギーの流れを知る</li><li>減衰振動と共鳴の模型を読む</li><li>距離と部屋の反射が、録音の音色を変える理由を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#楽器を一つの物体として扱うと何が失われるか">楽器を一つの物体として扱うと何が失われるか</a></li><li><a href="#減衰振動と強制振動の模型">減衰振動と強制振動の模型</a></li><li><a href="#壁と距離が音を変える">壁と距離が音を変える</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
 <h2 id="楽器を一つの物体として扱うと何が失われるか">楽器を一つの物体として扱うと何が失われるか</h2>
 <p>弦を指ではじくと、弦の変位が駒を動かし、駒が胴を駆動し、胴の面が空気へ音を放射する。耳に届く振幅は弦の変位だけからは決まらない。弦と胴と空気の間でエネルギーが伝わり、各段の共振が音色を形づくる。リード楽器では管の共鳴が振動するリードへ戻り、吹奏系は単に「外から指定した周波数を管で増強する」モデルより複雑になる。音源の開始と維持、共鳴、放射を別々に測るだけでも、楽器比較が具体的になる。
 <a href="https://openstax.org/books/university-physics-volume-1/pages/16-6-standing-waves-and-resonance">OpenStax
@@ -86,11 +86,20 @@ dB。室内では反射が加わり、この単純な距離則から外れる。
 は整数で、すべて0の場合を除く。各方向に余弦の固有関数をとり、ラプラシアンを作用させると空間固有値が三方向の二乗和になることから導ける。壁の吸音、開口、家具がある部屋では、測定値にずれが生じる。</p>
 <div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>測定。</strong> 自由に持ち運べる音源で長さ4
 m前後の部屋の低域を調べる。壁際と部屋の中央で録音して比較する場合、再生音量・音源位置・マイクの設定を固定する。スマートフォンの録音には自動利得や帯域制約があるので、装置の仕様が不明なら得られたdB値を校正した音圧として扱わない。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>減衰が小さいほど、共鳴の山は鋭い。</li><li>自由空間では、距離が2倍で約 −6 dB。</li><li>部屋の寸法から、低音の定在波（モード）の周波数を見積もれる。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>減衰が小さいほど、共鳴の山は鋭い。</li><li>自由空間では、距離が2倍で約 −6 dB。</li><li>部屋の寸法から、低音の定在波（モード）の周波数を見積もれる。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>ヘルムホルツ共鳴の模型（ニューサウスウェールズ大学）。</strong>
+空洞と細い首を持つ容器で、どの空気が往復し、どの空気がばねの役を果たすかを図に色分けする。首の寸法を保って空洞だけを大きくしたときの音高変化を、示された式の分母から予測できる。
+<a href="https://phys.unsw.edu.au/jw/Helmholtz.html">資料を開く</a></p></li>
+<li><p><strong>フルートの運指別測定（ニューサウスウェールズ大学）。</strong>
+一つの音について音響応答を示すグラフと吹奏音のスペクトルを並べる。横軸がどちらも周波数でも、測った量は異なる。別の運指についても同じ図を開き、軸の説明を見てから比較する。
+<a href="https://phys.unsw.edu.au/music/flute/index.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./math.html">第26章　周波数比・調律・フーリエ級数</a></p><p class="next-lead">周波数比・セント・平均律、そしてフーリエ級数の入口。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./acoustics.html">← 第24章　音波と楽器の物理</a></span><span><a href="./math.html">第26章　周波数比・調律・フーリエ級数 →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

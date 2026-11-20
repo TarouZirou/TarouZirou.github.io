@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第18章　音高類、配列、過程。音高類集合・十二音行列・プロセス音楽など、20世紀以降の考え方。">
 <title>第18章　音高類、配列、過程｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第IV部　ジャズ・ポピュラー・20世紀以降</h2><ul><li><a href="./beyond.html">第16章　ジャズ・グルーヴ・音列への入口</a></li><li><a href="./jazz-pop.html">第17章　ジャズとポピュラー音楽の和声を弾く</a></li><li><a href="./modern.html" aria-current="page">第18章　音高類、配列、過程</a></li><li><a href="./analytical-dossier.html">第19章　六つの録音の精読</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第IV部　ジャズ・ポピュラー・20世紀以降</div><h1>第18章　音高類、配列、過程</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">音高類集合・十二音行列・プロセス音楽など、20世紀以降の考え方。</p><div class="chips"><span class="chip">本文 約4分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>音程類ベクトルを数える</li><li>十二音行列の作り方と読み方を知る</li><li>《In C》や位相音楽を「手続き」として聴く</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#単なる音集合から何を計算できるか">単なる音集合から何を計算できるか</a></li><li><a href="#手続きを作品として聴く">手続きを作品として聴く</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">音高類集合・十二音行列・プロセス音楽など、20世紀以降の考え方。</p><div class="chips"><span class="chip">本文 約5分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=modern">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>音程類ベクトルを数える</li><li>十二音行列の作り方と読み方を知る</li><li>《In C》や位相音楽を「手続き」として聴く</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#単なる音集合から何を計算できるか">単なる音集合から何を計算できるか</a></li><li><a href="#手続きを作品として聴く">手続きを作品として聴く</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <h2 id="単なる音集合から何を計算できるか">単なる音集合から何を計算できるか</h2>
 <p>音高類集合
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊂</mo><mi>ℤ</mi><mi>/</mi><mn>12</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">A\subset\mathbb Z/12\mathbb Z</annotation></semantics></math>
@@ -68,11 +68,21 @@ Music》では、声そのものの音色変化、持続音、異なる高さや
 <a href="https://www.youtube.com/watch?v=DVrsuMWX7-Y">L41</a></p>
 <div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>制作。</strong>
 4音の断片Aを6拍、断片Bを8拍で回し、最初と再会の位置を計算する。和音の当たり外れが偶然に聞こえる場合、毎回刻みを増減して干渉を濃くする案と、低音の持続で重心を作る案を別々に試す。手続きの記述と耳で追える結果を一対一に対応させる。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>同じ音程類ベクトルでも、移調や反転で移り合わない集合がある。</li><li>十二音行列は変形の参照表。全行を使う決まりではない。</li><li>プロセス音楽では、何を奏者が決め、何が過程から生まれるかに注目する。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>同じ音程類ベクトルでも、移調や反転で移り合わない集合がある。</li><li>十二音行列は変形の参照表。全行を使う決まりではない。</li><li>プロセス音楽では、何を奏者が決め、何が過程から生まれるかに注目する。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>対称性と中心音（Open Music Theory）。</strong>
+音列を書き換えず、一音だけを長く、あるいは低く置いて演奏する。どの音が重心に聞こえたかを記録し、集合の対称性から導ける結論と、強調の仕方に依存する知覚を分ける。
+<a href="https://openmusictheory.github.io/symmetryAndCentricity.html">資料を開く</a></p></li>
+<li><p><strong>移調下での共通音（Open Music Theory）。</strong> 音高類
+0・1・4・6
+を半音二つだけ平行移動し、移動前後の共通要素を数える。元の集合の中で差が二半音になる音の組を探し、二つの計数がどう結び付くかを円周上で確かめる。
+<a href="https://openmusictheory.github.io/commonTonesUnderTransposition.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./analytical-dossier.html">第19章　六つの録音の精読</a></p><p class="next-lead">6つの名録音を、主張・観察・確かめ方の三点セットで精読する。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./jazz-pop.html">← 第17章　ジャズとポピュラー音楽の和声を弾く</a></span><span><a href="./analytical-dossier.html">第19章　六つの録音の精読 →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

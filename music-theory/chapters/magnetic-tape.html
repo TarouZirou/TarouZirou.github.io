@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第56章　テープの長さで時間を書く。テープの速度と切り貼りを一次関数で表し、ライヒの位相ずれを計算する。">
+<title>第56章　テープの長さで時間を書く｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第XI部　時間を書き、場所を奏でる</h2><ul><li><a href="./notation-media.html">第54章　紙に穴を一つ開けたら、それは一音か</a></li><li><a href="./tracing-time.html">第55章　紙に残った声に時計を返す</a></li><li><a href="./magnetic-tape.html" aria-current="page">第56章　テープの長さで時間を書く</a></li><li><a href="./moving-image.html">第57章　フィルムに描いた縞はなぜ和音になるのか</a></li><li><a href="./plucked-loop.html">第58章　乱数の輪が弦に変わる</a></li><li><a href="./feedback-music.html">第59章　振り子が描く楽譜</a></li><li><a href="./field-sound.html">第60章　夜明けの合唱を、誰の耳で数えたか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第XI部　時間を書き、場所を奏でる</div><h1>第56章　テープの長さで時間を書く</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">テープの速度と切り貼りを一次関数で表し、ライヒの位相ずれを計算する。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=magnetic-tape">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>テープの再生を「読み取り位置の一次関数」として表す</li><li>速度の違う二つのループのずれが一周するまでの時間を計算する</li><li>《It&#x27;s Gonna Rain》で位相のずれを聴く</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#録音された時間にものさしを当てる">録音された時間に、ものさしを当てる</a></li><li><a href="#一つの傾きが二つの音楽的効果を持つ">一つの傾きが二つの音楽的効果を持つ</a></li><li><a href="#位相がほどけもう一度閉じるまで">位相がほどけ、もう一度閉じるまで</a></li><li><a href="#二つの声に割れる言葉">二つの声に割れる言葉</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
+<h2 id="録音された時間にものさしを当てる">録音された時間に、ものさしを当てる</h2>
+<p>手拍子を録音し、その直後に机をたたく。二音の間には、録音前には測れなかった長さが生まれる。テープの走行速度が一定なら、何秒隔たっているかを、二つの磁化パターンの距離として読めるからである。英国のサイエンス・ミュージアムが所蔵するBBCレディオフォニック・ワークショップの接合テープは、この簡単な対応が実際の工房の技術であったことを物語る。楽譜に八分休符を書く行為が、何センチメートルを残してテープを切るかという工作になる。</p>
+<p>録音の走行速度を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>r</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v_r&gt;0</annotation></semantics></math>、テープ上の位置を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>、録音前の波形を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math>
+とする。理想化して磁化の値を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>/</mi><msub><mi>v</mi><mi>r</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">M(s)=x(s/v_r)</annotation></semantics></math>
+と置く。再生開始位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mn>0</mn></msub><annotation encoding="application/x-tex">s_0</annotation></semantics></math>
+と走行速度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>p</mi></msub><annotation encoding="application/x-tex">v_p</annotation></semantics></math>
+を決めれば、再生波形
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+は</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>M</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>s</mi><mn>0</mn></msub><mo>+</mo><msub><mi>v</mi><mi>p</mi></msub><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>b</mi><mo>+</mo><mi>r</mi><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo>=</mo><msub><mi>s</mi><mn>0</mn></msub><mi>/</mi><msub><mi>v</mi><mi>r</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mi>r</mi><mo>=</mo><msub><mi>v</mi><mi>p</mi></msub><mi>/</mi><msub><mi>v</mi><mi>r</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">y(t)=M(s_0+v_p t)=x(b+rt),\qquad b=s_0/v_r,\quad r=v_p/v_r.</annotation></semantics></math></p>
+<p>この式から、周波数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+の正弦波には
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mi>r</mi><mo form="postfix" stretchy="true">|</mo></mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">|r|f</annotation></semantics></math>
+が、元録音上の時間差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+には
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>/</mi><mrow><mo form="prefix" stretchy="true">|</mo><mi>r</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow><annotation encoding="application/x-tex">T/|r|</annotation></semantics></math>
+が対応する。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&lt;0</annotation></semantics></math>
+なら出来事の順序が反転する。毎秒19.05 cmで録音した440
+Hzは、テープ上に約0.433 mmの周期を刻む。再生速度を毎秒38.10
+cmにすると同じ模様を一秒間に倍の回数通過して880
+Hzになる。録音で0.50秒離れた二音の間隔は0.25秒に縮む。これは走行のモデルであり、ヘッドの周波数応答や磁気飽和まで表す式ではない。</p>
+<h2 id="一つの傾きが二つの音楽的効果を持つ">一つの傾きが二つの音楽的効果を持つ</h2>
+<p>二度の編集を順にかける。最初の変換を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><msub><mi>r</mi><mn>1</mn></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">u(t)=b_1+r_1t</annotation></semantics></math>、次を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msub><mi>b</mi><mn>2</mn></msub><mo>+</mo><msub><mi>r</mi><mn>2</mn></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">w(t)=b_2+r_2t</annotation></semantics></math>
+とすると、出力は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>w</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">x(u(w(t)))</annotation></semantics></math>。展開した読み取り位置は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><msub><mi>r</mi><mn>1</mn></msub><msub><mi>b</mi><mn>2</mn></msub><mo>+</mo><msub><mi>r</mi><mn>1</mn></msub><msub><mi>r</mi><mn>2</mn></msub><mi>t</mi></mrow><annotation encoding="application/x-tex">b_1+r_1b_2+r_1r_2t</annotation></semantics></math>
+である。傾きの積に加え、最初の速度が次の開始位置にも作用する。逆再生や切り貼りを直感で重ねて素材の場所を見失ったときは、どの時刻が録音のどこを読むかを二点だけ書けば傾きと切片を復元できる。接合点で新しい切片と傾きを選べば、一本の直線は折れ線になる。現代のサンプラーの読み取り位置にも同じ幾何がある。</p>
+<div class="callout note"><p class="callout-kind">反例</p><p><strong>反例。</strong>
+スネアの録音に高域通過フィルタをかけると音は明るくなるが、打点の間隔は変わらない。理想的な倍速再生なら、ある部分音だけが高くなるのではなくすべての周波数と出来事の間隔が連動する。高域が強く聞こえたという一つの印象から編集法は同定できない。音高をほぼ保ちながら長さを変えるタイムストレッチは別の操作で、録音全体を一つの直線の読み取り位置で表すという仮定を外す。</p></div>
+<h2 id="位相がほどけもう一度閉じるまで">位相がほどけ、もう一度閉じるまで</h2>
+<p>長さ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+秒の同じフレーズを二本の輪にし、一方を元の速度、他方を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">1+\varepsilon</annotation></semantics></math>
+倍で回す。両方を同じ位置から発進させると、時間
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+のあいだに二つの輪が読み進んだ周回数の差は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mi>t</mi><mi>/</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">\varepsilon t/T</annotation></semantics></math>
+である。円周上の位相差はその小数部分。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon\ne0</annotation></semantics></math>
+のとき、相対的な読み取り位置が一周ぶんずれるまでの時間は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>/</mi><mrow><mo form="prefix" stretchy="true">|</mo><mi>ε</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow><annotation encoding="application/x-tex">T/|\varepsilon|</annotation></semantics></math>
+になる。ここで一致するのは二層の相対位置であり、どちらも曲頭にいるとは限らない。たとえば
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T=1</annotation></semantics></math>
+秒、速度比1.01なら25秒で四分の一周、50秒で半周、100秒で一周の差になる。速い方の声の音高差は約17.2セントである。</p>
+<figure>
+<img alt="1秒の同じ輪を1倍と1.01倍で再生したときの、二つの読み取り位置の差。1周進むたびに相対的な頭が再びそろう。" src="../assets/atlas_tape.webp"/>
+<figcaption aria-hidden="true">1秒の同じ輪を1倍と1.01倍で再生したときの、二つの読み取り位置の差。1周進むたびに相対的な頭が再びそろう。</figcaption>
+</figure>
+<p>これを確かめる短い小品を作れる。一秒の輪に0秒、0.17秒、0.61秒の三つの短い打音を置く。音色を木片、金属、指鳴らしのように変えれば、どの打点が先行するかを追いやすい。同じ素材を二つ並べ、最初の再生位置をそろえ、片方の再生レートだけを1.01とする。テンポに合わせた自動伸縮を切り、100秒を一続きに書き出す。25秒のところで第2層の木片は第1層の木片から輪の四分の一だけ進んでいる。そこだけを繰り返して聞けば固定した組合せ、前後も通して聞けば組合せが生まれていく過程になる。</p>
+<h2 id="二つの声に割れる言葉">二つの声に割れる言葉</h2>
+<p>スティーヴ・ライヒ《It’s Gonna
+Rain》（1965）第I部で繰り返される声は、サンフランシスコで説教していたブラザー・ウォルターのもの。まず言葉のどこに強勢が置かれるかをまねる。再び聴き、二つの同じ発声の子音が離れて、声の間を縫う別のリズムが浮かぶ箇所を記す。二台のテープ機のずれが技法の契機になった、と作曲者自身が語る。本章の一定速・無編集の計算は、制作手順の全体や作品の正確な速度を逆算したものではない。語の意味、発話者の身振りを伝える抑揚、二層の時間差の三つを同時に追えば、式の一点の位相に、聴く立場によって異なる出来事が立ち上がる。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>確認課題と解答。</strong>
+0.8秒の輪で、二層の相対位置を40秒で一周させたい。必要な相対速度差は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mi>ε</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mn>0.8</mn><mi>/</mi><mn>40</mn><mo>=</mo><mn>0.02</mn></mrow><annotation encoding="application/x-tex">|\varepsilon|=0.8/40=0.02</annotation></semantics></math>。片方を1.02倍としたとき、輪が50回回った40秒後には速い方が51回で、両方が頭に戻る。次に音高差も消すにはどうするか。打音を一つずつ切り出し、同じ速さで一回ごとに再生しつつ、開始時刻の間隔だけを1.02で割ればよい。各音の持続は元の長さを保つので、音が重なる境界、語尾、残響はテープの速度変更とは別の聞こえ方になる。この違いを二種類の出力を盲検で聞き分ける手掛かりにできる。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>速度を r 倍にすると、周波数は r 倍、時間は 1/r 倍。</li><li>速度差 ε の二つのループは、T/|ε| 秒で一周ずれる。</li><li>タイムストレッチは、単純な速度変更とは別の操作。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>接合テープという遺物から、切断・接合・速度変更の作業を読む。<a href="https://collection.sciencemuseumgroup.org.uk/objects/co8355715/bbc-radiophonic-workshop-items">Science
+Museum Group, <em>BBC Radiophonic Workshop items</em></a></li>
+<li>ブラザー・ウォルターの声と二台の機械を作曲者自身が回想する。<a href="https://www.nonesuch.com/journal/watch-steve-reich-composing-its-gonna-rain-2023-08-17">Nonesuch
+/ Boosey &amp; Hawkes, <em>Steve Reich on Composing It’s Gonna
+Rain</em></a></li>
+<li>第I部と第II部を区別して聴ける録音案内。<a href="https://www.nonesuch.com/albums/early-works">Steve Reich,
+<em>Early Works</em></a></li>
+<li>同じ過程を言葉から四音の鍵盤ハーモニカへ移した作品。作曲者の素材の選択を比較する。<a href="https://stevereich.com/composition/melodica/">Steve Reich,
+<em>Melodica</em></a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./moving-image.html">第57章　フィルムに描いた縞はなぜ和音になるのか</a></p><p class="next-lead">フィルムに描いた縞が音になる仕組みと、映像と音の同期。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./tracing-time.html">← 第55章　紙に残った声に時計を返す</a></span><span><a href="./moving-image.html">第57章　フィルムに描いた縞はなぜ和音になるのか →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

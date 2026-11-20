@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第30章　コンピューターが音を記録する仕組み。標本化・量子化・折返し。デジタル音声の基本原理。">
 <title>第30章　コンピューターが音を記録する仕組み｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html" aria-current="page">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第30章　コンピューターが音を記録する仕組み</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">標本化・量子化・折返し。デジタル音声の基本原理。</p><div class="chips"><span class="chip">本文 約8分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>標本化周波数とビット深度の意味を知る</li><li>折返し（エイリアシング）がなぜ起こるかを理解する</li><li>DFTのビン間隔と窓の役割を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#標本化と量子化">標本化と量子化</a></li><li><a href="#別の音が同じデータになる">別の音が同じデータになる</a></li><li><a href="#標本から復元できる条件">標本から復元できる条件</a></li><li><a href="#離散フーリエ変換dftを証明する">離散フーリエ変換（DFT）を証明する</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">標本化・量子化・折返し。デジタル音声の基本原理。</p><div class="chips"><span class="chip">本文 約9分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>標本化周波数とビット深度の意味を知る</li><li>折返し（エイリアシング）がなぜ起こるかを理解する</li><li>DFTのビン間隔と窓の役割を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#標本化と量子化">標本化と量子化</a></li><li><a href="#別の音が同じデータになる">別の音が同じデータになる</a></li><li><a href="#標本から復元できる条件">標本から復元できる条件</a></li><li><a href="#離散フーリエ変換dftを証明する">離散フーリエ変換（DFT）を証明する</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
 <h2 id="標本化と量子化">標本化と量子化</h2>
 <p>連続信号
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">x(t)</annotation></semantics></math>
@@ -135,11 +135,22 @@ Hz。ただし観測区間に整数周期が収まらないと、端の不連続
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mo>log</mo><mi>N</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">O(N\log N)</annotation></semantics></math>。ゼロを足す操作は見かけの周波数点を細かくするが、観測時間や情報は増えない。
 <a href="https://www.dspguide.com/ch8.htm">DSP Guide S14</a> · <a href="https://msp.ucsd.edu/techniques/v0.09/book-html/">Puckette
 S10</a></p>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>48 kHz・16ビット・モノラルのデータは1秒で96,000バイト。</li><li>標本化周波数の半分を超える成分は、低い周波数に化ける。</li><li>ゼロ詰めは見かけの点を増やすだけで、情報は増えない。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>48 kHz・16ビット・モノラルのデータは1秒で96,000バイト。</li><li>標本化周波数の半分を超える成分は、低い周波数に化ける。</li><li>ゼロ詰めは見かけの点を増やすだけで、情報は増えない。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>折り返しを描く教材（Jack Schaedler）。</strong>
+波の周波数を標本化周波数の半分より高くし、同じ標本点を通る低周波の曲線を追う。接する点を線でつないだときの見え方と、もとの連続波を区別すると、失われた情報を再計算だけで取り戻せない理由が分かる。
+<a href="https://jackschaedler.github.io/circles-sines-signals/sampling3.html">資料を開く</a></p></li>
+<li><p><strong>標本化の節と周波数の例（Music and Computers）。</strong>
+44.1 kHz の記録で境界が 22.05 kHz となる計算を読み、8 kHz
+の記録に読み替える。5 kHz の正弦波は標本上で 3 kHz
+の成分と区別できない。周波数を変える実験とビット数を減らす実験を混ぜないようにする。
+<a href="https://sites.music.columbia.edu/cmc/MusicAndComputers/chapter2/02_03.php">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></p><p class="next-lead">エコー・フィルタ・スペクトログラムを、畳込みという一つの考え方で理解する。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./perception-lab.html">← 第29章　聴覚の測定と実験計画</a></span><span><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析 →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

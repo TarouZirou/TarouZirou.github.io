@@ -3,15 +3,15 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第37章　パソコンで再現できる分析の手順。パソコンで、計測と合成を再現できる手順にまとめる。">
 <title>第37章　パソコンで再現できる分析の手順｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html" aria-current="page">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第37章　パソコンで再現できる分析の手順</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">パソコンで、計測と合成を再現できる手順にまとめる。</p><div class="chips"><span class="chip">本文 約4分</span><span class="chip m1">数式 少し</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>正解の分かっている合成音で、分析手順を確かめる</li><li>観測時間と周波数分解能の関係を知る</li><li>Python の標準ライブラリだけで WAV を作る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#計測と合成を一つの再現可能な作業にする">計測と合成を一つの再現可能な作業にする</a></li><li><a href="#標準ライブラリだけで一つの音を作る">標準ライブラリだけで一つの音を作る</a></li><li><a href="#音源を公開用に検算する">音源を公開用に検算する</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">パソコンで、計測と合成を再現できる手順にまとめる。</p><div class="chips"><span class="chip">本文 約5分</span><span class="chip m1">数式 少し</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>正解の分かっている合成音で、分析手順を確かめる</li><li>観測時間と周波数分解能の関係を知る</li><li>Python の標準ライブラリだけで WAV を作る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#計測と合成を一つの再現可能な作業にする">計測と合成を一つの再現可能な作業にする</a></li><li><a href="#標準ライブラリだけで一つの音を作る">標準ライブラリだけで一つの音を作る</a></li><li><a href="#音源を公開用に検算する">音源を公開用に検算する</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <div class="primer"><a href="../resources.html">Pythonの生成例をダウンロード</a></div><h2 id="計測と合成を一つの再現可能な作業にする">計測と合成を一つの再現可能な作業にする</h2>
 <p>元の音素材、前処理、可視化、聴取、結論を同じフォルダの中に並べる。録音を眺めただけでは、「ここは高域が減った」が入力音・マイク・処理のどこで起きたか分からない。自分の正弦波と加算波を合成して正解の周波数を知ったうえで可視化し、その手順を録音へ移す。付属の音の実験室は、波形と窓付きFFTをすぐ確認する入口である。再解析には書き出した
 WAV の仕様も記録する。</p>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>例　440と442 Hzの識別。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>例　440と442 Hzの識別。</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo><mn>48000</mn></mrow><annotation encoding="application/x-tex">f_s=48000</annotation></semantics></math>
 Hz で0.05秒観測すると標本数2400、DFT間隔20
 Hz。ゼロ詰めでグラフ上の点を0.5
@@ -50,11 +50,21 @@ Hzに変えると山の数が増える。0.1秒未満のファイルへ変えた
 Hzの包絡の周期0.5秒の全体を、その窓内には収められない。位相を比較するときは初期位相と再生開始時刻を一致させる。</p>
 <h2 id="音源を公開用に検算する">音源を公開用に検算する</h2>
 <p>公開するのは自作のソースとその音源、配信先のURL、用いた参考文献。教材に掲載されている録音はリンク先で聴く。第三者の音声を切り出して公開する場合は、対象とする配布条件を作品ごとに確認する。自作の譜例を公開するときも、音名表・楽譜・再生が一致するか、他の人が指定の小節を探せるかを検査する。</p>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>0.05秒の観測ではDFTの間隔は20 Hz。440 Hz と 442 Hz は分けられない。</li><li>比較の条件は、分析を始める前に決める。</li><li>公開するのは、自作の素材と出典。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>0.05秒の観測ではDFTの間隔は20 Hz。440 Hz と 442 Hz は分けられない。</li><li>比較の条件は、分析を始める前に決める。</li><li>公開するのは、自作の素材と出典。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>WAV の読み書き（Python 標準ライブラリ）。</strong>
+書き出したファイルをもう一度開き、チャンネル数、標本幅、標本化周波数、フレーム数を得る。時間はフレーム数を標本化周波数で割る。二チャンネルだからと時間をさらに二倍にする算定ミスを防げる。
+<a href="https://docs.python.org/3.14/library/wave.html">資料を開く</a></p></li>
+<li><p><strong>選択区間のスペクトル（Audacity）。</strong>
+本書のうなり音の中央を選択し、窓と FFT
+サイズを記してピークを読む。ごく短い区間と長い区間を比べ、二つのピークが分かれなかった結果も保存する。解析条件がなければ「一本に見えた」という報告は再現しにくい。
+<a href="https://manual.audacityteam.org/man/plot_spectrum.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><span class="next-part">第VIII部　電子楽器と総合制作へ</span><p class="next-title"><a href="./analog.html">第38章　アナログ電子楽器を組む</a></p><p class="next-lead">TLC555 と乾電池で、つまみで音程が変わる電子楽器を作る。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./algorithms.html">← 第36章　アルゴリズムで旋律を作る</a></span><span><a href="./analog.html">第38章　アナログ電子楽器を組む →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

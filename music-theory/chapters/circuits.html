@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第40章　RCとライン出力を計算する。RCフィルタの計算と、Pico をライン入力へ安全につなぐアダプター。">
 <title>第40章　RCとライン出力を計算する｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VIII部　電子楽器と総合制作</h2><ul><li><a href="./analog.html">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html" aria-current="page">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html">第42章　一曲を三つの完成形にする</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VIII部　電子楽器と総合制作</div><h1>第40章　RCとライン出力を計算する</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">RCフィルタの計算と、Pico をライン入力へ安全につなぐアダプター。</p><div class="chips"><span class="chip">本文 約5分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>GPIO にスピーカーを直結してはいけない理由を、数字で理解する</li><li>RC低域通過・高域通過の遮断周波数を計算する</li><li>抵抗とコンデンサで、ライン入力用のアダプターを作る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#デジタル端子の出力と電気的な負荷">デジタル端子の出力と、電気的な負荷</a></li><li><a href="#低域通過と高域通過">低域通過と高域通過</a></li><li><a href="#追加製作-picoから高インピーダンスのライン入力へ">追加製作　Picoから高インピーダンスのライン入力へ</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">RCフィルタの計算と、Pico をライン入力へ安全につなぐアダプター。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m1">数式 少し</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>GPIO にスピーカーを直結してはいけない理由を、数字で理解する</li><li>RC低域通過・高域通過の遮断周波数を計算する</li><li>抵抗とコンデンサで、ライン入力用のアダプターを作る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#デジタル端子の出力と電気的な負荷">デジタル端子の出力と、電気的な負荷</a></li><li><a href="#低域通過と高域通過">低域通過と高域通過</a></li><li><a href="#追加製作-picoから高インピーダンスのライン入力へ">追加製作　Picoから高インピーダンスのライン入力へ</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <h2 id="デジタル端子の出力と電気的な負荷">デジタル端子の出力と、電気的な負荷</h2>
 <p>Picoの発音端子とコーン型スピーカーをつなぐと、スピーカーの公称インピーダンスが8
 Ωだとして
@@ -92,7 +92,7 @@ kΩ以上の通常のアンバランス・ライン入力とする。ライン�
 </tbody>
 </table></div>
 <p>配線上の検査では、USBを外し、R1とR2の取り違えを確認する。信号ケーブルをつなぐ前に、ピンの短絡がないか確認する。ライン側の入力を最低近くから調整し、クリップ表示が出ない範囲で録音する。電源、受け側の端子仕様、共通GNDが確認できない機器を使用しない。</p>
-<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>計算。</strong> DCでCは遮断され、Xの HIGH は
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>計算。</strong> DCでCは遮断され、Xの HIGH は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3.3</mn><mo>⋅</mo><mn>10</mn><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>100</mn><mo>+</mo><mn>10</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>0.3</mn></mrow><annotation encoding="application/x-tex">3.3\cdot10/(100+10)=0.3</annotation></semantics></math>
 V。十分高い交流周波数でCを短絡と近似し、入力10 kΩなら下側抵抗は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> k</mtext></mrow><mi>Ω</mi><mo>∥</mo><mn>10</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> k</mtext></mrow><mi>Ω</mi><mo>=</mo><mn>5</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> k</mtext></mrow><mi>Ω</mi></mrow><annotation encoding="application/x-tex">10\text{ k}\Omega\parallel10\text{ k}\Omega=5\text{ k}\Omega</annotation></semantics></math>。交流の振幅は矩形波の元の3.3
@@ -101,11 +101,20 @@ Vピーク間に対し約0.157 Vピーク間。Cの見るテブナン抵抗は�
 kΩと入力側の10 kΩの和。遮断周波数は約8.34
 Hz。入力が大きければ、ピーク間は0.3
 Vへ近づく。ケーブルや端子、GPIOの実際の出力特性はこの計算に含めていない。ライン経由の音とピエゾ経由の音の差は、電気波形から空気振動への変換器が違うことを耳で調べる実習になる。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>遮断周波数は f<sub>c</sub> = 1/(2πRC)。10 kΩ と 22 nF なら約723 Hz。</li><li>0 V と 3.3 V の矩形波には直流成分がある。コンデンサで切る。</li><li>マイク入力・ヘッドホン出力・スピーカー端子にはつながない。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>遮断周波数は f<sub>c</sub> = 1/(2πRC)。10 kΩ と 22 nF なら約723 Hz。</li><li>0 V と 3.3 V の矩形波には直流成分がある。コンデンサで切る。</li><li>マイク入力・ヘッドホン出力・スピーカー端子にはつながない。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>一次 RC 低域通過回路（Paul Falstad）。</strong>
+コンデンサ両端が出力であることを確かめる。抵抗を二倍にする前後で、同じ大きさの減衰を生む周波数は何倍へ動くかを予想し、同一入力振幅で比較する。
+<a href="https://falstad.com/circuit/e-filt-lopass.html">資料を開く</a></p></li>
+<li><p><strong>一次 RC 高域通過回路（Paul Falstad）。</strong>
+低域通過の例と同じ二種類の部品を使い、どちらの端子間を出力として読むかを描き替える。入力をゆっくり変える場合と急に変える場合を比べると、直流を遮って変化を通す結合コンデンサの役割が見える。
+<a href="https://falstad.com/circuit/e-filt-hipass.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する</a></p><p class="next-lead">作った楽器を計測して、故障箇所を絞り込み、操作を設計する。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./digital.html">← 第39章　Picoでデジタル電子楽器を作る</a></span><span><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

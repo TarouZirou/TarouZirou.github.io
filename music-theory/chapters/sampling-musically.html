@@ -3,16 +3,16 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第34章　サンプリングとグリッドの設計。サンプルの切り方・つなぎ方と、テンポとグルーヴの関係。">
 <title>第34章　サンプリングとグリッドの設計｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html" aria-current="page">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第34章　サンプリングとグリッドの設計</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">サンプルの切り方・つなぎ方と、テンポとグルーヴの関係。</p><div class="chips"><span class="chip">本文 約3分</span><span class="chip m1">数式 少し</span><span class="chip listen">聴いてみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>クリックの出ない切り出しとフェードを作る</li><li>線形クロスフェードと等電力クロスフェードを使い分ける</li><li>「ずれ」の種類（一定・ランダム）を作り分ける</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#発音の開始点とファイルの切断点">発音の開始点とファイルの切断点</a></li><li><a href="#テンポとグルーヴは異なる変数">テンポとグルーヴは異なる変数</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">サンプルの切り方・つなぎ方と、テンポとグルーヴの関係。</p><div class="chips"><span class="chip">本文 約4分</span><span class="chip m1">数式 少し</span><span class="chip listen">聴いてみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>クリックの出ない切り出しとフェードを作る</li><li>線形クロスフェードと等電力クロスフェードを使い分ける</li><li>「ずれ」の種類（一定・ランダム）を作り分ける</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#発音の開始点とファイルの切断点">発音の開始点とファイルの切断点</a></li><li><a href="#テンポとグルーヴは異なる変数">テンポとグルーヴは異なる変数</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <h2 id="発音の開始点とファイルの切断点">発音の開始点とファイルの切断点</h2>
 <p>打音や短い声を録るとき、意図した発音の直前に短い余裕を残す。波形の立ち上がりから少し前の位置を切り出し、クリックが聞こえるなら数
 ms
 のフェードをつける。音の途中をループにする場合、端の振幅だけを一致させても傾きや音色の変化が不連続に聞こえる場合がある。前後を短く重ねるクロスフェードで、振幅の切替を連続に近づける。繰返しの周期が素材の基音と違えば、繰返しそのものに周期的な成分が生じる。</p>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>二つのクロスフェード。</strong> 位置
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>二つのクロスフェード。</strong> 位置
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><mrow><mo form="prefix" stretchy="true">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">u\in[0,1]</annotation></semantics></math>
 に対し、線形なら
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>A</mi></msub><mo>=</mo><mn>1</mn><mo>−</mo><mi>u</mi><mo>,</mo><msub><mi>g</mi><mi>B</mi></msub><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">g_A=1-u,g_B=u</annotation></semantics></math>
@@ -70,11 +70,20 @@ BPMの十六分音符は150 msなので、10 msはその
 <div class="callout listen"><p class="callout-kind">聴いてみよう</p><p><strong>録音の検査。</strong>
 《Rockit》や《Workinonit》で、ある打音がグリッドを確立し、別の音がその上を横切るように聞こえる位置を探す。波形で時間を測る場合は、ファイルのタイムコード、正確な発音の定義、テンポの推定方法を記録する。波形の頂点の時刻は知覚上の発音時刻と一致するとは限らない。
 <a href="https://www.youtube.com/watch?v=VuEDRe3tF7s">L31</a> · <a href="https://www.youtube.com/watch?v=ogwouE_Msd4">L21</a></p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>立ち上がりの少し前で切り、数ミリ秒のフェードをつける。</li><li>無関係な素材どうしは等電力、同じ素材どうしは線形が自然なことが多い。</li><li>100 BPM の16分音符は150 ms。10 ms のずれはその1/15。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>立ち上がりの少し前で切り、数ミリ秒のフェードをつける。</li><li>無関係な素材どうしは等電力、同じ素材どうしは線形が自然なことが多い。</li><li>100 BPM の16分音符は150 ms。10 ms のずれはその1/15。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>サンプルの速度と範囲（Sonic Pi）。</strong>
+同じ標本に対して再生速度を倍にした版と、読み出す区間を半分にした版を作る。長さが同じになっても音高とアタックが一致するとは限らない。どの原音時刻からどの速度で読んだかを添えて比較する。
+<a href="https://sonic-pi.net/tutorial-03.html">資料を開く</a></p></li>
+<li><p><strong>ピッチと速度の同時変更（Audacity）。</strong>
+自録した一音を複製し、一方の速度を二倍にする。処理後の長さと基本周波数を測り、半分と二倍という予測を検査する。拍に合わせて切り貼りする前に、キックの音高まで動く操作かを判定できる。
+<a href="https://manual.audacityteam.org/man/change_speed.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></p><p class="next-lead">録音・ミックス・書き出しで、音量と音質を「検算」する。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./synthesis-workshop.html">← 第33章　音色の時間設計</a></span><span><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

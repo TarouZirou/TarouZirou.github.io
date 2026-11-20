@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第33章　音色の時間設計。音高・スペクトル・包絡を別々に動かして、音色を時間で設計する。">
 <title>第33章　音色の時間設計｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html" aria-current="page">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第33章　音色の時間設計</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">音高・スペクトル・包絡を別々に動かして、音色を時間で設計する。</p><div class="chips"><span class="chip">本文 約5分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>倍音ごとに減衰の速さを変えた加算合成を作る</li><li>フィルタの開閉で明るさを動かす</li><li>位相累算器（オシレーターの中身）を理解する</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#音高スペクトル包絡を独立に操作する">音高、スペクトル、包絡を独立に操作する</a></li><li><a href="#フィルタの下に周波数の推移を置く">フィルタの下に周波数の推移を置く</a></li><li><a href="#位相累算器と周波数を読む">位相累算器と周波数を読む</a></li><li><a href="#実際の電子音を聴く">実際の電子音を聴く</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">音高・スペクトル・包絡を別々に動かして、音色を時間で設計する。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=synthesis-workshop">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>倍音ごとに減衰の速さを変えた加算合成を作る</li><li>フィルタの開閉で明るさを動かす</li><li>位相累算器（オシレーターの中身）を理解する</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#音高スペクトル包絡を独立に操作する">音高、スペクトル、包絡を独立に操作する</a></li><li><a href="#フィルタの下に周波数の推移を置く">フィルタの下に周波数の推移を置く</a></li><li><a href="#位相累算器と周波数を読む">位相累算器と周波数を読む</a></li><li><a href="#実際の電子音を聴く">実際の電子音を聴く</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <h2 id="音高スペクトル包絡を独立に操作する">音高、スペクトル、包絡を独立に操作する</h2>
 <p>オシレータに最初から好きな音を求めるのは難しい。①音高の周期、②周期内の波形、③発音から終わりまでの包絡、④鍵を押している間に変わるフィルタや変調、⑤空間を別々に作る。加算合成で倍音の振幅を固定すると音高と音色の静的関係は聴けるが、楽器の発音にある高域の早い減衰は失われる。第
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
@@ -104,11 +104,21 @@ s、第2版を
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>τ</mi><mi>k</mi></msub><mo>=</mo><mn>0.5</mn><mi>/</mi><msqrt><mi>k</mi></msqrt></mrow><annotation encoding="application/x-tex">\tau_k=0.5/\sqrt k</annotation></semantics></math>
 s
 とする。0.5秒の打音を作って同じ音量に揃える。両方の冒頭0.05秒と後半0.1秒の局所スペクトルを比べ、どの違いが設定から従うかを述べる。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>高い倍音ほど早く減衰させると、楽器らしい発音になる。</li><li>明るさを比べるときは、必ず音量をそろえる。</li><li>位相を途中でリセットしないことで、周波数を変えたときのノイズを防ぐ。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>高い倍音ほど早く減衰させると、楽器らしい発音になる。</li><li>明るさを比べるときは、必ず音量をそろえる。</li><li>位相を途中でリセットしないことで、周波数を変えたときのノイズを防ぐ。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>倍音係数から作る周期波（MDN）。</strong>
+係数配列から一つの波を作る例を読む。基本成分だけの版と、同じ基本成分に第三調波を足した版を作り、周波数や発音時間を固定して比較する。特に配列の添字
+0 と基本波の添字を区別する。 <a href="https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createPeriodicWave">資料を開く</a></p></li>
+<li><p><strong>目標値へ指数的に近づく制御（MDN）。</strong> 振幅を 1
+から 0
+へ近づける例を想定し、時定数が一つ経過しても振幅がまだ残ることを式から読む。リリースの制御値を変え、目標時刻にぴたりと着く直線の包絡と比較して音の切れ方を予測する。
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></p><p class="next-lead">サンプルの切り方・つなぎ方と、テンポとグルーヴの関係。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./production.html">← 第32章　合成から一曲を作る</a></span><span><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計 →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

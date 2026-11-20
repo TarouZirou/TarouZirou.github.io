@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第32章　合成から一曲を作る。4つの合成方式を聴き比べ、4小節の音源を完成させる。">
 <title>第32章　合成から一曲を作る｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html" aria-current="page">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第32章　合成から一曲を作る</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">4つの合成方式を聴き比べ、4小節の音源を完成させる。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m1">数式 少し</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>加算・減算・FM（位相変調）・サンプラーの違いを知る</li><li>ADSR包絡を設計する</li><li>4小節を作ってWAVに書き出し、ミックスを確かめる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#四つの合成法を同じ音高で聴く">四つの合成法を同じ音高で聴く</a></li><li><a href="#変調の側帯波を近似する">変調の側帯波を近似する</a></li><li><a href="#スタジオの三つの系譜を聴く">スタジオの三つの系譜を聴く</a></li><li><a href="#小節から音源を完成させる">4小節から音源を完成させる</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">4つの合成方式を聴き比べ、4小節の音源を完成させる。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m1">数式 少し</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>加算・減算・FM（位相変調）・サンプラーの違いを知る</li><li>ADSR包絡を設計する</li><li>4小節を作ってWAVに書き出し、ミックスを確かめる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#四つの合成法を同じ音高で聴く">四つの合成法を同じ音高で聴く</a></li><li><a href="#変調の側帯波を近似する">変調の側帯波を近似する</a></li><li><a href="#スタジオの三つの系譜を聴く">スタジオの三つの系譜を聴く</a></li><li><a href="#小節から音源を完成させる">4小節から音源を完成させる</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <h2 id="四つの合成法を同じ音高で聴く">四つの合成法を同じ音高で聴く</h2>
 <div class="table-wrap"><table>
 <colgroup>
@@ -90,7 +90,7 @@ B4、第4小節の最初で C5 に置き、解決を可聴化する。</li>
 <li>低音を正弦波寄り、上声を加算した倍音で作る。音を分けて聴いてから合成し、最高ピークを確認する。サンプルのノイズを短い打楽器に使う場合は小節頭の前後で位置を比較する。</li>
 <li>WAVに書き出し、端末の別のプレーヤーで再生する。低音が消えている場合は音量を上げ続ける前に、端末の低域再生能力と上声との関係を調べる。</li>
 </ol>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>ミックスとフィルタの模型。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>ミックスとフィルタの模型。</strong>
 ピークがフルスケールを越えると整数PCMではクリップしうる。個々が範囲内でも和が越えるため、合成した出力を確認する。音の明るさを下げる一次IIRの一例は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>x</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>+</mo><mi>a</mi><mi>y</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">y[n]=(1-a)x[n]+ay[n-1]</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>a</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;a&lt;1</annotation></semantics></math>。単位インパルスに対して
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><msup><mi>a</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">h[n]=(1-a)a^n</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n\ge0</annotation></semantics></math>）を漸化式から得る。各係数の和は1。DCを保つ理由である。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ω</mi><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">x[n]=e^{i\omega n}</annotation></semantics></math>
@@ -100,13 +100,24 @@ B4、第4小節の最初で C5 に置き、解決を可聴化する。</li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">(1-a)/(1+a)</annotation></semantics></math>
 となり、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 を増やすと高域が小さくなる。</p></div>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>録音と音源の使い分け。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>録音と音源の使い分け。</strong>
 MIDIは主に発音・停止・ベロシティなどのイベントの記述、WAVは実際の標本列を格納できる容器である。音色やミックスを保存したいときは音声を書き出す。自分で鳴らした録音や利用許可のある素材を使えば、他者の商用録音を配布せずにサンプリング技法を試せる。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>ADSR のうち Sustain だけは時間ではなく「レベル」。</li><li>FMの変調指数を上げると側帯波が増え、音が明るくなる。</li><li>各トラックが範囲内でも、合計はクリップしうる。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>ADSR のうち Sustain だけは時間ではなく「レベル」。</li><li>FMの変調指数を上げると側帯波が増え、音が明るくなる。</li><li>各トラックが範囲内でも、合計はクリップしうる。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>コンピューターによる変調合成（Music and
+Computers）。</strong>
+同じ二つの周波数を、振幅を動かす接続と周波数を動かす接続で比べる。出力スペクトルに現れる成分を予測してから例を調べる。変調の速さ、深さ、変調される量を制作メモで別の欄にする。
+<a href="https://sites.music.columbia.edu/cmc/MusicAndComputers/chapter4/04_05.php">資料を開く</a></p></li>
+<li><p><strong>シンセサイザーを選んで鳴らす（Sonic Pi）。</strong>
+Synths
+の節で同じ一音を複数のシンセに渡し、一小節の同一旋律へ置き換える。次に音高列を保持したまま一種類のパラメータだけを動かす。音色の交替そのものが形式上の境界になるか聴く。
+<a href="https://sonic-pi.net/tutorial-02.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></p><p class="next-lead">音高・スペクトル・包絡を別々に動かして、音色を時間で設計する。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./dsp.html">← 第31章　畳込み、フィルタ、時間周波数解析</a></span><span><a href="./synthesis-workshop.html">第33章　音色の時間設計 →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

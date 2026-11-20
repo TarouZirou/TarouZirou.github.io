@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第51章　二つのリズムが同じ回折像をつくる。違う二つのリズムが、同じスペクトル強度を持つことがある（ホモメトリー）。">
+<title>第51章　二つのリズムが同じ回折像をつくる｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第X部　リズム・対称性・予測</h2><ul><li><a href="./pulse-lattice.html">第49章　三つの手拍子を八つの椅子に座らせる</a></li><li><a href="./canons.html">第50章　休符を敷き詰めると一つの線ができる</a></li><li><a href="./phase-pairs.html" aria-current="page">第51章　二つのリズムが同じ回折像をつくる</a></li><li><a href="./tuning-lattice.html">第52章　鍵盤に折り畳まれた二次元の音</a></li><li><a href="./expectation.html">第53章　次の一音が来る前に何が計算できるか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第X部　リズム・対称性・予測</div><h1>第51章　二つのリズムが同じ回折像をつくる</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">違う二つのリズムが、同じスペクトル強度を持つことがある（ホモメトリー）。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m2">数式 多め</span><span class="chip listen">聴いてみよう ×1</span><a class="chip maplink" href="../map.html?focus=phase-pairs">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>巡回自己相関を数える</li><li>強度スペクトルと自己相関が同じ情報であることを示す</li><li>二点の統計で区別できない配置を、三点の統計で区別する</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#二点間の距離をすべて数える">二点間の距離をすべて数える</a></li><li><a href="#強度の図から消えるものを証明する">強度の図から消えるものを証明する</a></li><li><a href="#結晶和音ドラムの読み替え">結晶・和音・ドラムの読み替え</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
+<p>机の上を十二等分のパルスで叩く。0から数え、第1のリズムは0・1・4・6で、第2のリズムは0・1・3・7で手を鳴らす。第1では最後の打点から次の頭まで六単位、第2では五単位空く。耳には違いがある。ところが、同じ周期を何度も正確に反復する打点列のスペクトルを計算し、各周波数の<strong>強さだけ</strong>を記録する装置にかけると、二つはすべての周波数ビンで同じ答えになる。結晶に光やX線を当てて構造を推定する人にとっても、これは他人事ではない。</p>
+<h2 id="二点間の距離をすべて数える">二点間の距離をすべて数える</h2>
+<p>一周する十二の時刻を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>12</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb Z/12\mathbb Z</annotation></semantics></math>
+の元とする。ある配置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+に対し、時刻
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+に打点があれば
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x_n=1</annotation></semantics></math>、なければ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_n=0</annotation></semantics></math>
+と記す。配置を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+目盛りずらして重なる打点の個数を次式で定める。添字は一周で元に戻す。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>d</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mn>11</mn></munderover><msub><mi>x</mi><mi>n</mi></msub><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mi>d</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+R(d)=\sum_{n=0}^{11} x_n x_{n+d}.
+</annotation></semantics></math></p>
+<p>これが巡回自己相関である。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">R(0)=4</annotation></semantics></math>
+は打点自身との一致。たとえば第1の列で
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">d=3</annotation></semantics></math>
+の一致は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>→</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">1\to4</annotation></semantics></math>
+の一組、第2では
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>→</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">0\to3</annotation></semantics></math>
+の一組。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">d=6</annotation></semantics></math>
+の場合は、どちらの列でも半周離れた一対が双方向に数えられて2になる。差を向きなしで畳んだ距離1から6の個数は両方とも
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(1,1,1,1,1,1)</annotation></semantics></math>。したがって有向の列はどちらも
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">R=(4,1,1,1,1,1,2,1,1,1,1,1)</annotation></semantics></math>
+となる。他方、打点間の隣接間隔は第1が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>6</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(1,3,2,6)</annotation></semantics></math>、第2が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(1,2,4,5)</annotation></semantics></math>。巡回移動や逆順にしても、この二組は一致しない。違う配置が同じ差の統計を持つことを<strong>ホモメトリー</strong>という。</p>
+<h2 id="強度の図から消えるものを証明する">強度の図から消えるものを証明する</h2>
+<p>各周波数ビン
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+の複素振幅を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>k</mi></msub><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mn>11</mn></msubsup><msub><mi>x</mi><mi>n</mi></msub><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mi>k</mi><mi>n</mi><mi>/</mi><mn>12</mn></mrow></msup></mrow><annotation encoding="application/x-tex">X_k=\sum_{n=0}^{11}x_n e^{-2\pi i kn/12}</annotation></semantics></math>
+と置く。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+は虚数単位で、絶対値の二乗がここでいう強度である。実数列なので共役では指数の符号だけが替わる。積を展開し、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>m</mi><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">n-m=d</annotation></semantics></math>
+ごとに集めると、</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>X</mi><mi>k</mi></msub><mo form="postfix" stretchy="true">|</mo></mrow><mn>2</mn></msup><mo>=</mo><munder><mo>∑</mo><mrow><mi>n</mi><mo>,</mo><mi>m</mi></mrow></munder><msub><mi>x</mi><mi>n</mi></msub><msub><mi>x</mi><mi>m</mi></msub><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mi>k</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mo>−</mo><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mn>12</mn></mrow></msup><mo>=</mo><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mn>0</mn></mrow><mn>11</mn></munderover><mi>R</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>d</mi><mo form="postfix" stretchy="true">)</mo></mrow><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>π</mi><mi>i</mi><mi>k</mi><mi>d</mi><mi>/</mi><mn>12</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|X_k|^2
+=\sum_{n,m}x_nx_m e^{-2\pi i k(n-m)/12}
+=\sum_{d=0}^{11} R(d)e^{-2\pi i kd/12}.
+</annotation></semantics></math></p>
+<p>ゆえに
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>=</mo><msub><mi>R</mi><mi>B</mi></msub><mo>⇒</mo><msup><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>X</mi><mrow><mi>A</mi><mo>,</mo><mi>k</mi></mrow></msub><mo form="postfix" stretchy="true">|</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>X</mi><mrow><mi>B</mi><mo>,</mo><mi>k</mi></mrow></msub><mo form="postfix" stretchy="true">|</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R_A=R_B\Rightarrow |X_{A,k}|^2=|X_{B,k}|^2</annotation></semantics></math>。逆も離散フーリエ逆変換の一意性から成り立つ。<a href="./dsp.html">離散フーリエ変換の章</a>の直交性を使い、上式に
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mi>k</mi><mi>d</mi><mi>′</mi><mi>/</mi><mn>12</mn></mrow></msup><annotation encoding="application/x-tex">e^{2\pi i k d'/12}</annotation></semantics></math>
+を掛けて全
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+について足すと、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mi>d</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">d=d'</annotation></semantics></math>
+の項だけが12倍で残る。測定値が正確でも、逆算の結果は自己相関までである。位相を得る手がかりを加えるか、構造の候補に別の制約を置けば推定は変わる。</p>
+<figure>
+<img alt="上段の四角が十二等分上の発音位置。下段の折れ線は十二点DFTの強度で、両配置の値が全点で一致する。" src="../assets/atlas_pairs.webp"/>
+<figcaption aria-hidden="true">上段の四角が十二等分上の発音位置。下段の折れ線は十二点DFTの強度で、両配置の値が全点で一致する。</figcaption>
+</figure>
+<h2 id="結晶和音ドラムの読み替え">結晶・和音・ドラムの読み替え</h2>
+<p>等しい散乱の強さをもつ点が一次元で周期的に並ぶ理想モデルなら、遠方の散乱振幅は各点から来る波の位相付きの和に比例する。このモデルの回折強度にも上の計算が現れる。音の世界へ戻れば、十二の目盛りはひと回りの拍にも、オクターヴ内の半音にも読める。<a href="./modern.html">音高類集合</a>で同じ音程類ベクトルをもつ二組でも、鍵盤で弾けば配置の違いを聴ける。結晶・和音・打点が共有するのは「点の差を数える」演算である。強度に寄与する重みが場所によって違う測定には、無重みの結論をそのまま適用できない。</p>
+<div class="callout listen"><p class="callout-kind">聴いてみよう</p><p><strong>耳で検算する。</strong>
+伴奏のない本書の小品《十二枚の影》では、前半で第1の配置、後半で第2の配置を反復する。長い空白から冒頭の二連打へ帰るまでを指でなぞる。次に中央をまたいで同じパルスを維持する。収録は有限長で区切られているので、ファイル全体への一回のFFTでは両半分の切替も測ってしまう。上の定理の条件に合わせるには、各半分から整数個の周期を切り出すか、12個の打点位置そのものを入力する。<a href="../assets/twelve-shadows.ogg">試聴《十二枚の影》</a></p></div><audio aria-label="章の試聴音源" controls="" preload="none" src="../assets/twelve-shadows.ogg"></audio>
+<div class="callout question"><p class="callout-kind">問い</p><p>
+新たな測定を一つ足して二組を識別できるか。</p></div><details class="solution"><summary>解答を見る（先に自分で考えてから）</summary><p>
+各打点から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math>
+と
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">+4</annotation></semantics></math>
+の位置にも打点がある回数を数える。第1では開始点0が該当する。第2は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math>
+の相手をもつ開始点が0のみで、その
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">+4</annotation></semantics></math>
+には点がない。二点統計で一致しても、三点の並びに問えば差が出る。実験で同じグラフが得られたときは、対象が等しいという結論の手前に「そのグラフは何を捨てたか」という問いが残る。</p></details>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>{0,1,4,6} と {0,1,3,7} は、同じ自己相関と同じ強度スペクトルを持つ。</li><li>強度だけの測定では、位相の情報が失われる。</li><li>同じグラフが得られたら「そのグラフは何を捨てたか」を問う。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>C. Callender
+の配布資料には音程を数える図と、等しい距離の統計をもつ集合が載る。本章と有向差6の数え方を比較する。<a href="https://myweb.fsu.edu/ccallender/z-relationhandout.pdf">Crystallography
+and the Structure of Z-related Sets</a></li>
+<li>J. Mandereau
+ほかの論文は音楽におけるZ関係を、結晶学・群上の自己相関と同じ枠に載せる。冒頭の定義で順序付きの対を確認する。<a href="https://doi.org/10.1080/17459737.2011.608819">Z-relation and
+Homometry in Musical Distributions</a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./tuning-lattice.html">第52章　鍵盤に折り畳まれた二次元の音</a></p><p class="next-lead">五度と長三度の二方向の格子で音律を描き、連分数で良い平均律を探す。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./canons.html">← 第50章　休符を敷き詰めると一つの線ができる</a></span><span><a href="./tuning-lattice.html">第52章　鍵盤に折り畳まれた二次元の音 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

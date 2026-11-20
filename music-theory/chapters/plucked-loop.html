@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第58章　乱数の輪が弦に変わる。乱数の輪を平均し続けるだけで弦の音になる、カープラス＝ストロング合成。">
+<title>第58章　乱数の輪が弦に変わる｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第XI部　時間を書き、場所を奏でる</h2><ul><li><a href="./notation-media.html">第54章　紙に穴を一つ開けたら、それは一音か</a></li><li><a href="./tracing-time.html">第55章　紙に残った声に時計を返す</a></li><li><a href="./magnetic-tape.html">第56章　テープの長さで時間を書く</a></li><li><a href="./moving-image.html">第57章　フィルムに描いた縞はなぜ和音になるのか</a></li><li><a href="./plucked-loop.html" aria-current="page">第58章　乱数の輪が弦に変わる</a></li><li><a href="./feedback-music.html">第59章　振り子が描く楽譜</a></li><li><a href="./field-sound.html">第60章　夜明けの合唱を、誰の耳で数えたか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第XI部　時間を書き、場所を奏でる</div><h1>第58章　乱数の輪が弦に変わる</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">乱数の輪を平均し続けるだけで弦の音になる、カープラス＝ストロング合成。</p><div class="chips"><span class="chip">本文 約8分</span><span class="chip m2">数式 多め</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=plucked-loop">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>遅延と平均による撥弦合成のしくみを知る</li><li>一周の利得から、音高と倍音ごとの減衰を計算する</li><li>Python で鳴らし、パラメータを変えて比べる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#雑音をもう一周させる">雑音をもう一周させる</a></li><li><a href="#半標本だけ長い弦">半標本だけ長い弦</a></li><li><a href="#指が音色に書き込む情報">指が音色に書き込む情報</a></li><li><a href="#架空の楽器で本物の音楽の文法を交換する">架空の楽器で、本物の音楽の文法を交換する</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
+<h2 id="雑音をもう一周させる">雑音をもう一周させる</h2>
+<p>乱数をスピーカーに一度だけ送ると短い雑音が出る。同じ乱数の列を輪にして回すと、個々の値が不規則であっても輪の一周に対応する規則が生まれる。たとえば標本化周波数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mo>=</mo><mn>44100</mn></mrow><annotation encoding="application/x-tex">f_s=44100</annotation></semantics></math>
+Hz で200個の標本を毎回同じ順に再生すれば、波形は約4.54
+msで反復する。耳が一音としてまとめうる時の尺度に、計算機の配列の長さが現れた。ところが、このままでは何秒待っても音色が変わらない。弦をはじいてから指を離したとき、鋭い発音が残響に溶けていく過程をどう得るか。</p>
+<p>ケヴィン・カープラスとアレックス・ストロングが発表した撥弦合成の着想は、一周するたびに隣の値どうしを平均することだった。方眼紙の滑らかでない輪郭を何度もなぞり、毎回となりの点との中ほどを取ると、細かな凹凸が先に消える。時間標本に同じ操作をかければ、高域の振動が低域より早く消える。この二つの「滑らかさ」を、線形演算が空間と時間をまたいで結ぶ。<a href="./resonators.html">弦の固有振動</a>と<a href="./dsp.html">デジタルフィルタ</a>をここで一緒に使う。</p>
+<h2 id="半標本だけ長い弦">半標本だけ長い弦</h2>
+<p>遅延の長さを整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>、一周の損失を表す係数を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>g</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;g&lt;1</annotation></semantics></math>、第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+標本を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">y[n]</annotation></semantics></math>
+とする。時刻
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math>
+に短い励振を書き、それ以前をゼロとする。以後の更新式は</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><mfrac displaystyle="false"><mi>g</mi><mn>2</mn></mfrac><mo form="prefix" stretchy="false">{</mo><mi>y</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo>−</mo><mi>N</mi><mo form="postfix" stretchy="true">]</mo></mrow><mo>+</mo><mi>y</mi><mrow><mo form="prefix" stretchy="true">[</mo><mi>n</mi><mo>−</mo><mi>N</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">]</mo></mrow><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>n</mi><mo>≥</mo><mi>N</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">y[n]=\tfrac{g}{2}\{y[n-N]+y[n-N-1]\},\qquad n\ge N.</annotation></semantics></math></p>
+<p>一周で音のどの成分が消えるか。角周波数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>f</mi><mi>/</mi><msub><mi>f</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">\omega=2\pi f/f_s</annotation></semantics></math>
+の複素指数を入れると、遅延は複素数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>N</mi></mrow></msup><annotation encoding="application/x-tex">e^{-i\omega N}</annotation></semantics></math>
+の乗算に対応する。虚数単位を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+とすれば、一周の複素利得
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+は</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>ω</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>g</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>N</mi></mrow></msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi></mrow></msup><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mn>2</mn><mo>=</mo><mi>g</mi><mo>cos</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>ω</mi><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">L(\omega)=g e^{-i\omega N}(1+e^{-i\omega})/2
+=g\cos(\omega/2)e^{-i\omega(N+1/2)}.</annotation></semantics></math></p>
+<p>後の等号は括弧から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ω</mi><mi>/</mi><mn>2</mn></mrow></msup><annotation encoding="application/x-tex">e^{-i\omega/2}</annotation></semantics></math>
+をくくり出せば得られる。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>ω</mi><mo>&lt;</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">0\le\omega&lt;\pi</annotation></semantics></math>
+では余弦は正。位相が整数周戻る条件は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>2</mn><mi>π</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\omega(N+1/2)=2\pi k</annotation></semantics></math>。したがって第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+部分音の周波数の見積りは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><mi>k</mi><msub><mi>f</mi><mi>s</mi></msub><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">f_k=kf_s/(N+1/2)</annotation></semantics></math>
+となる。裸の配列で予測した
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>s</mi></msub><mi>/</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">f_s/N</annotation></semantics></math>
+より少し低い。位相から得たこの推定値と、有限長の減衰音のスペクトルで測るピークとの間には、減衰や測定窓に応じたずれがありうる。</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>200</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>g</mi><mo>=</mo><mn>0.996</mn></mrow><annotation encoding="application/x-tex">N=200,\ g=0.996</annotation></semantics></math>
+では基音の予測は219.95 Hz。第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+部分音の一周当たりの振幅比を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>=</mo><mi>g</mi><mo>cos</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>π</mi><mi>k</mi><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">a_k=g\cos(\pi k/(N+1/2))</annotation></semantics></math>
+と置く。振幅が初期値の千分の一になる時間を見積もるには、一周の時間
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><msub><mi>f</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">P=(N+1/2)/f_s</annotation></semantics></math>
+を用い、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>a</mi><mi>k</mi><mrow><mi>t</mi><mi>/</mi><mi>P</mi></mrow></msubsup><mo>=</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">a_k^{t/P}=10^{-3}</annotation></semantics></math>
+を解けばよい。第1部分音は約7.60秒、第10部分音は約1.92秒、第20部分音は約0.58秒でこの水準に達する。全体の音量を一律に下げてもこの違いは作れない。</p>
+<figure>
+<img alt="循環時の振幅比から推定した部分音別の減衰。各線の出発点を同じ高さにそろえた。" src="../assets/atlas_pluck.webp"/>
+<figcaption aria-hidden="true">循環時の振幅比から推定した部分音別の減衰。各線の出発点を同じ高さにそろえた。</figcaption>
+</figure>
+<h2 id="指が音色に書き込む情報">指が音色に書き込む情報</h2>
+<p>同じループに異なる励振を入れて比べよう。全標本が同じ値なら、初めから細かい凹凸がなく、広帯域の弦らしい発音は出にくい。実際の弦でも、弾く場所が励振するモードを選ぶ。理想弦の長さを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>ℓ</mo><annotation encoding="application/x-tex">\ell</annotation></semantics></math>、弾く位置を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+とする。第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+モードの形は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>sin</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>k</mi><mi>π</mi><mi>z</mi><mi>/</mi><mo>ℓ</mo><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\sin(k\pi z/\ell)</annotation></semantics></math>
+に比例するので、その節に局所的な力を加えても、そのモードにする仕事はゼロである。中央を弾けば偶数次が弱くなる、という予測はここから出る。弾く道具に幅があること、駒・胴の応答、収音位置の効果まで、短い乱数列が自動的に再現するわけではない。</p>
+<p>次の実験は Python と NumPy
+で実行できる。出力は1秒間の浮動小数標本である。負の添字が末尾を読むことを防ぐため、先頭に明示的にゼロを一つ置いた。</p>
+<pre class="python"><code>import numpy as np
+fs, N, g = 44100, 200, 0.996
+rng = np.random.default_rng(7)
+v = np.zeros(fs + 1)
+pluck = rng.uniform(-1, 1, N)
+v[1:N+1] = pluck - pluck.mean()
+for j in range(N + 1, len(v)):
+    v[j] = g * (v[j-N] + v[j-N-1]) / 2
+y = v[1:]</code></pre>
+<p>同じ乱数を使い、最初の0.1秒と最後の0.1秒を取り出す。同じ窓関数で振幅スペクトルを求め、区間ごとに基音の大きさで割ると、絶対音量の減少と倍音の相対的な減少を分けられる。次に
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+だけを小さくする。すべての成分の減衰に損失が加わる。元の乱数を替えれば初期スペクトル自体が変わるので、条件の比較には同じ種を維持する。</p>
+<h2 id="架空の楽器で本物の音楽の文法を交換する">架空の楽器で、本物の音楽の文法を交換する</h2>
+<p>デイヴィッド・ジャフィ《Silicon Valley
+Breakdown》（1982）の素材は合成された撥弦音である。作曲者は原版を四チャンネルとし、冒頭でブルーグラスと半音階的な素材を対置した。まず、規則的な刻みが聞き取りやすい箇所を探す。次に、その規則性が崩れても撥弦らしさが続くか、対照的な声部にカントリーを思わせる和声が入り込むかを聴く。同じ物理モデルで作った音に異なる演奏慣習を担わせた点が、アルゴリズムの音色見本を超える。作品で用いられた合成はジャフィとジュリアス・スミスらによる拡張を含む。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>制作課題と解答例。</strong> 二声を同じ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+で発音させ、一方だけ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>199</mn></mrow><annotation encoding="application/x-tex">N=199</annotation></semantics></math>
+に替える。新しい基音は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>44100</mn><mi>/</mi><mn>199.5</mn><mo>≈</mo><mn>221.05</mn></mrow><annotation encoding="application/x-tex">44100/199.5\approx221.05</annotation></semantics></math>
+Hz。二声の基音差は約1.10
+Hzで、長く重なる部分では強さが毎秒約1回揺れると予測できる。うなりを明瞭にするなら基音が強く立つ励振を選び、両声を近い音量にする。どちらかの振幅が先に消えれば揺れも弱まる。次は同じ二音を交互に弾く。同時発音のうなりが途切れ、同じ周波数差が短い旋律の音程として働く。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>基音はおよそ fs ÷ (N + 1/2)。</li><li>高い倍音ほど一周ごとに大きく減り、早く消える。</li><li>条件を比べるときは、乱数の種をそろえる。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>原論文。漸化式からチップ上の実装までを追える。表記する遅延を決めてから本章の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+と照合する。<a href="https://users.soe.ucsc.edu/~karplus/papers/digitar.pdf">Karplus
+&amp; Strong, “Digital Synthesis of Plucked-String and Drum
+Timbres”</a></li>
+<li>作曲者による作品解説、録音、制作についての映像。音色と様式の変化を別の軸に書き取る。<a href="https://www.davidajaffe.com/music/silicon-valley-breakdown">David
+A. Jaffe, <em>Silicon Valley Breakdown</em></a></li>
+<li>平均器の位相遅延を別の図と導出で確認する。<a href="https://theory.stanford.edu/~blynn/sound/karplusstrong.html">Ben
+Lynn, <em>The Karplus–Strong Algorithm</em></a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./feedback-music.html">第59章　振り子が描く楽譜</a></p><p class="next-lead">ライヒ《Pendulum Music》を、振り子とフィードバックという二つの時計で計算する。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./moving-image.html">← 第57章　フィルムに描いた縞はなぜ和音になるのか</a></span><span><a href="./feedback-music.html">第59章　振り子が描く楽譜 →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

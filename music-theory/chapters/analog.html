@@ -3,17 +3,17 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第38章　アナログ電子楽器を組む。TLC555 と乾電池で、つまみで音程が変わる電子楽器を作る。">
 <title>第38章　アナログ電子楽器を組む｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VIII部　電子楽器と総合制作</h2><ul><li><a href="./analog.html" aria-current="page">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html">第42章　一曲を三つの完成形にする</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VIII部　電子楽器と総合制作</div><h1>第38章　アナログ電子楽器を組む</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">TLC555 と乾電池で、つまみで音程が変わる電子楽器を作る。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×2</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>部品をそろえ、ブレッドボードに配線する</li><li>RC回路の充放電から、発振周波数の式を導く</li><li>鳴らないときの確認手順を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#製作1-tlc555-の連続可変ピエゾ発振器">製作1　TLC555
-の連続可変ピエゾ発振器</a></li><li><a href="#音の高さはどの式で決まるか">音の高さはどの式で決まるか</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">TLC555 と乾電池で、つまみで音程が変わる電子楽器を作る。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×2</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>部品をそろえ、ブレッドボードに配線する</li><li>RC回路の充放電から、発振周波数の式を導く</li><li>鳴らないときの確認手順を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#製作1-tlc555-の連続可変ピエゾ発振器">製作1　TLC555
+の連続可変ピエゾ発振器</a></li><li><a href="#音の高さはどの式で決まるか">音の高さはどの式で決まるか</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <h2 id="製作1-tlc555-の連続可変ピエゾ発振器">製作1　TLC555
 の連続可変ピエゾ発振器</h2>
 <p>つまみで発振周波数を連続的に変える単音楽器を作る。電源は単3乾電池3本の電池ボックス（公称4.5
 V）。配線中は電池ボックスを外す。発音体には<strong>受動の圧電サウンダ</strong>を使う。発振回路を内蔵したアクティブブザーは、外部から与える周期をそのまま音高へ移す部品としては適さない。圧電素子は共振域から離れると弱く鳴る。直接駆動する低インピーダンスのスピーカーやイヤホンはこの配線の負荷として想定していない。</p>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>部品。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>部品。</strong>
 TLC555CP（DIP-8）、ブレッドボード、単3電池3本とボックス、受動圧電サウンダ、B100kの線形可変抵抗、10
 kΩ抵抗2本、2.2 kΩ抵抗1本、100 nF コンデンサ2個、10 nF コンデンサ1個、10
 µF コンデンサ1個、配線材。100
@@ -48,11 +48,11 @@ nFのタイミング用と電源用を区別して配置する。ICパッケー�
 <td style="text-align: left;">節点 Y</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">Ω</mi></mrow></mrow><annotation encoding="application/x-tex">R_A=10\ \mathrm{k\Omega}</annotation></semantics></math></td>
+<td style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mi mathvariant="normal">k</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_A=10\ \mathrm{k}\Omega</annotation></semantics></math></td>
 <td style="text-align: left;">VDD–Y</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>B</mi></msub><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">Ω</mi></mrow><mo>+</mo><msub><mi>R</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">R_B=10\ \mathrm{k\Omega}+R_{\mathrm{pot}}</annotation></semantics></math></td>
+<td style="text-align: left;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>B</mi></msub><mo>=</mo><mn>10</mn><mspace width="0.222em"></mspace><mi mathvariant="normal">k</mi><mi>Ω</mi><mo>+</mo><msub><mi>R</mi><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">R_B=10\ \mathrm{k}\Omega+R_{\mathrm{pot}}</annotation></semantics></math></td>
 <td style="text-align: left;">Y–X。可変抵抗の摺動端子を隣の外端子の一方と結び、この組と反対側の外端子を使う</td>
 </tr>
 <tr class="odd">
@@ -143,11 +143,21 @@ X と Y を接続する。③抵抗レンジで X–Y
 つまみで高音から低音へ滑らせ、同じ方向に4回弾く。停止、速度、反転点を変えてリズムを作る。キャロリーナ・アイクによるドビュッシー《月の光》のテルミン編曲では、離散鍵盤を介さずに接近する音高と、発音の輪郭を聴く。聴取対象の連続的制御に共通点があり、テルミンの容量検出と本作の抵抗制御では回路原理が異なる。
 <a href="https://www.metmuseum.org/art/collection/search/739621">Metropolitan
 Museum S21</a> · <a href="https://www.youtube.com/watch?v=cdIPRAHJLQ0">録音 L22</a></p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>配線中は電池を外す。発音体は受動の圧電サウンダを使う。</li><li>この回路の音域は約63〜480 Hz。</li><li>つまみの回転と音高は、等間隔の半音にはならない。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>配線中は電池を外す。発音体は受動の圧電サウンダを使う。</li><li>この回路の音域は約63〜480 Hz。</li><li>つまみの回転と音高は、等間隔の半音にはならない。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>555 方形波発振器のシミュレーション（Paul
+Falstad）。</strong>
+タイミング用コンデンサの電圧と出力の変化を同時に追う。出力の片側の状態が続いている間にコンデンサが充電中か放電中かを判定し、二つの区間の長さを足して一周期を読む。
+<a href="https://falstad.com/circuit/e-555square.html">資料を開く</a></p></li>
+<li><p><strong>TLC555 のデータシート（Texas Instruments）。</strong>
+非安定動作の回路図で、充電時と放電時に電流が通る抵抗をなぞる。一方の経路だけが二抵抗を含むことから、高レベル期間と低レベル期間が一般には等しくならない理由を式の前に説明できる。
+<a href="https://www.ti.com/lit/ds/symlink/tlc555.pdf">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る</a></p><p class="next-lead">Raspberry Pi Pico で、ボタンとつまみの8音鍵盤を作る。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./lab-practice.html">← 第37章　パソコンで再現できる分析の手順</a></span><span><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

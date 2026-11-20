@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第53章　次の一音が来る前に何が計算できるか。次の音の「予測しにくさ」と「意外さ」を、情報量（bit）で測る。">
+<title>第53章　次の一音が来る前に何が計算できるか｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第X部　リズム・対称性・予測</h2><ul><li><a href="./pulse-lattice.html">第49章　三つの手拍子を八つの椅子に座らせる</a></li><li><a href="./canons.html">第50章　休符を敷き詰めると一つの線ができる</a></li><li><a href="./phase-pairs.html">第51章　二つのリズムが同じ回折像をつくる</a></li><li><a href="./tuning-lattice.html">第52章　鍵盤に折り畳まれた二次元の音</a></li><li><a href="./expectation.html" aria-current="page">第53章　次の一音が来る前に何が計算できるか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第X部　リズム・対称性・予測</div><h1>第53章　次の一音が来る前に何が計算できるか</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">次の音の「予測しにくさ」と「意外さ」を、情報量（bit）で測る。</p><div class="chips"><span class="chip">本文 約8分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×2</span><a class="chip maplink" href="../map.html?focus=expectation">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>自己情報量とエントロピーを定義する</li><li>二択モデルで、予測と驚きを計算する</li><li>ハイドン《驚愕》で、モデルが何を見落とすかを確かめる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#終止音を伏せた譜面">終止音を伏せた譜面</a></li><li><a href="#掛け算を足し算に変える">掛け算を足し算に変える</a></li><li><a href="#二音の動機の実験台">二音の動機の実験台</a></li><li><a href="#ハイドンで模型を失敗させる">ハイドンで模型を失敗させる</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<h2 id="終止音を伏せた譜面">終止音を伏せた譜面</h2>
+<p>二つの小節を口ずさみ、最後の音の直前で止める。誰かが続きを歌っても、楽譜と違う音には意味がある。その瞬間までの材料から、どんな続きがありそうに聞こえたかを示すからだ。予測には「どれが来るかまだ絞れない」状態と、「予想が定まっていたのに別の音が来た」出来事がある。この差を数で書くには、実際に鳴った一音以外に、鳴りえた一群の候補も記録する必要がある。</p>
+<p>直前までの文脈を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>、選択肢を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>、規格化された予測確率を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>∣</mo><mi>c</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(x\mid c)</annotation></semantics></math>
+とする。以下の計算では、文脈と事象の符号化を明記する。音名を選ぶ問題と、「上行・下行のいずれか」を選ぶ問題では選択肢の数も異なる。同じ曲について両方を計算できる。</p>
+<h2 id="掛け算を足し算に変える">掛け算を足し算に変える</h2>
+<p>独立な二つの出来事の確率は掛け算で結ばれる。独立な出来事二つを言い当てたときの情報の量を足せる尺度にしたい。確実な出来事なら0、確率
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>
+の出来事なら1とする。正の確率
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+をもつ一事象の自己情報量を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>p</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>−</mi><msub><mo>log</mo><mn>2</mn></msub><mi>p</mi></mrow><annotation encoding="application/x-tex">I(p)=-\log_2 p</annotation></semantics></math>
+と定義すれば、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">I(1)=0</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">I(1/2)=1</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>p</mi><mi>q</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>I</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>p</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>I</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>q</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">I(pq)=I(p)+I(q)</annotation></semantics></math>
+が同時に成立する。単位は bit である。確率
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1/8</annotation></semantics></math>
+の着地は3
+bitであり、8候補を等確率として二分探索で指定するときの三つの二択に対応する。</p>
+<p>次の音を観測する前に、自己情報量の期待値も計算できる。候補の集合を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math>
+として、文脈を固定した分布のエントロピーは</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>−</mi><munder><mo>∑</mo><mrow><mi>x</mi><mo>∈</mo><mi>𝒜</mi></mrow></munder><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>∣</mo><mi>c</mi><mo form="postfix" stretchy="true">)</mo></mrow><msub><mo>log</mo><mn>2</mn></msub><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>∣</mo><mi>c</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">H(c)=-\sum_{x\in\mathcal A}p(x\mid c)\log_2 p(x\mid c).</annotation></semantics></math></p>
+<p>確率ゼロの項の寄与は極限によって0と置く。予測でゼロを与えた事象が実際に起きれば、そのモデルによる当該事象の自己情報量は正の無限大になる。観測例が少ないのに未出の音を不可能とする模型には、この破綻が起きる。</p>
+<figure>
+<img alt="上行だけを繰り返し観測する二択モデル。上行の自己情報量と、聴く前に計算する平均情報量は下がり、まだ起きていない下行が来たときの自己情報量は上がる。" src="../assets/atlas_predict.webp"/>
+<figcaption aria-hidden="true">上行だけを繰り返し観測する二択モデル。上行の自己情報量と、聴く前に計算する平均情報量は下がり、まだ起きていない下行が来たときの自己情報量は上がる。</figcaption>
+</figure>
+<h2 id="二音の動機の実験台">二音の動機の実験台</h2>
+<p>二音からなる短い動機の末尾を、最初の音からの上行U、下行Dの二通りに限定する。同音は使わない。Uを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+回、Dを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+回観測したとき、双方の回数に予備の1を足し、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>U</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mo>+</mo><mi>d</mi><mo>+</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(U)=(u+1)/(u+d+2)</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>D</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>d</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mo>+</mo><mi>d</mi><mo>+</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(D)=(d+1)/(u+d+2)</annotation></semantics></math>
+と見積もる。図は直前までに上行のみを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+回観測した場合である。この模型では順序を入れ替えても確率は変わらない。そこで「上行の直後だけ下行しやすい」という系列規則は、学習回数をいくら増やしても捉えられない。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>検算。</strong>
+上行が6回続いたあと、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>U</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>7</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">p(U)=7/8</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>D</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">p(D)=1/8</annotation></semantics></math>。次の二音が下行すれば3
+bit、上行なら約0.193 bit。聴く前のエントロピーは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>7</mn><mi>/</mi><mn>8</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>⋅</mo><mn>0.193</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mi>/</mi><mn>8</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>⋅</mo><mn>3</mn><mo>≃</mo><mn>0.544</mn></mrow><annotation encoding="application/x-tex">(7/8)\cdot0.193+(1/8)\cdot3\simeq0.544</annotation></semantics></math>
+bit。同じ予測分布から生じた値なのに、鳴る前は小さく、実際の結果については大きくなりうる。</p></div>
+<div class="theorem"><p><strong>命題（旋律全体の自己情報量）。</strong> 列
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>T</mi></msub></mrow><annotation encoding="application/x-tex">x_1,\ldots,x_T</annotation></semantics></math>
+の同時確率が正であるとき、各時点で実際に来た選択肢の自己情報量の合計は、列全体の自己情報量に等しい。</p></div>
+<details class="proof"><summary>証明を読む（読まなくても先へ進めます）</summary><p> 最初の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+個の列を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mn>1</mn><mo>:</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">x_{1:t}</annotation></semantics></math>
+とし、空列の確率を1と置く。条件付き確率の定義から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>∣</mo><msub><mi>x</mi><mrow><mn>1</mn><mo>:</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mrow><mn>1</mn><mo>:</mo><mi>t</mi></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mrow><mn>1</mn><mo>:</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(x_t\mid x_{1:t-1})=p(x_{1:t})/p(x_{1:t-1})</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t=1</annotation></semantics></math>
+から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+まで掛けると分子と次の分母が消え、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mrow><mn>1</mn><mo>:</mo><mi>T</mi></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(x_{1:T})</annotation></semantics></math>
+が残る。両辺に負の底2対数を施せば、積は各時点の負の対数の和になる。独立性は仮定していない。</p></details>
+<h2 id="ハイドンで模型を失敗させる">ハイドンで模型を失敗させる</h2>
+<p>《交響曲第94番》第2楽章冒頭を、小さな再生音量で一度通して聴く。静かな主題が繰り返されたあとに、合奏の強い和音が突き出す。上行と下行だけの分析器にこの楽章を与え、同じ音高のまま強弱だけを編集しても、その出力は同じになる。音楽上の驚きを説明しようとするなら、模型が入力から何を捨てたかが問題になる。</p>
+<p>実験には自作の二小節でもよい。四つの二音動機を「C–D、D–E、E–F、F–G」とし、最後に強いアクセントが来る版と、全体が弱い版を用意する。続いて最後だけ「F–E」にした二版を加える。音色とテンポを固定し、計四条件をランダムな順で聴く。各版につき「次の音高を予測できたか」「強弱の変化を予測できたか」を別の欄に記す。以前聴いた楽曲なら、譜面の知識で予告できる驚きと、生理的な反応が共存しても不思議はない。連続的な感じ方を記録する場合は、指で評価を動かす反応時間も測定系に含まれる。</p>
+<p>二度目は和声付けを替える。F–E
+はハ長調でIV上の根音からIの第3音へ動く配置にも、同じ和音の上で上方の刺繍音がEへ戻る配置にもできる。同じ方向記号Dでも、どの文脈を観測させるかでモデルが比較する音楽的事象が変わる。<a href="./melody.html">旋律の書法</a>で扱った句末を一つ選び、音名、音程方向、伴奏の和音、拍内位置のどれを与えたとき自分の予測と近くなるか試してみよう。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>課題と解答。</strong> 毎回Uと答える模型と、UとDに各
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math>
+を与える模型を、未使用の列 U・U・D・U
+で評価する。列の生起確率も一音当たりの実現情報量も求めよ。前者が各回
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>U</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p(U)=1</annotation></semantics></math>
+と宣言するなら、Dで確率の積がゼロとなり、平均情報量は無限大である。後者が各回を独立に予測すれば
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>−</mi><mn>4</mn></mrow></msup><mo>=</mo><mn>1</mn><mi>/</mi><mn>16</mn></mrow><annotation encoding="application/x-tex">2^{-4}=1/16</annotation></semantics></math>、全列4
+bit、一音当たり1
+bit。正解率だけを比べると、前者は4回中3回を的中させた。確率まで宣言する予報では、自信を置きすぎた失敗が違う姿を見せる。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>確率 1/8 の出来事の情報量は 3 bit。</li><li>聴く前の不確かさ（エントロピー）と、実際の驚き（自己情報量）は別の量。</li><li>確率ゼロと予測したことが起きると、驚きは無限大になる。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>対数の底と情報の単位、情報源に統計的な規則があるときの記述量を原著に戻って読む。<a href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">Shannon『A
+Mathematical Theory of Communication』PDF</a></li>
+<li>音高の続きを予測するモデルと聴取者の判断を比較した実験。読者の小さな二択模型を拡張するとき、学習用資料と未聴旋律をどう分離するかに注目する。<a href="https://www.marcus-pearce.com/assets/papers/PearceEtAlNeuroImage2010.pdf">Pearce
+ほか、確率的学習と旋律期待の原著 PDF</a></li>
+<li>事前の不確実性と、実際の音が来たときの情報量を分けて実験した研究。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4171990/">Hansen・Pearce「Predictive
+uncertainty」全文</a></li>
+<li>反復される静かな旋律の音高と、合奏が割り込む強弱の推移を二巡に分けて聴く。<a href="https://www.youtube.com/watch?v=14G_PDZWXVE">ハイドン《交響曲第94番》第2楽章、レーベル配信音源</a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><span class="next-part">第XI部　時間を書き、場所を奏でるへ</span><p class="next-title"><a href="./notation-media.html">第54章　紙に穴を一つ開けたら、それは一音か</a></p><p class="next-lead">ピアノロールの穴から演奏を復元するとき、どこに解釈が入るか。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./tuning-lattice.html">← 第52章　鍵盤に折り畳まれた二次元の音</a></span><span><a href="./notation-media.html">第54章　紙に穴を一つ開けたら、それは一音か →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第49章　三つの手拍子を八つの椅子に座らせる。8拍に3打をできるだけ均等に置く。ユークリッド・リズムの数学。">
+<title>第49章　三つの手拍子を八つの椅子に座らせる｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第X部　リズム・対称性・予測</h2><ul><li><a href="./pulse-lattice.html" aria-current="page">第49章　三つの手拍子を八つの椅子に座らせる</a></li><li><a href="./canons.html">第50章　休符を敷き詰めると一つの線ができる</a></li><li><a href="./phase-pairs.html">第51章　二つのリズムが同じ回折像をつくる</a></li><li><a href="./tuning-lattice.html">第52章　鍵盤に折り畳まれた二次元の音</a></li><li><a href="./expectation.html">第53章　次の一音が来る前に何が計算できるか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第X部　リズム・対称性・予測</div><h1>第49章　三つの手拍子を八つの椅子に座らせる</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">8拍に3打をできるだけ均等に置く。ユークリッド・リズムの数学。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=pulse-lattice">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>「まんべんなく」を均衡性として定義する</li><li>整数部の差の式で、均等な打点列を作る</li><li>互除法とリズムの関係を知り、録音で確かめる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#まんべんなくを測る">「まんべんなく」を測る</a></li><li><a href="#互除法が現れる場所">互除法が現れる場所</a></li><li><a href="#録音と手拍子の距離">録音と手拍子の距離</a></li><li><a href="#演習と解答">演習と解答</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<p>八つ数えるあいだに三回だけ手を打つ。一発目を頭に置くなら、残り二発はどこがよいだろう。三等分したくても、手を打てる場所は八つしかない。三つの間隔を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">2,2,4</annotation></semantics></math>
+とすれば演奏できるが、最後の間がずいぶん空く。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3,3,2</annotation></semantics></math>
+と打って繰り返すと、長短の差を一目盛りに収められる。ここで起きたことは、傾いた直線を四角いピクセルからなる画面に描くときにも起きる。</p>
+<h2 id="まんべんなくを測る">「まんべんなく」を測る</h2>
+<p>一周を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+等分し、打点を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+個置く。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>k</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">0&lt;k&lt;n</annotation></semantics></math>
+とし、位置は整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+で数える。時計のように
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+と
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+は同じ位置である。素朴には「隣り合う打点の間隔が二種類で、差が一」と決めたくなる。しかし十六目盛り六打で、間隔を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3,3,3,3,2,2</annotation></semantics></math>
+と置くと、短い間隔が終わりに偏る。窓を違う位置から開けても、同じ長さなら中に見える打点の個数が高々一しか違わない、という強い条件を採ろう。これを<strong>均衡性</strong>と呼ぶ。たとえば先の反例で位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>9</mn><mo>,</mo><mn>12</mn><mo>,</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">0,3,6,9,12,14</annotation></semantics></math>
+に打つと、五目盛りの窓
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math>〜<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>8</mn><annotation encoding="application/x-tex">8</annotation></semantics></math>
+には一打、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>12</mn><annotation encoding="application/x-tex">12</annotation></semantics></math>〜<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+には三打が入る。</p>
+<p>小数の余りを捨てずに次の目盛りへ運ぶには、それまでに何打ぶん蓄積したかを数えればよい。理想の累積量は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mi>k</mi><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">jk/n</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⌊</mo><mi>x</mi><mo form="postfix" stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor x\rfloor</annotation></semantics></math>
+を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+以下の最大の整数とし、次の差が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+の時刻に発音する。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>j</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">⌊</mo><mfrac><mrow><mi>j</mi><mi>k</mi></mrow><mi>n</mi></mfrac><mo form="postfix" stretchy="true">⌋</mo></mrow><mo>−</mo><mrow><mo form="prefix" stretchy="true">⌊</mo><mfrac><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>k</mi></mrow><mi>n</mi></mfrac><mo form="postfix" stretchy="true">⌋</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+u_j=\left\lfloor\frac{jk}{n}\right\rfloor-
+    \left\lfloor\frac{(j-1)k}{n}\right\rfloor .
+</annotation></semantics></math></p>
+<div class="theorem"><p><strong>命題。</strong> この列は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+周期で、任意の連続
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+目盛りに入る打数は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⌊</mo><mi>m</mi><mi>k</mi><mi>/</mi><mi>n</mi><mo form="postfix" stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor mk/n\rfloor</annotation></semantics></math>
+または
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⌈</mo><mi>m</mi><mi>k</mi><mi>/</mi><mi>n</mi><mo form="postfix" stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">\lceil mk/n\rceil</annotation></semantics></math>
+である。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⌈</mo><mi>x</mi><mo form="postfix" stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">\lceil x\rceil</annotation></semantics></math>
+は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+以上の最小の整数を表す。</p></div>
+<details class="proof"><summary>証明を読む（読まなくても先へ進めます）</summary><p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+増やすと両方の整数部に同じ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+が足される。隣り合う累積量の差は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>k</mi><mi>/</mi><mi>n</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0&lt;k/n&lt;1</annotation></semantics></math>
+なので
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>j</mi></msub><annotation encoding="application/x-tex">u_j</annotation></semantics></math>
+は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+か
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+である。時刻
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a+1</annotation></semantics></math>
+から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">a+m</annotation></semantics></math>
+まで足すと中間項が相殺し、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⌊</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>+</mo><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>k</mi><mi>/</mi><mi>n</mi><mo form="postfix" stretchy="false">⌋</mo><mo>−</mo><mo form="prefix" stretchy="false">⌊</mo><mi>a</mi><mi>k</mi><mi>/</mi><mi>n</mi><mo form="postfix" stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor(a+m)k/n\rfloor-\lfloor ak/n\rfloor</annotation></semantics></math>
+が残る。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>k</mi><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">ak/n</annotation></semantics></math>
+の小数部分を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+とおけば、これは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⌊</mo><mi>r</mi><mo>+</mo><mi>m</mi><mi>k</mi><mi>/</mi><mi>n</mi><mo form="postfix" stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor r+mk/n\rfloor</annotation></semantics></math>
+であり、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\le r&lt;1</annotation></semantics></math>。したがって結論の二値に限られ、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m=n</annotation></semantics></math>
+ならちょうど
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+打である。</p></details>
+<figure>
+<img alt="左の円は一周八目盛りで三打を置く例。右の階段が一段上がる時刻は三、六、八。八を次の周期の零とみなせば左の三点に一致する。" src="../assets/atlas_pulse.webp"/>
+<figcaption aria-hidden="true">左の円は一周八目盛りで三打を置く例。右の階段が一段上がる時刻は三、六、八。八を次の周期の零とみなせば左の三点に一致する。</figcaption>
+</figure>
+<h2 id="互除法が現れる場所">互除法が現れる場所</h2>
+<p>八を三で割って商二、余り二を得る。各間隔に二目盛りを入れたうえで、余った二目盛りを別々の間隔へ一つずつ渡す。十三目盛り五打なら、まず
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>13</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>5</mn><mo>+</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">13=2\cdot5+3</annotation></semantics></math>
+だから五つの間のうち三つを長くする。ではその三つをどこに置くか。同じ問いが今度は五席三個となり、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>=</mo><mn>1</mn><mo>⋅</mo><mn>3</mn><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">5=1\cdot3+2</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>=</mo><mn>1</mn><mo>⋅</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3=1\cdot2+1</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2=2\cdot1</annotation></semantics></math>
+と縮む。これがユークリッド互除法の余りの列である。上の整数部差は各段を展開せずに最終配列を指定する方法になっている。実際、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+個目の累積整数に初めて届く目盛りは
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⌈</mo><mi>r</mi><mi>n</mi><mi>/</mi><mi>k</mi><mo form="postfix" stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">\lceil rn/k\rceil</annotation></semantics></math>
+なので、十三と五では零から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">0,3,6,8,11</annotation></semantics></math>
+に打つ。隣の間隔は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3,3,2,3,2</annotation></semantics></math>。この書き出し方では一周の切れ目も指定してある。異なる手順で求めた列を比較するときは、円を回す自由があるかを先に決めよう。</p>
+<h2 id="録音と手拍子の距離">録音と手拍子の距離</h2>
+<p>《Hound
+Dog》のエルヴィス・プレスリーによる1956年録音を聴く。ゴッドフリード・トゥーサンは低音の型を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>+</mo><mn>3</mn><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3+3+2</annotation></semantics></math>
+の実例に挙げた。歌に合わせて手を打つ前に四拍を足で刻み、八分音符に分け、紙の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">0,3,6</annotation></semantics></math>
+を指でなぞる。次に低音の一巡だけを追う。どの音を骨格として選べば三打に収まるか、どこで聞き取りがあいまいかも記す。録音には歌の子音の立ち上がりやドラムの細かい打撃まである。一つの整数列にどの音を写したかが、分析結果の一部である。キューバのトレシージョに対応する骨格と音楽家が実際に使った発想法は、それぞれ別の史料から調べる問いになる。</p>
+<p>本書の試聴《三つの椅子》では短い低音が八目盛りを刻み、高音が一周に三回鳴る。五周目から中音を位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">0,4</annotation></semantics></math>
+に足した。高音の発音時刻を動かさずに、目盛り
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>
+の一打が次の中音を呼び込むように聞こえるか試そう。次に冒頭へ戻り、頭拍を意図的に三目盛りずらして数え直す。図形の回転、聞き手の頭拍、録音に刻まれた打点は独立に操作できる。<a href="../assets/atlas-pulse.ogg">本書の試聴《三つの椅子》</a></p><audio aria-label="章の試聴音源" controls="" preload="none" src="../assets/atlas-pulse.ogg"></audio>
+<h2 id="演習と解答">演習と解答</h2>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>演習。</strong>
+十六目盛り六打の整数部差を求める。それを各周で異なる六音の旋律にしても、八目盛りで同じものが繰り返すといえるだろうか。</p></div>
+<details class="solution"><summary>解答を見る（先に自分で考えてから）</summary><p><strong>解答。</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mi>/</mi><mn>16</mn><mo>=</mo><mn>3</mn><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">6/16=3/8</annotation></semantics></math>
+だから式は八目盛り三打と同じで、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">0,3,6,8,11,14</annotation></semantics></math>
+に鳴る。より短い周期
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+があるなら、一周期の打数は平均密度から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>p</mi><mi>/</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">3p/8</annotation></semantics></math>
+で整数、従って
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>∣</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">8\mid p</annotation></semantics></math>。発音の有無だけを採った列の最小周期は八である。一方、六打に順にド・レ・ミ・ファ・ソ・ラを与えて繰り返すと、八目盛り先の最初の音はファになる。数学的にどの特徴の周期を測ったかを決めることが、耳で発見した周期の説明を変える。<a href="./groove-metre.html">拍節の章</a>で扱う強弱の層も、この方法で加えられる。</p></details>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>8目盛りに3打なら 3+3+2（位置 0・3・6）。</li><li>床関数の差の式で、どの区間をとっても打数の差が1以内の列が作れる。</li><li>録音のどの音を整数列に写したかも、分析結果の一部。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>トゥーサンの原論文。図1で三打の配置を時計回りにたどり、八目盛りの他の型と比べる。<a href="https://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf">Godfried
+Toussaint, The Euclidean Algorithm Generates Traditional Musical
+Rhythms</a></li>
+<li>1956年7月2日の録音情報。低音の演奏者と使われた楽器群を確認してから音源に戻る。<a href="https://www.elvisthemusic.com/track/hound-dog-7/">エルヴィス・プレスリー公式録音目録</a></li>
+<li>同録音を通して聴き、三打に聞こえる層と、自分が数えている均等な四拍を並べて記録する。<a href="https://www.youtube.com/watch?v=-eHJ12Vhpyc">《Hound
+Dog》公式音源</a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./canons.html">第50章　休符を敷き詰めると一つの線ができる</a></p><p class="next-lead">休符を他の声で埋め尽くす、リズムのカノン（タイル張り）を設計する。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./chord-space.html">← 第48章　ショパンの左手を幾何学の道として読む</a></span><span><a href="./canons.html">第50章　休符を敷き詰めると一つの線ができる →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

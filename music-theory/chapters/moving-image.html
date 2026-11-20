@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第57章　フィルムに描いた縞はなぜ和音になるのか。フィルムに描いた縞が音になる仕組みと、映像と音の同期。">
+<title>第57章　フィルムに描いた縞はなぜ和音になるのか｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第XI部　時間を書き、場所を奏でる</h2><ul><li><a href="./notation-media.html">第54章　紙に穴を一つ開けたら、それは一音か</a></li><li><a href="./tracing-time.html">第55章　紙に残った声に時計を返す</a></li><li><a href="./magnetic-tape.html">第56章　テープの長さで時間を書く</a></li><li><a href="./moving-image.html" aria-current="page">第57章　フィルムに描いた縞はなぜ和音になるのか</a></li><li><a href="./plucked-loop.html">第58章　乱数の輪が弦に変わる</a></li><li><a href="./feedback-music.html">第59章　振り子が描く楽譜</a></li><li><a href="./field-sound.html">第60章　夜明けの合唱を、誰の耳で数えたか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第XI部　時間を書き、場所を奏でる</div><h1>第57章　フィルムに描いた縞はなぜ和音になるのか</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">フィルムに描いた縞が音になる仕組みと、映像と音の同期。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×2</span><a class="chip maplink" href="../map.html?focus=moving-image">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>光学録音で、空間の縞が周波数になる式を知る</li><li>映像のコマと音声の標本の時間刻みの違いを理解する</li><li>音と映像のずれを自分で作って比べる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#空間的な模様の中にある周波数">空間的な模様の中にある周波数</a></li><li><a href="#一コマの内部には何個の音の周期があるか">一コマの内部には何個の音の周期があるか</a></li><li><a href="#自分で同期を作りわざと崩す">自分で同期を作り、わざと崩す</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
+<p>ノーマン・マクラレンの短編《Synchromy》（1971）の冒頭では、画面中央の一本の列に横縞が入り、打鍵するような音が聞こえる。途中で別の高さが加わり、画面にも異なる縞の列が現れる。映像を見てから音を割り当てたようにも聞こえる。制作ノートから分かる手順は逆向きである。作曲した音をまず縞のカードでフィルムに撮影し、その縞を光学プリンターで画面の領域に写した。ひとつの物体がスピーカーとスクリーンへと枝分かれしたのである。</p>
+<h2 id="空間的な模様の中にある周波数">空間的な模様の中にある周波数</h2>
+<p>幅の狭いスリットに一定の明るさの光を当て、その前で明暗の縞を等速に送る模型を考えよう。走行方向に測った距離を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>、位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+における透過率を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">T(x)</annotation></semantics></math>、送り速度を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+とする。読取部を十分に狭い点と近似すれば、時刻
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+の出力電流は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>v</mi><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">T(vt)</annotation></semantics></math>
+に比例する。明線一本と暗線一本で一周期、その空間周期を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>λ</mi><annotation encoding="application/x-tex">\lambda</annotation></semantics></math>
+とする。縞が一周期ぶん進む条件は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>Δ</mi><mi>t</mi><mo>=</mo><mi>λ</mi></mrow><annotation encoding="application/x-tex">v\Delta t=\lambda</annotation></semantics></math>
+だから、時間周期は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>t</mi><mo>=</mo><mi>λ</mi><mi>/</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">\Delta t=\lambda/v</annotation></semantics></math>、周波数は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mn>1</mn><mi>/</mi><mi>Δ</mi><mi>t</mi><mo>=</mo><mi>v</mi><mi>/</mi><mi>λ</mi></mrow><annotation encoding="application/x-tex">f=1/\Delta t=v/\lambda</annotation></semantics></math>。フィルムは空間の周期を耳に届く時間の周期へ変換している。</p>
+<figure>
+<img alt="毎秒500 mmで通過する二種の等間隔の縞を点で読む模型。周期0.50 mmの縞は1 kHz、0.25 mmの縞は2 kHzになる。" src="../assets/atlas_optical.webp"/>
+<figcaption aria-hidden="true">毎秒500
+mmで通過する二種の等間隔の縞を点で読む模型。周期0.50 mmの縞は1 kHz、0.25
+mmの縞は2 kHzになる。</figcaption>
+</figure>
+<p>同じ密度の縞を、同じ向きのまま横に幅広く露光するとどうなるか。読み取る光の総量の変動幅が変わり、理想読取りでは周波数は同じままで振幅が変わる。実作ではマクラレンが可動シャッターで記録幅を調整して強弱を作った。なお画面に帯を二列写したことと、二声を鳴らしたことを分けて観察しよう。一声の時期にも同じ模様が複数列に複写され得る。制作ノートでは実際の音楽は三声まで、絵は十一列まで使う。ある高さの音にある色を必然的に対応させる色聴の体系も仮定されていない。色の境目、縞の細かさ、声部の出入りの三つを別の記録欄にすれば、どの関係を作者が選べたかが分かる。</p>
+<h2 id="一コマの内部には何個の音の周期があるか">一コマの内部には何個の音の周期があるか</h2>
+<p>毎秒24コマの映像と、毎秒48,000標本の音声を組み合わせて短編を作る。一コマは音声の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>48000</mn><mi>/</mi><mn>24</mn><mo>=</mo><mn>2000</mn></mrow><annotation encoding="application/x-tex">48000/24=2000</annotation></semantics></math>
+標本ぶんである。440 Hzの音はその間に
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>440</mn><mi>/</mi><mn>24</mn><mo>=</mo><mn>18</mn><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">440/24=18\frac{1}{3}</annotation></semantics></math>
+周期進む。映像の一コマに一個の数だけを対応づけて直接音にすれば、440
+Hzの振動を復元するには足りない。一コマの領域に多数の細かな縞を置き、連続的に光学読取りすれば、コマの切替速度より高い音を記録できる。デジタルの編集画面で一秒ぶんの映像と波形を同じ幅に拡大しても、それぞれの原データの時間刻みは別々である。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>比較実験。</strong>
+《Synchromy》の冒頭を消音で見て、縞が始まる位置だけ机に指を置く。次に画面を隠して、音の高さが初めて変わる箇所、二声目を聞き取った箇所を記す。最後に両方を合わせ、縞の色だけが変わった場所にも新しい音があるかを調べる。著者の制作ノートを読むのはその後でよい。観察から「縞と音は対応する」と推論できても、「ある色はいつも特定の音高と対応する」までは言えない。この区別は、<a href="./orchestration.html">音色の分析</a>でヴィブラフォンとフルートが同じ時刻に動くときにも使える。</p></div>
+<h2 id="自分で同期を作りわざと崩す">自分で同期を作り、わざと崩す</h2>
+<p>八秒の無音動画を毎秒24コマで用意する。手で黒い紙を白い机へ置く動作を一回だけ映す。接触した最初のコマに印を置き、短い木片の音を重ねる。同じ映像に対して、音だけを三コマ先行、一致、三コマ遅延の三通りにして書き出す。各自が「動かす合図」「接触」「遅れて別の物が落ちる」のうちどれと感じたか、名称を伏せて記す。三コマは125
+msである。感想が一致するという法則を仮定する必要はない。装置の遅延を含む絶対的な知覚閾値の測定と、同一環境での三つの編集結果の比較は区別する。</p>
+<p>音楽的に発展させるなら、毎回の移動距離が同じ石を三つ用意し、編集上で接触の間隔だけを短くしていく。音のピッチや素材を変えずに、間隔の短縮だけで切迫を作れるか。今度は映像の間隔を元に戻し、音だけを同じ時間列で並べる。映像と音は単独では等間隔・加速の片方なのに、両方を合わせると一つの身体の運動に聞こえる瞬間と、独立した二つの動きに割れる瞬間が生じうる。そこで<a href="./groove-metre.html">拍の群化</a>の説明を、身体の予測を含む説明へ拡張できる。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>問いと解答。</strong>
+毎秒24コマ、毎分100拍の音楽に四分音符ごとの場面転換を重ねる。理想的な拍間隔は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn><mo>×</mo><mn>60</mn><mi>/</mi><mn>100</mn><mo>=</mo><mn>14.4</mn></mrow><annotation encoding="application/x-tex">24\times60/100=14.4</annotation></semantics></math>
+コマで、整数でない。各拍の絶対位置を最寄りのコマに丸めれば、第0〜5拍は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>14</mn><mo>,</mo><mn>29</mn><mo>,</mo><mn>43</mn><mo>,</mo><mn>58</mn><mo>,</mo><mn>72</mn></mrow><annotation encoding="application/x-tex">0,14,29,43,58,72</annotation></semantics></math>
+コマ。隣接間隔は14または15となり、誤差は半コマ以内。各間隔を最初から14コマに固定すれば、五間隔では70コマとなり、理想位置より2コマ早い。格子への丸めを繰り返す場所ひとつで、映像と同じリズムが長時間保たれるかどうかが変わる。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>周波数＝送り速度÷縞の周期。</li><li>24コマ/秒の1コマは、48 kHz の音声では2000標本にあたる。</li><li>拍をコマにどう丸めるかで、長時間の同期が保てるかが変わる。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>冒頭の中央列と、後から加わる別の縞を画面と音で照合する。<a href="https://www.nfb.ca/film/synchromy/">カナダ国立映画制作庁《Synchromy》</a>・<a href="https://www.youtube.com/watch?v=_UA40sL06sU">同庁の公式動画</a></li>
+<li>1ページ目でカードと可動シャッター、2ページ目で列の複写と着色を確認する。<a href="https://www3.nfb.ca/archives_mclaren/notech/NT29EN.pdf">マクラレン本人の制作ノート</a></li>
+<li>オシロスコープに映す音からフィルム上に描く音へ進む技法の実演。装置によって時間変化をどの方向に展開したかを追う。<a href="https://www.nfb.ca/film/pen_point_percussion/">《Pen Point
+Percussion》</a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./plucked-loop.html">第58章　乱数の輪が弦に変わる</a></p><p class="next-lead">乱数の輪を平均し続けるだけで弦の音になる、カープラス＝ストロング合成。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./magnetic-tape.html">← 第56章　テープの長さで時間を書く</a></span><span><a href="./plucked-loop.html">第58章　乱数の輪が弦に変わる →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

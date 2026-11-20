@@ -3,28 +3,28 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第42章　一曲を三つの完成形にする。《窓辺》を、楽譜・音源・電子楽器の三つの完成形に仕上げる。">
 <title>第42章　一曲を三つの完成形にする｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VIII部　電子楽器と総合制作</h2><ul><li><a href="./analog.html">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html" aria-current="page">第42章　一曲を三つの完成形にする</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VIII部　電子楽器と総合制作</div><h1>第42章　一曲を三つの完成形にする</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">《窓辺》を、楽譜・音源・電子楽器の三つの完成形に仕上げる。</p><div class="chips"><span class="chip">本文 約4分</span><span class="chip m1">数式 少し</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>8小節を拡張して、演奏できるスコアにする</li><li>録音と合成で、別の音色の音源にする</li><li>Pico と 555 を合奏に組み込む</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#作品課題a-ピアノまたは声で演奏可能なスコア">作品課題A　ピアノまたは声で演奏可能なスコア</a></li><li><a href="#作品課題b-録音とコンピューターで別の音色にする">作品課題B　録音とコンピューターで別の音色にする</a></li><li><a href="#作品課題c-回路を演奏へ組み込む">作品課題C　回路を演奏へ組み込む</a></li><li><a href="#一曲の分析と改善を結ぶ">一曲の分析と改善を結ぶ</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">《窓辺》を、楽譜・音源・電子楽器の三つの完成形に仕上げる。</p><div class="chips"><span class="chip">本文 約5分</span><span class="chip m1">数式 少し</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>8小節を拡張して、演奏できるスコアにする</li><li>録音と合成で、別の音色の音源にする</li><li>Pico と 555 を合奏に組み込む</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#作品課題a-ピアノまたは声で演奏可能なスコア">作品課題A　ピアノまたは声で演奏可能なスコア</a></li><li><a href="#作品課題b-録音とコンピューターで別の音色にする">作品課題B　録音とコンピューターで別の音色にする</a></li><li><a href="#作品課題c-回路を演奏へ組み込む">作品課題C　回路を演奏へ組み込む</a></li><li><a href="#一曲の分析と改善を結ぶ">一曲の分析と改善を結ぶ</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <div class="primer"><a href="../resources.html">模範譜例と音の実験室</a></div><h2 id="作品課題a-ピアノまたは声で演奏可能なスコア">作品課題A　ピアノまたは声で演奏可能なスコア</h2>
 <p>出発点は《窓辺》8小節。前半の半終止・後半の正格的な帰着を含め、基本の四分パルスを保つ。次の版では第9小節から新しい区間
 B
 を足す。たとえばAの音域を一段上げる発想から離れて、Bの最初に休止を置き、低音をAに長く保つ。旋律が暗くなるかを問うなら、同じリズムのままC
 majorの先の音集合とA
 minorの音集合を対応させる。Aを戻すときは何を回帰の手がかりにするか決める。先に主旋律を歌い、次に低音を入れ、その後に和音を足す。</p>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>納品条件。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>納品条件。</strong>
 調・拍子・テンポ、旋律の音域、弱起があるか、反復記号、実音を確認できる五線譜。8小節の練習では各小節の四分換算が4であることを自分で検算する。拡張版では演奏者が一回の通読で区切りを把握できるよう、段の改行・大きな区間の標識を整える。サイトでは本書の8小節の譜例をMusicXMLとして取り出せる。</p></div>
 <h2 id="作品課題b-録音とコンピューターで別の音色にする">作品課題B　録音とコンピューターで別の音色にする</h2>
 <p>録音または合成を三トラックに分ける。低音の発音は少し長く、旋律の音色は高次倍音が早く減衰し、打音は立ち上がりが速い。全トラックを同じ音色・同じ発音にした比較版も作る。波形のピーク、モノラル、水準を近づけた二つの版を比較する。良さを「好き」とだけ書かず、たとえば「拍の手がかりが明確になり、8小節目のCに向かうBを音量を上げずに識別できる」と記述する。</p>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>納品条件。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>納品条件。</strong>
 音声ファイル、元の制作ファイル、再現に必要な主要設定と素材の出所。作品の長さを秒と小節で書く。四分＝84の8小節、各4拍なら
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32</mn><mo>⋅</mo><mn>60</mn><mi>/</mi><mn>84</mn><mo>=</mo><mn>160</mn><mi>/</mi><mn>7</mn></mrow><annotation encoding="application/x-tex">32\cdot60/84=160/7</annotation></semantics></math>
 秒、約22.86秒。基準にした最終出力がこれより長い場合、残響の尾を含むか確認する。最終のWAVはもとのプロジェクトを上書きせず別に保存する。</p></div>
 <h2 id="作品課題c-回路を演奏へ組み込む">作品課題C　回路を演奏へ組み込む</h2>
 <p>Picoの8音だけでテーマの骨格を弾き、TLC555の連続発振器を滑音の合いの手にする。両方を単独で録音し、重ねて聴く。絶えず発音すると互いの役割が識別しにくいので、一方が持続する箇所で他方の発音回数を減らす。Pico版とブラウザのサイン波版では音高の設計を維持しつつ音色・発音が異なる。この差を分類すると、音楽理論上同じ対象と、音響・工学上の別の対象があることが実感できる。</p>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>納品条件。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>納品条件。</strong>
 回路図、部品値、給電方式、入力出力の定格、コード、実測値または評価方法。電子工作の作例はデータシートと照合した。実機での組立・計測は作業者の実習で行う。机上計算と実測結果が一致しなければ差を隠さず、何が仮定されていたか確かめる。</p></div>
 <h2 id="一曲の分析と改善を結ぶ">一曲の分析と改善を結ぶ</h2>
 <div class="table-wrap"><table>
@@ -69,11 +69,20 @@ minorの音集合を対応させる。Aを戻すときは何を回帰の手が�
 </tbody>
 </table></div>
 <p>ここでの評価は、様式として正しく作ったかだけではなく、設計上想定した変化が別の人の聴取でも観察できるかである。各作例の録音を二つずつ残し、変更前後の差を短い言葉で付けると、後から自分の耳と判断の変化を追える。</p>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>「好き」ではなく「何が聴き取れるようになったか」で評価する。</li><li>変更の前後の録音を残して比べる。</li><li>計算と実測が違ったら、隠さずに仮定を確かめる。</li></ul></section>
-<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./proofs.html">付録A　フーリエ展開の収束を支える二つの証明</a></p><p class="next-lead">第26章・第30章で使ったフーリエ展開の収束を、きちんと証明する。数学が好きな人向け。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>「好き」ではなく「何が聴き取れるようになったか」で評価する。</li><li>変更の前後の録音を残して比べる。</li><li>計算と実測が違ったら、隠さずに仮定を確かめる。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>MusicXML の最小譜例（W3C Community Group）。</strong>
+最小の一音を本書のダウンロード譜と並べ、高さを指定する要素、音楽上の長さ、五線に出す音符の種類を区別する。自分の四小節を書き出したら別の譜面ソフトに読み込み、譜面と再生の双方を点検する。
+<a href="https://www.w3.org/2021/06/musicxml40/tutorial/hello-world/">資料を開く</a></p></li>
+<li><p><strong>編集用プロジェクトと配布用音声（Audacity）。</strong>
+完成した伴奏を渡す場合と、相手が個別トラックを再編集する場合を読み分ける。総譜とステレオ音源に同じ曲名・版を与え、別の機器で先頭と末尾が欠けず再生されるかを確認して三形態の納品を閉じる。
+<a href="https://manual.audacityteam.org/man/sending_your_work_to_others.html">資料を開く</a></p></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><span class="next-part">第IX部　音の形と空間を逆に読むへ</span><p class="next-title"><a href="./star-music.html">第43章　太陽の五分を、一音の高さに折りたたむ</a></p><p class="next-lead">太陽の振動を4万倍速にして聴く。時間を縮めると、何が保存され、何が変わるか。</p></div>
 
-<nav class="chapter-end" aria-label="前後の章"><span><a href="./instrument-testing.html">← 第41章　マイコン楽器を計測し、制御を設計する</a></span><span><a href="./proofs.html">付録A　フーリエ展開の収束を支える二つの証明 →</a></span></nav>
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./instrument-testing.html">← 第41章　マイコン楽器を計測し、制御を設計する</a></span><span><a href="./star-music.html">第43章　太陽の五分を、一音の高さに折りたたむ →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

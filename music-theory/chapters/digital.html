@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第39章　Picoでデジタル電子楽器を作る。Raspberry Pi Pico で、ボタンとつまみの8音鍵盤を作る。">
 <title>第39章　Picoでデジタル電子楽器を作る｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VIII部　電子楽器と総合制作</h2><ul><li><a href="./analog.html">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html" aria-current="page">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html">第42章　一曲を三つの完成形にする</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VIII部　電子楽器と総合制作</div><h1>第39章　Picoでデジタル電子楽器を作る</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">Raspberry Pi Pico で、ボタンとつまみの8音鍵盤を作る。</p><div class="chips"><span class="chip">本文 約5分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>Pico に MicroPython を入れ、コードを動かす</li><li>ADCの読みを8段階に分け、ヒステリシスで安定させる</li><li>PWMで音を鳴らし、TLC555版と聴き比べる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#製作2-押しボタン付き8音のつまみ鍵盤">製作2　押しボタン付き8音のつまみ鍵盤</a></li><li><a href="#量子化しきい値pwm">量子化、しきい値、PWM</a></li><li><a href="#ソフトウェアとハードウェアで同じ旋律を鳴らす">ソフトウェアとハードウェアで同じ旋律を鳴らす</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">Raspberry Pi Pico で、ボタンとつまみの8音鍵盤を作る。</p><div class="chips"><span class="chip">本文 約6分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>Pico に MicroPython を入れ、コードを動かす</li><li>ADCの読みを8段階に分け、ヒステリシスで安定させる</li><li>PWMで音を鳴らし、TLC555版と聴き比べる</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#製作2-押しボタン付き8音のつまみ鍵盤">製作2　押しボタン付き8音のつまみ鍵盤</a></li><li><a href="#量子化しきい値pwm">量子化、しきい値、PWM</a></li><li><a href="#ソフトウェアとハードウェアで同じ旋律を鳴らす">ソフトウェアとハードウェアで同じ旋律を鳴らす</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <div class="primer"><a href="../resources.html">Picoのコードをダウンロード</a></div><h2 id="製作2-押しボタン付き8音のつまみ鍵盤">製作2　押しボタン付き8音のつまみ鍵盤</h2>
 <p>Raspberry Pi Pico初代（RP2040版）の ADC
 でつまみの電圧を読み、8段階に量子化して、ボタンを押している間だけ発音する。Pico本体（ヘッダー実装済みが便利）、データ通信対応USBケーブル、ブレッドボード、B10k線形可変抵抗、モーメンタリー押しボタン、2.2
@@ -63,7 +63,7 @@ GND</td>
 <img alt="初代Picoの配線。36・33・31は可変抵抗、19はボタン、20は圧電サウンダへ向かう。" src="../assets/pico.webp"/>
 <figcaption aria-hidden="true">初代Picoの配線。36・33・31は可変抵抗、19はボタン、20は圧電サウンダへ向かう。</figcaption>
 </figure>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>導入。</strong> Pico用の公式MicroPython
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>導入。</strong> Pico用の公式MicroPython
 UF2を入手し、BOOTSELを押しながらUSB接続して表示されるドライブへUF2をコピーする。次にエディターのMicroPython（Raspberry
 Pi
 Pico）接続を選び、付録Bのコードをまず実行する。電源投入時に自動演奏待ちにしたければ、Pico側に
@@ -89,7 +89,7 @@ S24</a></p>
 <p>初期旋律 C4–D4–E4–G4
 を、付属実験室の鍵盤とPicoの両方で鳴らす。低域から高域へ続けて回し、Picoでは8つの段があり、TLC555では連続的に変わることを聴き比べる。同じ音名でも音色が異なる理由として、PWM
 の矩形波に由来する部分音、圧電素子の周波数応答、スピーカーの違いを挙げられる。測定時はマイクを近づけすぎて入力を歪ませない。</p>
-<div class="callout example"><p class="callout-kind">例・手順</p><p><strong>診断。</strong>
+<div class="callout example"><p class="callout-kind">例・計算</p><p><strong>診断。</strong>
 ①押しても無音なら、USB電源、受動圧電サウンダ、20番、ボタンが押したとき同じ電気接点につながる向きかを調べる。②一定音だけなら
 GP26 と抵抗中央の接続を調べ、REPLで
 ADC値が回転に応じて変化するか確認する。③反対方向へ高くなるなら、USBを外してから可変抵抗の外側2端子を入れ替える。④近接でしか聞こえない場合は、耳に押しつけずにサウンダの共振域または音響効率を点検する。</p></div>
@@ -97,11 +97,23 @@ ADC値が回転に応じて変化するか確認する。③反対方向へ高�
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>60</mn><mo>,</mo><mn>62</mn><mo>,</mo><mn>63</mn><mo>,</mo><mn>65</mn><mo>,</mo><mn>67</mn><mo>,</mo><mn>69</mn><mo>,</mo><mn>70</mn><mo>,</mo><mn>72</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(60,62,63,65,67,69,70,72)</annotation></semantics></math>
 に変えると C Dorian
 になる。二つの配列で同じつまみの操作を録音し、第3音と第7音の変化を聴く。つまみ操作を同じにして比較することで、旋法以外の変数を減らす。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>基板のピン番号（物理）と、コードに書く GP 番号を混同しない。</li><li>境界付近で音が行き来するのを、上下で閾値をずらして防ぐ。</li><li>GPIO端子は、スピーカーを直接鳴らすための端子ではない。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>基板のピン番号（物理）と、コードに書く GP 番号を混同しない。</li><li>境界付近で音が行き来するのを、上下で閾値をずらして防ぐ。</li><li>GPIO端子は、スピーカーを直接鳴らすための端子ではない。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>RP2 の PWM・ADC 使用例（MicroPython 1.28）。</strong> PWM
+の周波数指定とデューティ指定を別々に探し、どちらを鍵盤の音程に結び付けるか決める。ADC
+の例で、プログラムへ返る数値の範囲とハードウェアの変換分解能も区別して控える。
+<a href="https://docs.micropython.org/en/v1.28.0/rp2/quickref.html">資料を開く</a></p></li>
+<li><p><strong>押しボタンのチャタリング対策（Arduino）。</strong>
+例の「入力を読んだ時刻」「安定した押下として採用する時刻」を追う。この判定だけを
+Pico
+の制御へ移し、押し続けた場合と短く二度押した場合の予期する発音回数を紙上で試験する。
+<a href="https://docs.arduino.cc/built-in-examples/digital/Debounce/">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./circuits.html">第40章　RCとライン出力を計算する</a></p><p class="next-lead">RCフィルタの計算と、Pico をライン入力へ安全につなぐアダプター。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./analog.html">← 第38章　アナログ電子楽器を組む</a></span><span><a href="./circuits.html">第40章　RCとライン出力を計算する →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

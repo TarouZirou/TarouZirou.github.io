@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第52章　鍵盤に折り畳まれた二次元の音。五度と長三度の二方向の格子で音律を描き、連分数で良い平均律を探す。">
+<title>第52章　鍵盤に折り畳まれた二次元の音｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第X部　リズム・対称性・予測</h2><ul><li><a href="./pulse-lattice.html">第49章　三つの手拍子を八つの椅子に座らせる</a></li><li><a href="./canons.html">第50章　休符を敷き詰めると一つの線ができる</a></li><li><a href="./phase-pairs.html">第51章　二つのリズムが同じ回折像をつくる</a></li><li><a href="./tuning-lattice.html" aria-current="page">第52章　鍵盤に折り畳まれた二次元の音</a></li><li><a href="./expectation.html">第53章　次の一音が来る前に何が計算できるか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第X部　リズム・対称性・予測</div><h1>第52章　鍵盤に折り畳まれた二次元の音</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">五度と長三度の二方向の格子で音律を描き、連分数で良い平均律を探す。</p><div class="chips"><span class="chip">本文 約8分</span><span class="chip m2">数式 多め</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=tuning-lattice">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>純正比を（五度, 長三度）の格子点として表す</li><li>連分数から 12・41・53 平均律が現れる理由を知る</li><li>12平均律・31平均律・純正の長三度のうなりを、予測してから聴く</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#音の格子と二通りのミ">音の格子と二通りのミ</a></li><li><a href="#音程を選ぶと分母が現れる">音程を選ぶと分母が現れる</a></li><li><a href="#うなりの秒数を予測してから聴く">うなりの秒数を予測してから聴く</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
+<p>ドからソ、レ、ラ、ミと純粋な五度を四回たどる。次にドから一気に純粋な長三度でミを作る。二つを同じ高さのオクターヴまで運ぶと、同じ名前の「ミ」が二つできる。常用の鍵盤では同じ鍵を押す二つの旅程が、周波数を測ると異なる点に終わる。このずれを消す、少し残す、あるいは旋律の材料にする。鍵盤の設計とは、どの道を合流させるかを決める幾何学でもある。</p>
+<h2 id="音の格子と二通りのミ">音の格子と二通りのミ</h2>
+<p>基音の周波数を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mn>0</mn></msub><annotation encoding="application/x-tex">f_0</annotation></semantics></math>
+とする。周波数を二倍した音を同じ音高類とみなす。五度を何歩、長三度を何歩進んだかをそれぞれ整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math>
+に記せば、格子点
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(a,b)</annotation></semantics></math>
+が表す比は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>a</mi></msup><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>5</mn><mi>/</mi><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>b</mi></msup></mrow><annotation encoding="application/x-tex">(3/2)^a(5/4)^b</annotation></semantics></math>
+である。負の歩数では逆数を掛け、最後に二の整数乗で割って比を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[1,2)</annotation></semantics></math>
+に戻す。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(4,0)</annotation></semantics></math>
+は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>4</mn></msup><mi>/</mi><mn>4</mn><mo>=</mo><mn>81</mn><mi>/</mi><mn>64</mn></mrow><annotation encoding="application/x-tex">(3/2)^4/4=81/64</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(0,1)</annotation></semantics></math>
+は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">5/4</annotation></semantics></math>。前者を後者で割ると
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>81</mn><mi>/</mi><mn>80</mn></mrow><annotation encoding="application/x-tex">81/80</annotation></semantics></math>。これが<strong>シントニック・コンマ</strong>である。格子がもともと持つ二方向を、ミの名を同じにするために結んだときのずれを表す。</p>
+<div class="theorem"><p><strong>命題。</strong>
+この理想化した純正比の格子では、異なる二点がオクターヴ移動だけで厳密に重なることはない。<strong>証明。</strong>
+二点の歩数の差を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u,v</annotation></semantics></math>
+とすると、重なる条件は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>u</mi></msup><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>5</mn><mi>/</mi><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>v</mi></msup><mo>=</mo><msup><mn>2</mn><mi>w</mi></msup></mrow><annotation encoding="application/x-tex">(3/2)^u(5/4)^v=2^w</annotation></semantics></math>
+を満たす整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+の存在である。すべての負の指数を分母側に移して両辺を払えば整数の等式になる。素因数分解の一意性から、両辺の
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>
+と
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>
+の指数差は各々零。よって
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u=v=0</annotation></semantics></math>。この証明は演奏者が近い音を同じと認識するかどうかについて仮定を必要としない。理想周波数での等しさと、聴取課題で聞き分けられる範囲は別々に測定できる。</p></div>
+<figure>
+<img alt="左は純正比の格子の一部。斜めに結んだ二点の差がシントニック・コンマ。右は各等分音律で最寄りの五度・長三度を鳴らしたときの符号付き誤差。" src="../assets/atlas_tuning.webp"/>
+<figcaption aria-hidden="true">左は純正比の格子の一部。斜めに結んだ二点の差がシントニック・コンマ。右は各等分音律で最寄りの五度・長三度を鳴らしたときの符号付き誤差。</figcaption>
+</figure>
+<h2 id="音程を選ぶと分母が現れる">音程を選ぶと分母が現れる</h2>
+<p>一オクターヴを
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+等分した楽器の一段の周波数比は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><mn>1</mn><mi>/</mi><mi>q</mi></mrow></msup><annotation encoding="application/x-tex">2^{1/q}</annotation></semantics></math>。純正五度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math>
+に近い段を探すため、周波数比を倍にすると一を足す目盛り、二を底とする対数を使う。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mo>log</mo><mn>2</mn></msub><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>≃</mo><mn>0.5849625</mn></mrow><annotation encoding="application/x-tex">x=\log_2(3/2)\simeq0.5849625</annotation></semantics></math>
+と置き、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>/</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">p/q</annotation></semantics></math>
+をこれに近づけたい。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+が決まれば
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">qx</annotation></semantics></math>
+の最近接整数でよい。逆に鍵数を選ぶとき、どの
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+を候補にするか。ここでリズムの余りを再配分したときと同じ「整数部と残りに分ける」操作が働く。</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">x_0=x</annotation></semantics></math>
+とし、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">⌊</mo><msub><mi>x</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">a_j=\lfloor x_j\rfloor</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>1</mn><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo>−</mo><msub><mi>a</mi><mi>j</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">x_{j+1}=1/(x_j-a_j)</annotation></semantics></math>
+と進む。逆数を取るため、捨てるには小さかった余りを、次は拡大して測る。得た整数部の列は初めから
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">0,1,1,2,2,3,1,\ldots</annotation></semantics></math>。等式
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>j</mi></msub><mo>=</mo><msub><mi>a</mi><mi>j</mi></msub><mo>+</mo><mn>1</mn><mi>/</mi><msub><mi>x</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">x_j=a_j+1/x_{j+1}</annotation></semantics></math>
+を順に代入し、有限段で打ち切ると<strong>連分数の収束分数</strong>が得られる。たとえば
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">[</mo><mn>0</mn><mo>;</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo form="postfix" stretchy="true">]</mo></mrow><mo>=</mo><mn>1</mn><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mn>1</mn><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mn>1</mn><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>3</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">[0;1,1,2]=1/(1+1/(1+1/2))=3/5</annotation></semantics></math>。さらに一段入れると
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mi>/</mi><mn>12</mn></mrow><annotation encoding="application/x-tex">7/12</annotation></semantics></math>、その次が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24</mn><mi>/</mi><mn>41</mn></mrow><annotation encoding="application/x-tex">24/41</annotation></semantics></math>、次いで
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>31</mn><mi>/</mi><mn>53</mn></mrow><annotation encoding="application/x-tex">31/53</annotation></semantics></math>
+となる。通常の十二等分音律の五度が七段であることと、五十三等分では三十一段が五度に近いことを同じ一本の計算が結ぶ。</p>
+<p>誤差を比べるため一オクターヴを1200セントにとる。純正比
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+に対する符号付き偏差は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1200</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>p</mi><mi>/</mi><mi>q</mi><mo>−</mo><msub><mo>log</mo><mn>2</mn></msub><mi>r</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">1200(p/q-\log_2 r)</annotation></semantics></math>
+セント。正なら広く、負なら狭い。十二等分の五度は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1.955</mn></mrow><annotation encoding="application/x-tex">-1.955</annotation></semantics></math>
+セント、四十一等分は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>0.484</mn></mrow><annotation encoding="application/x-tex">+0.484</annotation></semantics></math>、五十三等分は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>0.068</mn></mrow><annotation encoding="application/x-tex">-0.068</annotation></semantics></math>。では三十一等分は何に役立つのか。五度で約
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>5.181</mn></mrow><annotation encoding="application/x-tex">-5.181</annotation></semantics></math>
+セントでも、十段の長三度が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">5/4</annotation></semantics></math>
+に対して約
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>0.783</mn></mrow><annotation encoding="application/x-tex">+0.783</annotation></semantics></math>
+セントに入る。十二等分の長三度は約
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>13.686</mn></mrow><annotation encoding="application/x-tex">+13.686</annotation></semantics></math>
+セントある。連分数は一つ選んだ目標への近さを扱う。五度を先に選んだときの鍵数と、長三度をも良くしたいときの鍵数は違ってよい。</p>
+<h2 id="うなりの秒数を予測してから聴く">うなりの秒数を予測してから聴く</h2>
+<p>本書の音例は根音220
+Hzに対し、十二等分、三十一等分、純正比の順に長三度を三度鳴らす。両音は第5倍音までを含む。純正なら下の第5倍音
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>⋅</mo><mn>220</mn><mo>=</mo><mn>1100</mn></mrow><annotation encoding="application/x-tex">5\cdot220=1100</annotation></semantics></math>
+Hzと、上の第4倍音
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>⋅</mo><mn>275</mn><mo>=</mo><mn>1100</mn></mrow><annotation encoding="application/x-tex">4\cdot275=1100</annotation></semantics></math>
+Hzとが重なる。十二等分の上声は約277.183 Hzなので二つの部分音の差は約8.73
+Hz。三十一等分の上声は約275.124 Hzで差は約0.50
+Hz。注目すべき時間尺度は毎秒の細かな震えから二秒で一巡する緩い揺れに変わる。その二成分の振幅は同一ではないため、合成音が完全に消える瞬間を探す必要はない。低域から離れた一部分のざわつきに注意を移すと比較しやすい。<a href="../assets/atlas-tuning.ogg">本書の試聴《三つのミ》</a></p><audio aria-label="章の試聴音源" controls="" preload="none" src="../assets/atlas-tuning.ogg"></audio>
+<p>ファビオ・コスタ《Quasi
+Recitativo》では、作曲者がフォッカー・オルガンのための音楽をサンプル音源のMIDI演奏として公開している。まず旋律を歌い取り、次に和音が伸びる所で聴取を止め、直前の上声が少し動いたときに残る響きを言葉にしてみよう。この録音の音色・残響・旋律のすべてを三十一等分の効果とみなすことはできない。個々の要因を動かせる上の音例で予測を作り、作品では複数の要因が組み合わさったときに何を聴けたかを記す。この往復が<a href="./tuning-lab.html">調律実験</a>から作品分析へ進む足場になる。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>演習と解答。</strong>
+三十一等分で四つの五度を進み、二オクターヴ引くと、何段の長三度になるか。五度を十八段とすれば
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>⋅</mo><mn>18</mn><mo>−</mo><mn>2</mn><mo>⋅</mo><mn>31</mn><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">4\cdot18-2\cdot31=10</annotation></semantics></math>
+段。長三度を直接十段取る道と合流する。十二等分でも
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>⋅</mo><mn>7</mn><mo>−</mo><mn>2</mn><mo>⋅</mo><mn>12</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">4\cdot7-2\cdot12=4</annotation></semantics></math>
+段で合流するが、同じ合流関係を持つことから、両者の長三度の周波数比まで同じであるとは導けない。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>純正比の格子では、異なる二点がオクターヴ違いで重なることはない。</li><li>log₂(3/2) の連分数から 7/12、24/41、31/53 が出てくる。</li><li>31平均律は、長三度が純正にとても近い。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>楽器を設計した物理学者フォッカー本人の論考。鍵盤図で五度と長三度を違う方向へたどる。<a href="https://huygens-fokker.org/wp-content/uploads/2025/11/A.D.-Fokker-Equal-temperament-with-31-notes-Organ-Institute-Quarterly-Autumn-1955_-Vol-5-Iss-4-H-F.pdf">A.
+D. Fokker, Equal Temperament with 31 Notes</a></li>
+<li>財団の音律資料で、三十一等分の半音の綴りと鍵盤上の区別を見る。<a href="https://huygens-fokker.org/en/tuningsystems/">Huygens-Fokker
+Foundation, Tuning Systems</a></li>
+<li>作曲家が演奏条件を明記した音源。三十一等分のオルガンを想定した旋律を聴く。<a href="https://www.youtube.com/watch?v=-ekRKsk66wg">Fabio Costa, Quasi
+Recitativo</a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./expectation.html">第53章　次の一音が来る前に何が計算できるか</a></p><p class="next-lead">次の音の「予測しにくさ」と「意外さ」を、情報量（bit）で測る。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./phase-pairs.html">← 第51章　二つのリズムが同じ回折像をつくる</a></span><span><a href="./expectation.html">第53章　次の一音が来る前に何が計算できるか →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

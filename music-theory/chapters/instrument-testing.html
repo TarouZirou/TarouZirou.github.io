@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第41章　マイコン楽器を計測し、制御を設計する。作った楽器を計測して、故障箇所を絞り込み、操作を設計する。">
 <title>第41章　マイコン楽器を計測し、制御を設計する｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VIII部　電子楽器と総合制作</h2><ul><li><a href="./analog.html">第38章　アナログ電子楽器を組む</a></li><li><a href="./digital.html">第39章　Picoでデジタル電子楽器を作る</a></li><li><a href="./circuits.html">第40章　RCとライン出力を計算する</a></li><li><a href="./instrument-testing.html" aria-current="page">第41章　マイコン楽器を計測し、制御を設計する</a></li><li><a href="./practical-projects.html">第42章　一曲を三つの完成形にする</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VIII部　電子楽器と総合制作</div><h1>第41章　マイコン楽器を計測し、制御を設計する</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">作った楽器を計測して、故障箇所を絞り込み、操作を設計する。</p><div class="chips"><span class="chip">本文 約3分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>症状ごとに観測点を決めて、トラブルを切り分ける</li><li>PWMのデューティ比と音色の関係を知る</li><li>MIDI の Note On/Off と、音声出力の違いを知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#何を測れば故障箇所を絞れるか">何を測れば故障箇所を絞れるか</a></li><li><a href="#midiの発音指示とオーディオ出力">MIDIの発音指示とオーディオ出力</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">作った楽器を計測して、故障箇所を絞り込み、操作を設計する。</p><div class="chips"><span class="chip">本文 約4分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>症状ごとに観測点を決めて、トラブルを切り分ける</li><li>PWMのデューティ比と音色の関係を知る</li><li>MIDI の Note On/Off と、音声出力の違いを知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#何を測れば故障箇所を絞れるか">何を測れば故障箇所を絞れるか</a></li><li><a href="#midiの発音指示とオーディオ出力">MIDIの発音指示とオーディオ出力</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <h2 id="何を測れば故障箇所を絞れるか">何を測れば故障箇所を絞れるか</h2>
 <div class="table-wrap"><table>
 <colgroup>
@@ -70,11 +70,21 @@ S48</a></p>
 Hzなら、差は
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1200</mn><msub><mo>log</mo><mn>2</mn></msub><mrow><mo form="prefix" stretchy="true">(</mo><mn>437</mn><mi>/</mi><mn>440</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>≃</mo><mi>−</mi><mn>11.8</mn></mrow><annotation encoding="application/x-tex">1200\log_2(437/440)\simeq-11.8</annotation></semantics></math>
 セント。現物の回路からどの方法で得た値か、温度、分析窓、分解能を記録する。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>一度に一つの変数だけを疑う。</li><li>ゼロ交差は片方向だけ数える。両方数えると周波数を2倍に誤る。</li><li>437 Hz は 440 Hz より約12セント低い。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>一度に一つの変数だけを疑う。</li><li>ゼロ交差は片方向だけ数える。両方数えると周波数を2倍に誤る。</li><li>437 Hz は 440 Hz より約12セント低い。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>アナログ入力を平滑化する例（Arduino）。</strong>
+つまみが一定値から急に別の値に移る系列を紙に書き、移動平均を手で計算する。揺らぎの減少と、段差を追い終えるまでの遅れを別々に評価する。閾値にヒステリシスを付ける本章の方法と比較しよう。
+<a href="https://docs.arduino.cc/built-in-examples/analog/Smoothing/">資料を開く</a></p></li>
+<li><p><strong>チャンネルと発音メッセージ（MIDI Association）。</strong>
+Note On と Note Off
+の説明から、一回の押下・解放で送るデータを時系列の表にする。イベントが正しいのに音が出ない場合を想定し、送信側の入力検出と受信側の音源を別々に検査する順序を組み立てる。
+<a href="https://midi.org/about-midi-part-3midi-messages">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./practical-projects.html">第42章　一曲を三つの完成形にする</a></p><p class="next-lead">《窓辺》を、楽譜・音源・電子楽器の三つの完成形に仕上げる。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./circuits.html">← 第40章　RCとライン出力を計算する</a></span><span><a href="./practical-projects.html">第42章　一曲を三つの完成形にする →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>

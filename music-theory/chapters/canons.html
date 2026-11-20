@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="第50章　休符を敷き詰めると一つの線ができる。休符を他の声で埋め尽くす、リズムのカノン（タイル張り）を設計する。">
+<title>第50章　休符を敷き詰めると一つの線ができる｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<main id="main" class="reader">
+<aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第X部　リズム・対称性・予測</h2><ul><li><a href="./pulse-lattice.html">第49章　三つの手拍子を八つの椅子に座らせる</a></li><li><a href="./canons.html" aria-current="page">第50章　休符を敷き詰めると一つの線ができる</a></li><li><a href="./phase-pairs.html">第51章　二つのリズムが同じ回折像をつくる</a></li><li><a href="./tuning-lattice.html">第52章　鍵盤に折り畳まれた二次元の音</a></li><li><a href="./expectation.html">第53章　次の一音が来る前に何が計算できるか</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
+<article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第X部　リズム・対称性・予測</div><h1>第50章　休符を敷き詰めると一つの線ができる</h1>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">休符を他の声で埋め尽くす、リズムのカノン（タイル張り）を設計する。</p><div class="chips"><span class="chip">本文 約7分</span><span class="chip m2">数式 多め（証明は折りたたみ）</span><span class="chip try">やってみよう ×1</span><a class="chip maplink" href="../map.html?focus=canons">他分野とのつながりを地図で見る →</a></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>一次元のタイル張り A⊕B を理解する</li><li>三声の譜例《継ぎ目》を作り、検算する</li><li>畳み込みで「穴」と「衝突」を数える</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#一次元のタイル張り">一次元のタイル張り</a></li><li><a href="#三声の譜例継ぎ目">三声の譜例《継ぎ目》</a></li><li><a href="#波形を足す前の畳み込み">波形を足す前の畳み込み</a></li><li><a href="#作曲家の紙の上で">作曲家の紙の上で</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div><p class="proof-toggle"><button type="button" data-proofs="open">証明をすべて開く</button><button type="button" data-proofs="close">すべて閉じる</button></p></section>
+<p>三人が同じリズムを、違う時刻から打つ。ある声の休みを誰かの打点が常に埋め、しかも二人は決して同時に打たないとしたら、三人を合わせて聞いた耳には何が残るだろう。全員が同じ木片を同じ強さで打つなら、何の変哲もない等間隔の一列に聞こえうる。ところが楽器の音高を三つに分けるだけで、表面の等速運動から、不規則に行き来する旋律が浮かぶ。ここでは休符を含む模様を、一枚のタイルとみなして組曲の一節を設計する。</p>
+<h2 id="一次元のタイル張り">一次元のタイル張り</h2>
+<p>一周
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+個の目盛りを持つ時計を考える。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>N</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb Z/N\mathbb Z</annotation></semantics></math>
+は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+だけ違う整数を同じ場所とみなした集合である。一人が打つ場所の集合を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>、各奏者が入り始める位置の集合を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+と書く。開始を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+遅らせた人は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a+b</annotation></semantics></math>
+に打つ。時刻
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+を担当する声がただ一つある条件は</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∀</mo><mi>t</mi><mo>∈</mo><mi>ℤ</mi><mi>/</mi><mi>N</mi><mi>ℤ</mi><mspace width="1.0em"></mspace><mo>∃</mo><mi>!</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>∈</mo><mi>A</mi><mo>×</mo><mi>B</mi><mspace width="1.0em"></mspace><mi>a</mi><mo>+</mo><mi>b</mi><mo>=</mo><mi>t</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\forall t\in\mathbb Z/N\mathbb Z\quad
+\exists! (a,b)\in A\times B\quad a+b=t .
+</annotation></semantics></math></p>
+<p>ここで
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∃</mo><mi>!</mi></mrow><annotation encoding="application/x-tex">\exists!</annotation></semantics></math>
+は「ただ一つ存在する」を表す。このとき
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊕</mo><mi>B</mi><mo>=</mo><mi>ℤ</mi><mi>/</mi><mi>N</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">A\oplus B=\mathbb Z/N\mathbb Z</annotation></semantics></math>
+と書く。タイルの面積にあたるのは一人の打点数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">|</mo><mi>A</mi><mo form="postfix" stretchy="true">|</mo></mrow><annotation encoding="application/x-tex">|A|</annotation></semantics></math>、タイルの枚数にあたるのは人数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">|</mo><mi>B</mi><mo form="postfix" stretchy="true">|</mo></mrow><annotation encoding="application/x-tex">|B|</annotation></semantics></math>。従って
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mi>A</mi><mo form="postfix" stretchy="true">|</mo></mrow><mrow><mo form="prefix" stretchy="true">|</mo><mi>B</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">|A||B|=N</annotation></semantics></math>
+は必要条件である。たとえば十二目盛り四打を三人に配るとき、人数の帳尻は合う。しかし三人が入る場所を選び損ねれば、重複する時刻と無人の時刻が同数だけ生まれる。</p>
+<h2 id="三声の譜例継ぎ目">三声の譜例《継ぎ目》</h2>
+<p>第一声は十二目盛りの
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>11</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">A=\{0,1,6,11\}</annotation></semantics></math>、第二声は四目盛り遅れ、第三声は八目盛り遅れで入る。最初の一周を過ぎれば各声の周期が重なる。下の図は<strong>三声がそろった後</strong>の一周である。各色の数字はもとの第一声のどの打点が来たかを示す。十一目盛り目の音は次の零、一次刻の音に続き、第一声だけ聴くと三連打を挟むように聞こえる。一周の先頭が音楽上の句頭と一致するとはかぎらない。</p>
+<figure>
+<img alt="三声による十二目盛りの敷き詰め。各列に色のついたマスがちょうど一つある。マス内は各声自身の譜面上の時刻。" src="../assets/atlas_canon.webp"/>
+<figcaption aria-hidden="true">三声による十二目盛りの敷き詰め。各列に色のついたマスがちょうど一つある。マス内は各声自身の譜面上の時刻。</figcaption>
+</figure>
+<details class="proof"><summary>証明を読む（読まなくても先へ進めます）</summary><p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math>
+で割った余りは順に
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">0,1,2,3</annotation></semantics></math>
+で、各剰余がちょうど一度ずつ現れる。任意の時刻
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+を選ぶと、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≡</mo><mi>t</mi><mrow><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>4</mn><mo form="postfix" stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">a\equiv t\pmod4</annotation></semantics></math>
+を満たす
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a\in A</annotation></semantics></math>
+は一意。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>−</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">t-a</annotation></semantics></math>
+は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math>
+の倍数なので、十二を法とすれば
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">0,4,8</annotation></semantics></math>
+のどれか一つである。その値を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+とすれば所望の表示を得る。この証明から別の譜面が量産できる。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+の一打を四目盛り移動しても、余りが変わらず、敷き詰めは保たれる。打撃の疎密は変わるのに総体の足取りは揺れない。</p></details>
+<h2 id="波形を足す前の畳み込み">波形を足す前の畳み込み</h2>
+<p>録音の残響を計算した<a href="./dsp.html">デジタル信号処理の章</a>と、ここでの「足し合わせる」操作に接点がある。集合
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+の要素なら
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>、他は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+とする関数を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>、同じく
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+の関数を
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+と書く。時刻
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+の打数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">w(t)</annotation></semantics></math>
+は、次式の<strong>循環畳み込み</strong>で与えられる。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></munderover><mi>u</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>v</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo>−</mo><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+w(t)=\sum_{s=0}^{N-1}u(s)v(t-s).
+</annotation></semantics></math></p>
+<p>理由は、積が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+になる項が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">s\in A</annotation></semantics></math>
+かつ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>−</mo><mi>s</mi><mo>∈</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">t-s\in B</annotation></semantics></math>
+の解を一つずつ数えるからである。添字は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+で折り返す。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+がすべて
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+なら完成、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+なら穴、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>
+以上なら衝突を示す。これを残響計算の言葉で読むと、外から与える打点が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>、一打が呼び出す応答の型が
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+に相当する。実際に聞く音には各音の持続と響きがあるから、打点が重ならない作品でも、鳴り終わる前の二声の波形は重なりうる。</p>
+<p><a href="../assets/atlas-canon.ogg">《継ぎ目》の試聴</a>では一周目は声I、二周目から声II、三周目から声IIIを鳴らす。各声は図の周期上の位相で加わる。四周目までは低い音・中音・高い音を一声ずつに割り当てた。五周目から三声すべてを同じ音高・音色にした。目を閉じて模様が消えたように聞こえる境目を覚え、紙の図を見ながらもう一度同じ部分を聴く。二回目は切れ目を自分で補ってしまうかもしれない。声部を区別する手掛かりが音に含まれるか、知っている譜面を頼りに内声を追っているか、二通りの聴取がそこにある。</p><audio aria-label="章の試聴音源" controls="" preload="none" src="../assets/atlas-canon.ogg"></audio>
+<h2 id="作曲家の紙の上で">作曲家の紙の上で</h2>
+<p>トム・ジョンソンの《Tilework for String
+Quartet》の図解映像では、四人の映像を見る代わりに、作曲家がリズムの表し方を提示する。六音の型に注目し、どの形が平行移動して別の声部を作るかを追う。次に本人の論考の譜例で、空所を残したり異なる手続きを重ねたりする例を探す。数学の定義を少し外した部分も記すと、作曲家がどこで選択を行ったかを読める。上の《継ぎ目》は十二目盛り四打で作った独立の小品であり、ここで両曲を結ぶのは、音列の引用よりも「平行移動した型が時間をどのように覆うか」という問いである。</p>
+<div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>演習と解答。</strong>
+《継ぎ目》の第三声を一目盛り遅らせると何が起きるか。第三声の打点は
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>2</mn><mo>,</mo><mn>7</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>9</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{2,7,8,9\}</annotation></semantics></math>
+から
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>3</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>9</mn><mo>,</mo><mn>10</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{3,8,9,10\}</annotation></semantics></math>
+へ動く。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">2,7</annotation></semantics></math>
+が無人になり、もともと第二声の打つ
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">3,10</annotation></semantics></math>
+は二打が衝突する。目盛り全体の打数の和は十二のままなので、総数だけ調べる検査はこのずれを見逃す。</p></div>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>必要条件は「一人の打点数×人数＝一周の目盛り数」。</li><li>打点を4目盛り動かしても4で割った余りが同じなら、敷き詰めは崩れない。</li><li>総打数だけの検査では、穴と衝突の打ち消し合いを見逃す。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li>作曲家の譜例と解説。完全に埋まる例の次に、穴を残すことを許した例を読み、両者の作曲上の用途を比べる。<a href="https://www.editions75.com/texts/Tiling_in_my_music.pdf">Tom
+Johnson, Tiling in My Music</a></li>
+<li>作曲家による弦楽四重奏版の図解映像。一巡分だけ停止して入口に番号を振る。<a href="https://www.youtube.com/watch?v=lHtR9XQtKaM">Tom Johnson,
+Illustrated Music 17</a></li>
+<li>集合の直和からフーリエ解析に至る数学的見取図。本章を終えてから、周期を持つ因子の定義まで進める。<a href="https://citeseerx.ist.psu.edu/document?doi=15a24818d2e1e3364177ae567cdc26a913edbb1f&amp;repid=rep1&amp;type=pdf">Emmanuel
+Amiot, Why Rhythmic Canons Are Interesting</a></li>
+</ul>
+<div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./phase-pairs.html">第51章　二つのリズムが同じ回折像をつくる</a></p><p class="next-lead">違う二つのリズムが、同じスペクトル強度を持つことがある（ホモメトリー）。</p></div>
+
+<nav class="chapter-end" aria-label="前後の章"><span><a href="./pulse-lattice.html">← 第49章　三つの手拍子を八つの椅子に座らせる</a></span><span><a href="./phase-pairs.html">第51章　二つのリズムが同じ回折像をつくる →</a></span></nav>
+</article></main>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
+<script defer src="../assets/reader.js"></script>
+</body></html>

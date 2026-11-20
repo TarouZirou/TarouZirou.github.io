@@ -3,11 +3,11 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="第35章　録音、ミックス、書き出しを検算する。録音・ミックス・書き出しで、音量と音質を「検算」する。">
 <title>第35章　録音、ミックス、書き出しを検算する｜音楽理論を耳と手で学ぶ</title><link rel="stylesheet" href="../assets/reader.css"></head>
-<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
+<body><a class="skip" href="#main">本文へ移動</a><header class="site-header"><div class="nav-inner"><a class="brand" href="../index.html">音楽理論を耳と手で学ぶ</a><nav class="top-nav" aria-label="教材のナビゲーション"><a href="../index.html#contents">目次</a><a href="../chapters/start.html">読み方</a><a href="../chapters/listening.html">聴取索引</a><a href="../map.html">地図</a><a href="../music-lab.html">音の実験室</a><a href="../resources.html">譜例と資料</a></nav></div></header>
 <main id="main" class="reader">
 <aside class="sidebar"><nav class="sticky" aria-label="同じ部の章"><h2>第VII部　デジタル音響と制作</h2><ul><li><a href="./sampling.html">第30章　コンピューターが音を記録する仕組み</a></li><li><a href="./dsp.html">第31章　畳込み、フィルタ、時間周波数解析</a></li><li><a href="./production.html">第32章　合成から一曲を作る</a></li><li><a href="./synthesis-workshop.html">第33章　音色の時間設計</a></li><li><a href="./sampling-musically.html">第34章　サンプリングとグリッドの設計</a></li><li><a href="./studio.html" aria-current="page">第35章　録音、ミックス、書き出しを検算する</a></li><li><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></li><li><a href="./lab-practice.html">第37章　パソコンで再現できる分析の手順</a></li></ul><p class="side-back"><a href="../index.html#contents">← 全体の目次</a></p></nav></aside>
 <article class="chapter"><div class="crumb"><a href="../index.html#contents">目次</a> ／ 第VII部　デジタル音響と制作</div><h1>第35章　録音、ミックス、書き出しを検算する</h1>
-<section class="chapter-intro" aria-label="この章の概要"><p class="lead">録音・ミックス・書き出しで、音量と音質を「検算」する。</p><div class="chips"><span class="chip">本文 約4分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>dBFS・dB SPL・LUFS の違いを知る</li><li>EQ・コンプ・パン・リバーブの役割を、比較で確かめる</li><li>納品前のチェック項目を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#ゲインとラウドネスを混同しない">ゲインとラウドネスを混同しない</a></li><li><a href="#eqコンプレッサー空間処理">EQ、コンプレッサー、空間処理</a></li><li><a href="#納品前の再現性">納品前の再現性</a></li></ol></nav></div></section>
+<section class="chapter-intro" aria-label="この章の概要"><p class="lead">録音・ミックス・書き出しで、音量と音質を「検算」する。</p><div class="chips"><span class="chip">本文 約5分</span><span class="chip m1">数式 少し</span><span class="chip try">やってみよう ×1</span></div><div class="intro-cols"><div><p class="box-title">この章で学ぶこと</p><ul class="goals"><li>dBFS・dB SPL・LUFS の違いを知る</li><li>EQ・コンプ・パン・リバーブの役割を、比較で確かめる</li><li>納品前のチェック項目を知る</li></ul></div><nav class="mini-toc" aria-label="この章の見出し"><p class="box-title">この章の流れ</p><ol><li><a href="#ゲインとラウドネスを混同しない">ゲインとラウドネスを混同しない</a></li><li><a href="#eqコンプレッサー空間処理">EQ、コンプレッサー、空間処理</a></li><li><a href="#納品前の再現性">納品前の再現性</a></li><li><a href="#この章の資料">この章の資料</a></li></ol></nav></div></section>
 <h2 id="ゲインとラウドネスを混同しない">ゲインとラウドネスを混同しない</h2>
 <p>マイクからデジタルファイルまでには、マイク位置、マイクプリアンプ、ADC、各トラックの処理、バスの和、最終の符号化がある。各段のメーターを見て、どこで上限に当たったかを区別する。マイク入力で歪んだ波形を後で小さくしても消した情報は戻らない。デジタルレベル
 dBFS はフルスケール基準、音圧 dB SPL
@@ -92,11 +92,20 @@ dB。実機では検出の時定数とゲインの平滑化があり、短い打
 <a href="https://tech.ebu.ch/publications/r128">EBU S46</a></p>
 <div class="callout try"><p class="callout-kind">やってみよう</p><p><strong>音源の完成試験。</strong>
 自分の8小節をヘッドホンと小さなスピーカーで聴く。音量を変えても主旋律の入口が分かること、モノラルで主要要素が消えないこと、曲頭と終わりに意図しないクリックがないことを確認する。その後、最初のミックスへ戻って何を改善したか一文で書く。</p></div>
-<section class="takeaways" aria-label="まとめ"><p class="box-title">ここだけ押さえる</p><ul><li>入力の段階で歪んだ音は、あとで下げても元に戻らない。</li><li>処理の前後を比べるときは、聞こえの音量をそろえる。</li><li>モノラルで聴いて、主要なパートが消えないか確かめる。</li></ul></section>
+<section aria-label="まとめ" class="takeaways"><p class="box-title">ここだけ押さえる</p><ul><li>入力の段階で歪んだ音は、あとで下げても元に戻らない。</li><li>処理の前後を比べるときは、聞こえの音量をそろえる。</li><li>モノラルで聴いて、主要なパートが消えないか確かめる。</li></ul></section>
+<h2 id="この章の資料">この章の資料</h2>
+<ul>
+<li><p><strong>ラウドネス正規化（Audacity）。</strong>
+打音が一つだけ突出するファイルと持続音のファイルを同じラウドネスへ合わせ、出力後のピークを比較する。再生レベルの代表値をそろえても、個々のピークに残る余裕は同じにならない。
+<a href="https://manual.audacityteam.org/man/loudness_normalization.html">資料を開く</a></p></li>
+<li><p><strong>クリッピング候補の検出（Audacity）。</strong>
+設定で連続した標本の扱いを確認してから検出を行い、印の付いた箇所を拡大する。この判定が検査している標本列と、再構成した波形に生じるトゥルーピークを区別し、どちらを計測した結果か併記する。
+<a href="https://manual.audacityteam.org/man/find_clipping.html">資料を開く</a></p></li>
+</ul>
 <div class="next-up"><p class="box-title">次に読む</p><p class="next-title"><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る</a></p><p class="next-lead">作曲のルールを「費用」として書き、プログラムに旋律を選ばせる。</p></div>
 
 <nav class="chapter-end" aria-label="前後の章"><span><a href="./sampling-musically.html">← 第34章　サンプリングとグリッドの設計</a></span><span><a href="./algorithms.html">第36章　アルゴリズムで旋律を作る →</a></span></nav>
 </article></main>
-<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　再構成版 · 2026年11月</div></footer>
+<footer><div class="footer-inner">音楽理論を耳と手で学ぶ　分野をつなぐ増補版（再構成） · 2026年11月</div></footer>
 <script defer src="../assets/reader.js"></script>
 </body></html>
