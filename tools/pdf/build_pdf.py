@@ -18,6 +18,7 @@ import tempfile
 from pathlib import Path
 
 from bs4 import BeautifulSoup, Tag
+from PIL import Image
 from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -27,6 +28,7 @@ OUT_PDF = SITE / "assets" / "music-theory.pdf"
 PRINT_JS = Path(__file__).with_name("print.js")
 PUBLIC = "https://tarouzirou.github.io/music-theory/"
 TITLE = "音楽理論を耳と手で学ぶ"
+SCORE_DPI = 220  # tools/scores/build.py の RESOLUTION と同じ値
 
 
 def soup_of(path):
@@ -95,6 +97,11 @@ def chapter_html(slug):
         summary = d.find("summary")
         if summary is not None:  # 画面向けの「〜を読む（…）」を、紙面では見出し語だけにする
             summary.string = re.split(r"を(読む|見る)", summary.get_text())[0]
+    for img in art.find_all("img", src=re.compile(r"(staff|_score)\.webp$")):
+        # 楽譜はどれも 220dpi で組んであるので実寸で置き、線間の大きさを図ごとにそろえる
+        with Image.open(SITE / "assets" / Path(img["src"]).name) as im:
+            img["style"] = f"width:{im.width / SCORE_DPI * 25.4:.1f}mm;max-height:none"
+        img.attrs.pop("width", None)
     for au in art.find_all("audio"):
         src = au.get("src") or (au.find("source") or {}).get("src", "")
         note = soup.new_tag("p", attrs={"class": "audio-note"})
@@ -131,19 +138,19 @@ def toc_html(pages):
 
 
 PRINT_CSS = """
-@page{size:176mm 250mm;margin:18mm 16mm 20mm 17mm;
+@page{size:A4;margin:18mm 20mm 18mm 20mm;
   @bottom-center{content:counter(page);font:8.5pt "IPAexGothic",sans-serif;color:#476050}
   @top-right{content:"%(title)s";font:7.5pt "IPAexGothic",sans-serif;color:#7a8a80}}
 @page :first{@bottom-center{content:none}@top-right{content:none}}
 :root{--serif:"IPAexMincho",serif;--sans:"IPAexGothic",sans-serif}
-html{font-size:9.6pt}
+html{font-size:8.6pt}
 *{font-weight:400!important;font-synthesis:none}
 strong,b,th,h1,h2,h3,h4,.box-title,.callout-kind,.kicker,summary{font-family:"IPAexGothic",sans-serif!important}
 code,pre{font-family:"DejaVu Sans Mono",monospace}
 body.book{background:#fff;color:#1f2b25;font-family:"IPAexMincho",serif;line-height:1.85;margin:0}
 body.book a{color:#145b47;text-decoration:none}
 math{font-family:"STIX Math",math}
-.cover{height:210mm;display:flex;flex-direction:column;justify-content:center;break-after:page;font-family:"IPAexGothic",sans-serif}
+.cover{height:250mm;display:flex;flex-direction:column;justify-content:center;break-after:page;font-family:"IPAexGothic",sans-serif}
 .cover .ed{letter-spacing:.2em;color:#255d4a;font-weight:700;font-size:10pt}
 .cover h1{font-family:"IPAexMincho",serif;font-size:34pt;line-height:1.35;margin:.4em 0}
 .cover p{font-size:10.5pt;color:#476050;margin:.3em 0}
@@ -151,21 +158,21 @@ math{font-family:"STIX Math",math}
 .toc{break-after:page;font-family:"IPAexGothic",sans-serif}
 .toc h1{font-size:18pt;margin:0 0 4mm}
 .toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:8mm}
-.toc li{break-inside:avoid;font-size:8.4pt;line-height:1.5}
+.toc li{break-inside:avoid;font-size:8pt;line-height:1.5}
 .toc a{display:flex;gap:2mm;color:inherit!important}
 .toc .toc-text{flex:1}
 .toc .toc-page{min-width:7mm;text-align:right;font-variant-numeric:tabular-nums}
 .toc .toc-part{font-weight:700;color:#255d4a;margin-top:2.6mm;break-after:avoid}
 .toc .toc-chapter{padding:.35mm 0 .35mm 2mm}
-.part-page{break-before:page;break-after:page;padding-top:60mm;font-family:"IPAexGothic",sans-serif}
+.part-page{break-before:page;break-after:page;padding-top:85mm;font-family:"IPAexGothic",sans-serif}
 .part-page h1 .sep{display:block;height:0;overflow:hidden}
 .part-page h1{font-family:"IPAexMincho",serif;font-size:24pt;margin:.2em 0 .5em}
 .part-page .part-desc{color:#476050;max-width:110mm}
 .book-chapter{break-before:page}
-.book-chapter .chapter-title{font-size:17pt;line-height:1.4;margin:0 0 4mm;border:0;padding:0;color:#173a30}
+.book-chapter .chapter-title{font-size:16pt;line-height:1.4;margin:0 0 4mm;border:0;padding:0;color:#173a30}
 .book-chapter h3{font-family:"IPAexGothic",sans-serif;font-size:11.5pt;margin:6mm 0 2mm;padding-top:2mm;border-top:.4pt solid #c9d3c3;color:#224f40;break-after:avoid}
 .book-chapter h4{font-family:"IPAexGothic",sans-serif;font-size:10.5pt;break-after:avoid}
-.book-chapter p,.book-chapter li{line-height:1.85;orphans:2;widows:2}
+.book-chapter p,.book-chapter li{line-height:1.8;orphans:2;widows:2}
 .book-chapter p{margin:.4em 0 .75em}
 .chapter-intro,.takeaways,.callout,.theorem,details,figure,table,pre{break-inside:avoid}
 .chapter-intro{margin:0 0 5mm;padding:3mm 4mm;border-radius:2mm;background:#f6f8f2}
@@ -175,7 +182,7 @@ math{font-family:"STIX Math",math}
 details>summary{list-style:none;font-family:"IPAexGothic",sans-serif;font-size:8pt;font-weight:700;color:#255d4a;border:0!important;padding:1.5mm 0 0!important;margin:0!important}
 details>summary::-webkit-details-marker{display:none}
 details.proof,details.solution{background:#fafbf7;padding:0 3mm .5mm}
-figure img{max-height:80mm}
+figure img{max-height:75mm}
 figcaption{font-size:7.8pt}
 table{font-size:8pt}
 pre{white-space:pre-wrap;font-size:7.6pt}
@@ -203,7 +210,6 @@ def book(pages):
 
 def print_images(tmp):
     """図版を印刷向けの JPEG（白背景）に変換し、元のパスとの対応を返す。Chromium は JPEG をそのまま埋め込むので PDF が軽くなる。"""
-    from PIL import Image
     out = {}
     folder = Path(tmp) / "img"
     folder.mkdir(exist_ok=True)

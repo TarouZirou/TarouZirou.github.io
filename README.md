@@ -26,7 +26,7 @@ Web版では、元の第16〜29章（和声・旋律・形式など）を第6〜
 
 ## PDF
 
-`music-theory/assets/music-theory.pdf` は Web版のページから生成しており、章番号・本文・図がサイトと一致します。サイトの本文を直したら、次のコマンドで作り直してください。章の並びと部の区切りは `music-theory/index.html` の目次から読み取ります。
+`music-theory/assets/music-theory.pdf`（A4）は Web版のページから生成しており、章番号・本文・図がサイトと一致します。サイトの本文を直したら、次のコマンドで作り直してください。章の並びと部の区切りは `music-theory/index.html` の目次から読み取ります。
 
 ```sh
 python3 tools/pdf/build_pdf.py
@@ -35,3 +35,15 @@ python3 tools/pdf/build_pdf.py
 必要なもの: Python 3（beautifulsoup4, pypdf, Pillow）、Node.js と playwright（Chromium）、フォント IPAex明朝・IPAexゴシック・STIX Math。Debian/Ubuntu なら `apt-get install fonts-ipaexfont-mincho fonts-ipaexfont-gothic fonts-stix`。
 
 `music-theory/assets/music-theory-typeset-original.pdf` は並べ替える前の LaTeX 組版版で、章番号が Web版と異なります。
+
+## 楽譜
+
+本文の楽譜（`staff.webp`、`melody_score.webp`、`counterpoint_score.webp`）は `tools/scores/*.ly` を LilyPond で組んだものです。符頭の高さは五線の線間ちょうどで、どの楽譜も同じ譜表サイズ・同じ解像度（220dpi）で作り、サイトでも PDF でも同じ倍率で表示します。楽譜を足すときも `tools/scores/common.ily` を読み込んで同じ大きさにしてください。
+
+```sh
+python3 tools/scores/build.py   # 画像を作り直し、各ページの表示幅も更新する
+python3 tools/pdf/build_pdf.py  # PDF に反映する
+```
+
+必要なもの: LilyPond 2.24、Pillow。
+
